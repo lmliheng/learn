@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML5 学习笔记</title>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        h3 {
+            color: red;
+        }
+    </style>
+</head>
+
+
+<body>
+    <a href="布局/flex.html">转至布局设计</a>
+
+    <h3 id="1">重要性强调标签</h3>
+    <br>
+    <p style="margin-top: 0px; margin-bottom: 0px;">这是一个段落</p>
+    <!-- p标签自带上下外边距，需要手动设置为0px -->
+    <em>这是一个斜体</em>
+    <br>
+    <strong>这是一个加粗</strong>
+    <br>
+    <ins>这是一个下划线</ins>
+    <br>
+    <del>这是一个删除线</del>
+    <br>
+    <mark>这是一个高亮</mark>
+    <br>
+    <code>这是一个代码</code>
+    <span>这是一个span标签，span和p标签的区别是，span标签是行内元素，p标签是块级元素</span>
+    <br>
+
+
+    <h3>块级元素</h3>
+    <br>
+    <p>这是一个段落，p标签和h标签均是块级元素</p>
+
+    <div>
+        这是一个div标签，div标签是块级元素，可以包含其他元素
+    </div>
+    <p>分割线hr也是块级元素</p>
+    <hr>
+
+
+
+    <!-- 一行可以包含多个行内元素，但是不能包含行内元素 -->
+    <h3>行内元素</h3>
+    <br>
+    <span>这是一个span标签，span标签是行内元素，不能包含其他元素</span>
+    <br>
+    <span>a,strong，ins，del，mark，code，em，span均为行内元素</span>
+    <br>
+    <span>label标签也是行内元素，不能包含其他元素</span>
+
+    <h3>代码块</h3>
+    <div style="border: 1px solid #ccc; padding: 10px; margin: 10px;">
+        <!-- 转义 <和 >符号 字符实体：&lt;,&gt; -->
+        &lt;label&gt;<br>
+        &lt;input type=&quot;checkbox&quot; id=&quot;check1&quot; name=&quot;checkbox1 &quot; value=&quot;1&quot;
+        style=&quot;margin: 0px;&quot;&gt;<br>
+        &lt;span style=&quot;font-size: 10px; margin-bottom: 5px;&quot;&gt;同意用户条例和使用条款&lt;/span&gt;
+        <br>
+        &lt;/label&gt;
+    </div>
+
+    <h3>图片</h3>
+    <!-- jpg（压缩）,png(透明),webp(透明,压缩),gif,icon,svg,avif -->
+    <!-- px vh vw -->
+    <!-- title属性：鼠标悬停在图片上显示的文本，alt属性：图片加载不出的替代文本 -->
+    <!-- width属性：图片的宽度,一般用css设置，单写width，可以等比例缩放 -->
+    <img src="./image/1.png" alt="这是alt" title="这是title" width="100px">
+    <img src="./image/11.png" alt="这是alt" title="这是title" width="200px">
+    <br>
+
+
+    <!-- 视频格式：mp4,webm,ogg -->
+    <h3>视频</h3>
+    <video src="./video/1.mp4" controls="controls" width="200px" alt="这是视频" loop="loop" muted="muted"
+        poster="./image/1.png"></video>
+    <!-- controls属性：视频的控制条，包括播放、暂停、音量、进度条等 ，浏览器自带 -->
+    <!-- autoplay属性：视频播放时是否自动播放,先静音再循环播放-->
+    <!-- loop:循环播放 -->
+    <!-- muted属性：视频播放时是否静音，浏览器不支持 -->
+    <!-- poster属性：视频封面图片，poster属性值为图片路径，浏览器不支持 -->
+    <!-- 自动播放+静音+循环播放 可以当作视频背景 -->
+
+
+
+    <h3>视频兼容性写法</h3>
+    <p>浏览器若不支持mp4格式的视频源，需要添加webm格式和ogg格式的视频源</p>
+    <video controls="controls" width="200px" alt="这是视频" loop="loop" muted="muted" poster="./image/1.png">
+        <source src="./video/1.webm" type="video/webm">
+        <source src="./video/1.ogg" type="video/ogg">
+        <source src="./video/1.mp4" type="video/mp4">
+        <p>您的浏览器不支持mp4格式的视频源</p>
+    </video>
+
+
+    <h3>音频</h3>
+
+    <audio src="./audio/1.mp3" controls="controls" width="100px" alt="这是音频" loop="loop" muted="muted"></audio>
+    <!-- 同上兼容性写法 -->
+
+
+    <h3>链接</h3>
+    <a href="https://github.com" target="_blank" title="这是一个链接">访问github</a>
+    <br>
+    <a href="./audio/1.mp3">访问音频</a>
+    <br>
+    <!-- target属性：链接打开的位置，_blank表示在新窗口打开，_self表示在当前窗口打开 -->
+    <!-- title属性：鼠标悬停在链接上显示的文本 -->
+
+    <!-- 锚点链接 -->
+    <a href="#1">跳到重要性强调标签</a>
+    <br>
+
+
+
+    <h3>字符实体</h3>
+
+    <ul>
+        <li>&lt; 小于号</li>
+        <li>&gt; 大于号</li>
+        <li>&amp; 与号</li>
+        <li>&quot; 双引号</li>
+        <li>&apos; 单引号</li>
+        <li>&nbsp; 空格</li>
+        <li>&thinsp; 四分之一角空格</li>
+        <li>&copy; 版权符号</li>
+        <li>&reg; 注册商标符号</li>
+        <li>&trade; 商标符号</li>
+    </ul>
+
+</body>
+<script>
+    console.log('hello world');
+</script>
+
+</html>

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>列表，表格，表单</title>
+</head>
+
+<body>
+
+    <h2 style="text-align: center;">文字布局</h2>
+
+    <h3>列表标签</h3>
+    <!-- 导航栏 -->
+    <ul>
+        <li>无序列表项1</li>
+        <li>无序列表项2</li>
+        <li>无序列表项3</li>
+    </ul>
+    <br>
+    <ol>
+        <li>有序列表项1</li>
+        <li>有序列表项2</li>
+        <li>有序列表项3</li>
+    </ol>
+    <br>
+    <dl>
+        <dt>描述列表项</dt>
+        <dd>描述列表项的详细内容</dd>
+        <dd>描述列表项的详细内容</dd>
+        <dd>描述列表项3的详细内容</dd>
+    </dl>
+
+    <h3>表格标签</h3>
+
+    <!-- caption表格标题 -->
+    <!-- tr行 -->
+    <!-- th表头单元格 -->
+    <!-- td普通单元格 -->
+
+    <!-- css优化 -->
+    <table border="1">
+        <caption>这是一个表格</caption>
+        <thead>
+            <tr>
+                <th>姓名</th>
+                <th>年龄</th>
+                <th>性别</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>张三</td>
+                <td>20</td>
+                <td>男</td>
+            </tr>
+            <tr>
+                <td>张三</td>
+                <td>20</td>
+                <td>男</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- thead/tbody/tfoot 使结构更清晰-->
+
+    <!-- colspan跨列 rowspan跨行  合并单元格 -->
+    <!-- table 合并 无边框-->
+    <table border="1">
+        <caption>这是一个合并表格</caption>
+        <thead>
+            <tr>
+                <th>姓名</th>
+                <th>年龄</th>
+                <th>性别</th>
+                <th>地址</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>张三</td>
+                <td>20</td>
+                <td>男</td>
+                <td rowspan="2">北京</td>
+            </tr>
+            <tr>
+                <td>张三</td>
+                <td>20</td>
+                <td>男</td>
+
+            </tr>
+            </tr>
+            <tr>
+                <td>张三</td>
+                <td>20</td>
+                <td>男</td>
+                <td>广州</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+
+
+    <h3>表单</h3>
+    <!-- 表单：form标签 -->
+    <!-- action：提交表单数据的URL
+ method：提交表单数据的方法（GET/POST）
+ enctype：指定表单数据的编码类型（multipart/form-data） -->
+    <!-- 表单控件：input标签  -->
+    <!-- input属性 type:text单行文本框,password密码框,file文件上传框 ，submit提交按钮，radio单选框,checkbox复选框 -->
+    <!-- 表单控件：select：下拉选择框 -->
+    <!-- 表单控件：textarea 标签 -->
+
+    <div style="border: 4px solid #ccc; padding-left: 10px; width: 50%;">
+        <strong>form标签的属性有：action提交表单数据的URL</strong>
+        <ul>
+            <li>action：提交表单数据的URL</li>
+            <li>method：提交表单数据的方法（GET/POST）</li>
+            <li>enctype：指定表单数据的编码类型（multipart/form-data）</li>
+        </ul>
+    </div>
+
+    <p style="margin-bottom: 0px;margin-top: 0px;">登录表单:</p>
+    <!-- 登录表单 -->
+    <form action="">
+        <ul>
+            <li>
+                <label for="username">账号：</label>
+                <input type="text" id="username" name="username" required>
+            </li>
+            <li>
+                <label for="password">密码：</label>
+                <input type="password" id="password" name="password" required>
+            </li>
+            <li>
+                <!-- 在没数据输入前提交按钮禁止 button disabled -->
+                <!-- <input type="submit" value="登录"> -->
+                <button type="submit">登录</button>
+            </li>
+            <li>
+                <label>
+                    <input type="checkbox" id="check1" name="checkbox1  " value="1" style="margin: 0px;">
+                    <span style="font-size: 10px; margin-bottom: 5px;">同意用户条例和使用条款</span>
+                </label>
+
+            </li>
+        </ul>
+    </form>
+
+    <br>
+
+
+    <div style="border: 4px solid #ccc; padding-left: 10px; width: 50%;">
+        <strong>input type="text"的属性有</strong>
+        <ul>
+            <li>name：为输入框指定名称</li>
+            <li>value：设置输入框的默认值,写入表单数据</li>
+            <li>required：指定输入框是否必填</li>
+            <li>placeholder：设置输入框的空白时的占位符 </li>
+            <li>pattern：指定输入框的正则表达式</li>
+            <li>minlength：指定输入框的最小值</li>
+            <li>maxlength：指定输入框的最大值</li>
+            <li>accesskey：指定鼠标聚焦输入框的快捷键,如x，快捷键是alt+x</li>
+            <li>autofocus：指定输入框是否自动获得焦点</li>
+            <li>autocomplete：指定输入框是否自动完成,历史输入信息</li>
+        </ul>
+        <hr>
+        <strong>input type="password"的属性有</strong>
+
+
+        <hr>
+        <strong>input type="checkbox"的属性有</strong>
+        <ul>
+            <li>name：为复选框指定名称</li>
+            <li>value：设置复选框的默认值,写入表单数据</li>
+            <li>checked：指定复选框是否默认选中</li>
+        </ul>
+    </div>
+
+
+
+    <br>
+    <p style="margin-bottom: 0px;margin-top: 0px;">上传文件表单:</p>
+    <!-- 上传文件表单 -->
+    <form action="" method="post" enctype="multipart/form-data">
+        <label for="file">选择文件：</label>
+        <input type="file" id="file" name="file" accept=".jpg,.exe,.zip" multiple>
+        <br>
+        <input type="submit" value="上传">
+    </form>
+    <br>
+    <div style="border: 4px solid hsl(0, 0%, 80%); padding-left: 10px;width: 50%;">
+
+        <strong>input type="file"的属性有，通过css隐藏可以实现其它组件click事件触发文件上传</strong>
+        <ul>
+            <li>name：为文件上传框指定名称</li>
+            <li>accept：指定文件上传框接受的文件类型 accept=".jpg,.exe,.zip" 表示接受所有图片文件</li>
+            <li>multiple：指定文件上传框是否可以选择多个文件</li>
+        </ul>
+
+    </div>
+
+
+    <!-- 表单控件：form标签 -->
+    <p style="margin-bottom: 0px;margin-top: 0px;">含下拉框和文本域的表单:</p>
+    <form action="">
+        <!-- for select  -->
+        <label for="select">请选择：</label>
+        <select id="select" name="select">
+            <option value="1">选项1</option>
+            <option value="2">选项2</option>
+            <option value="3">选项3</option>
+        </select>
+        <br>
+        <textarea id="textarea" name="textarea" rows="4" cols="50">这是一个文本域</textarea>
+        <br>
+
+        <input type="radio" id="radio1" name="radio" value="1">
+        <label for="radio1">选项1</label>
+        <input type="radio" id="radio2" name="radio" value="2">
+        <label for="radio2">选项2</label>
+        <input type="radio" id="radio3" name="radio" value="3">
+        <label for="radio3">选项3</label>
+        <br>
+
+        <input type="checkbox" id="checkbox1" name="checkbox" value="1">
+        <label for="checkbox1">选项1</label>
+        <input type="checkbox" id="checkbox2" name="checkbox" value="2">
+        <label for="checkbox2">选项2</label>
+        <input type="checkbox" id="checkbox3" name="checkbox" value="3">
+        <label for="checkbox3">选项3</label>
+        <br>
+        <input type="submit" value="提交">
+
+    </form>
+    <div style="border: 4px solid #ccc; padding-left: 10px;width: 50%;">
+
+        <strong>input type="textarea" 用于大文本输入，比如评论，文章，反馈</strong>
+        <ul>
+            <li>name：为文本域指定名称</li>
+            <li>placeholder：设置文本域的空白时的占位符 </li>
+            <li>rows：指定文本域的行数</li>
+            <li>cols：指定文本域的列数</li>
+        </ul>
+        <hr>
+        <strong>label辅助标签的属性有，关联可以for-id 也可以用label标签包含目标函数</strong>
+        <ul>
+            <li>for：指定标签关联的元素的id属性值，用于关联输入框和标签，比如label click事件触发关联的输入框获得焦点，复选框勾选</li>
+            <li>access：指定标签关联的输入框的快捷键,如x，快捷键是alt+x</li>
+        </ul>
+
+
+        <div style="border: 1px solid #ccc; padding: 10px; margin: 10px;">
+            <!-- 转义 <和 >符号 -->
+            &lt;label&gt;<br>
+            &lt;input type=&quot;checkbox&quot; id=&quot;check1&quot; name=&quot;checkbox1 &quot; value=&quot;1&quot;
+            style=&quot;margin: 0px;&quot;&gt;<br>
+            &lt;span style=&quot;font-size: 10px; margin-bottom: 5px;&quot;&gt;同意用户条例和使用条款&lt;/span&gt;
+            <br>
+            &lt;/label&gt;
+        </div>
+
+
+
+
+    </div>
+</body>

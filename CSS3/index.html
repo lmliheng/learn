@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS-Learner</title>
+    <link rel="stylesheet" href="css/test.css">
+    <style>
+        h1 {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 style="text-align: center;">CSS-Learner</h1>
+    <div style="align-items: center;"><a href="布局/display.html" style="color: rgb(171, 7, 7);">布局案例</a></div>
+<br>
+    <div style="border: 1px solid hsl(0, 0%, 80%); margin-left: 10px; width: 50%;">
+
+        <strong>css内联样式:</strong>
+        <br>
+        &lt;h1 style="text-align: center;"&gt;CSS-Learner&lt;/h1&gt;
+        <br>
+        <strong>css内部样式:</strong>
+        <br>
+        &lt;style&gt;
+        h1{
+        text-align: center;
+        }
+        &lt;/style&gt;
+        <br>
+        <strong>css外部样式:</strong>
+        <br>
+        &lt;link rel="stylesheet" href="css/index.css"&gt;
+        <br>
+    </div>
+
+    <h3>css选择器:</h3>
+    <ul>
+        <li>基础选择器:</li>
+        <li>关系选择器:</li>
+        <li>分组选择器:</li>
+        <li>伪类选择器:</li>
+        <li>伪元素选择器:</li>
+    </ul>
+
+    <h3>优先级对比</h3>
+    <p>张三 类型选择器</p>
+    <p class="username">李四 类选择器</p>
+    <p class="username" id="username">王五 类选择器 id选择器</p>
+<!-- 多类名 -->
+    <p class="username username2">
+        通配符选择器 优先级最高,其次id，类，类型。
+        <br>本句样式有多类选择器,其后定义的样式覆盖之前的样式
+    </p>
+
+</body>
+
+</html>
