@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文字布局</title>
+</head>
+<style>
+    h1::selection {
+        background: #FF6900;
+        color: white;
+    }
+</style>
+
+<body>
+    <h1>
+        用鼠标选中文字，文字底色和颜色会改变
+    </h1>
+
+    <ul>
+        <li>text-align 文字对齐 仅块级元素使用</li>
+        <li>text-indent 文字缩进 仅块级元素使用</li>
+        <li>text-spacing 字间距</li>
+        <li>line-height 行高 无单位是倍数</li>
+    </ul>
+    <div style="background-color: aqua; width: 200px; height: 100px;">
+        <p style="text-align: right;">文字布局靠右</p>
+    </div>
+
+    <div style="background-color: aqua; width: 200px; height: 100px;">
+        <p style="text-align: left;">文字布局靠左</p>
+    </div>
+
+    <div style="background-color: aqua; width: 200px; height: 100px;">
+        <p style="text-align: center;">文字布局靠中</p>
+    </div>
+
+    <div style="background-color: aqua; width: 200px; height: 100px;">
+        <p style="text-align: center; letter-spacing: 5px;">文字布局靠中 字间距加大</p>
+    </div>
+
+
+    <div style="background-color: aqua; width: 200px; height: 100px;">
+        <p style="text-align: left; text-indent: 2em;">
+            文字布局靠左并首行缩进两个单位字，哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈
+        </p>
+    </div>
+
+    <div style="background-color: aqua; width: 200px; height: 100px;">
+        <p style="text-align:justify; text-indent: 2em;">
+            文字布局两端对齐并首行缩进两个单位字，哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈
+        </p>
+    </div>
+    <!-- em相对单位 -->
+
+    <div style="background-color: aqua; width: 200px; height: 100px;">
+        <p style="text-align: left; text-indent: 2em; line-height: 1.5;">
+            文字布局靠左并首行缩进两个单位字 + 增加行高
+    </div>
+
+    <div style="background-color: aqua; width: 700px; height: 100px;">
+        <p style="text-align: center; line-height: 100px;">
+            文字布局居中 + 行高等于父容器高度实现文本水平垂直居中 （单行使用）
+    </div>
+
+</body>
+
+</html>

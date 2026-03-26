@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文字样式</title>
+</head>
+<style>
+    .color {
+        color: red;
+    }
+
+    .color16 {
+        color: #ff0000;
+    }
+
+    .colorRGB {
+        color: rgb(255, 0, 0);
+    }
+
+    .colorRGBA {
+        color: rgba(255, 0, 0, 0.5);
+    }
+
+    .single-text-overflow {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+
+    .multi-text-overflow {
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+</style>
+
+<body>
+    <h3>Font可以简写:</h3>
+
+    <h3>文字颜色color</h3>
+    <div class="container">
+        <p class="color">关键字颜色</p>
+        <p class="color16">16进制颜色</p>
+        <p class="colorRGB">RGB颜色</p>
+        <p class="colorRGBA">RGBA颜色</p>
+    </div>
+
+
+    <h3>文字字体font-family</h3>
+    <div class="container">
+        <p style="font-family: '宋体';">宋体</p>
+        <p style="font-family: '微软雅黑';">微软雅黑</p>
+    </div>
+
+    <h3>文字粗细font-weight</h3>
+    <div class="container">
+        <p style="font-weight: bold;">粗体/700</p>
+        <p style="font-weight: normal;">正常/取消粗体/400</p>
+    </div>
+
+
+    <h3>文字装饰下划线text-decoration</h3>
+    <div class="container">
+        <p style="text-decoration: overline;">上划线</p>
+        <p style="text-decoration: underline;">下划线</p>
+        <p style="text-decoration: line-through;">删除线</p>
+        <p style="text-decoration: none;">无装饰</p>
+        <a href="" style="text-decoration: none;">无装饰链接</a>
+    </div>
+
+
+    <h3>文本溢出overflow</h3>
+    <h4>单行文字溢出</h4>
+    <ul>
+
+        <li>text-overflow: ellipsis; 文本溢出省略号</li>
+        <li>white-space: nowrap; 文本不换行</li>
+        <li>overflow:hidden; 文本溢出隐藏</li>
+    </ul>
+    <div style="width: 150px; height: 50px;background-color: rgb(248, 138, 138);" class="single-text-overflow">
+       
+            这是一个段落，它包含了很多文字，但是我们只需要显示其中的一部分。
+        
+    </div>
+
+    <h4>多行文字溢出，显示2行文字,剩下的用div高度排除在外</h4>
+    <div style="width: 150px; height: 50px; background-color: rgb(248, 138, 138);"  class="multi-text-overflow">   
+        
+            这是一个段落，它包含了很多文字，但是我们只需要显示其中的一部分。
+       
+    </div>
+
+
+</body>
+
+</html>

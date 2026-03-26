@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>盒子</title>
+</head>
+<style>
+    [class^="box"] {
+        width: 200px;
+        height: 100px;
+        margin: 30px;
+        border-radius: 10px;
+    }
+
+
+
+    .box-1 {
+
+        border-left: 1px solid rgba(0, 0, 0, 0.5);
+        /* border-right: 1px solid rgba(0, 0, 0, 0.5);
+        border-top: 1px solid rgba(0, 0, 0, 0.5); */
+        border-bottom: 1px solid rgba(241, 92, 92, 0.5);
+    }
+
+    .box-2 {
+        border-top: 4px solid rgba(240, 140, 26, 0.5);
+        /* border-left: 1px solid rgba(0, 0, 0, 0.2);
+        border-right: 1px solid rgba(0, 0, 0, 0.1);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1); */
+        border-radius: 0px;
+        margin: 0;
+        width: 600px;
+        height: 0px;
+    }
+
+    .box-3 {
+
+        height: 300px;
+    }
+
+    .box-4 {
+        border-radius: 0px;
+        background-color: pink;
+        width: 400px;
+        height: 200px;
+        margin-bottom: 100px;
+    }
+
+    .box-5 {
+        border-radius: 0px;
+        background-color: rgb(252, 1, 43);
+        width: 400px;
+        height: 200px;
+        margin-top: 50px;
+    }
+
+    .box-6 {
+        border-radius: 0px;
+        background-color: rgb(0, 0, 0);
+        width: 200px;
+        height: 100px;
+        margin-top: 50px;
+
+    }
+
+    .box-margin {
+
+        border: 1px solid rgba(0, 0, 0, 0.5);
+        border-radius: 0px;
+        width: 600px;
+        height: 300px;
+        margin-right: auto;
+    }
+
+    .logo {
+        border-radius: 50px 0px 50px 0px;
+    }
+
+    .logo-circle {
+        border-radius: 50%;
+    }
+
+    .box-sizing-1 {
+        border: 1px solid rgba(0, 0, 0, 0.5);
+        /* box-sizing: border-box;默认content-box; */
+    }
+
+    .box-sizing-1:hover {
+        padding: 40px;
+        border: 1px solid rgba(0, 0, 0, 0.5);
+        box-sizing: border-box;
+    }
+
+    .box-sizing-2 {
+
+        border: 1px solid rgba(0, 0, 0, 0.5);
+        box-sizing: border-box;
+    }
+
+    .box-sizing-2:hover {
+        padding: 40px;
+        border: 1px solid rgba(0, 0, 0, 0.5);
+        box-sizing: border-box;
+    }
+
+    .box-10 {
+        background: linear-gradient(90deg, rgb(230, 210, 213), red);
+    }
+
+    .box-11 {
+        font-family: '宋体';
+        width: 163px;
+        font-weight: bold;
+        font-size: 20px;
+        background-image: linear-gradient(90deg, rgb(22, 35, 223), red);
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+    }
+
+    .box-shadow {
+
+        box-shadow: 10px 10px 10px 0px rgba(0, 0, 0, 0.5);
+    }
+
+    .box-transition {
+        transition: all 0.2s;
+    }
+
+    .box-transition:hover {
+        width: 210px;
+        height: 110px;
+    }
+</style>
+
+<body>
+    <h3>盒子模型</h3>
+    <ul>
+        <li>内容区</li>
+        <li>内边距 padding</li>
+        <li>边框 border 宽度 颜色 样式(solid,dashed,dotted)</li>
+        <li>外边距 margin</li>
+    </ul>
+
+
+    <h3>边框样式</h3>
+    <div style="border: 1px solid rgba(0, 0, 0, 0.5);" class="box"></div>
+    <div style="border: 2px dashed rgba(0, 0, 0, 0.3);" class="box"></div>
+    <div style="border: 3px dotted rgba(0, 0, 0, 0.5);" class="box"></div>
+    <div class="box-1"></div>
+
+    <h2 style="margin: 0;">标题下的横线</h2>
+    <div class="box-2"></div>
+    <br>
+    <h3>圆角效果</h3>
+
+    <div class="box-3">
+        <img src="../image/2.png" alt="华莱" width="150px" class="logo">
+        <img src="../image/2.png" alt="华莱" width="150px" class="logo-circle">
+    </div>
+    <h3>margin外边距</h3>
+    <p>margin-right: auto;实现盒子占满整行</p>
+    <div class="box-margin"> </div>
+
+    <h3 id="rank">排行榜</h3>
+    <div class="box-2"></div>
+
+
+
+    <h3>外边框折叠和塌陷</h3>
+    <p>折叠</p>
+    <div class="box-4"></div>
+    <div class="box-5"></div>
+
+
+    <p>塌陷 内部容器margin-top: 50px;使得外部容器一同塌陷</p>
+    <div class="box-5">
+        <div class="box-6"></div>
+    </div>
+    <p>解决</p>
+    <ul>
+        <li>给外部容器添加overflow: hidden;</li>
+        <li>给外部容器添加内边距</li>
+        <li>给外部容器添加上边框</li>
+    </ul>
+
+
+    <h3>
+        计算
+    </h3>
+    <div class="box-2"></div>
+
+    <p>Sizing-box:消除padding和border对盒子宽度的影响</p>
+    <div class="box-sizing-1"></div>
+    <div class="box-sizing-2"></div>
+    <p>通过hover可以前后对比padding对盒子宽度的影响</p>
+
+
+    <h3>background
+    </h3>
+    <ul>
+        <li>background-color：背景颜色</li>
+        <li>background-image：背景图片 使用url()</li>
+        <li>background-repeat：背景重复模式 不重复no-repeat, repeat-x, repeat-y</li>
+        <li>background-position：背景位置 center, top, bottom, left, right 使用百分比（50%居中）或px（相对于父容器左上角为坐标原点）</li>
+        <li>background-size：背景大小 cover覆盖, contain包含</li>
+        <li>background-attachment：背景固定或滚动 fixed固定, scroll滚动</li>
+    </ul>
+
+    <h4>渐变色 inear-gradient()线性渐变和radial-gradient()径向渐变</h4>
+
+    <p>背景渐变色</p>
+    <div class="box-10"></div>
+
+
+    <p>文字渐变色</p>
+    <div class="box-11">
+        <p>世事洞明皆学问 人情练达即文章</p>
+    </div>
+
+    <h4>box-shadow阴影</h4>
+    <p>阴影：水平偏移量 垂直偏移量 模糊半径 扩展半径 阴影颜色</p>
+    <div class="box-10 box-shadow"></div>
+
+    <h4>过渡 transition 过渡属性 过渡时间 过渡延迟 过渡曲线 过渡完成回调函数</h4>
+    <p>高度变化</p>
+    <div class="box-10 box-shadow box-transition"></div>
+
+</body>
+
+</html

@@ -1,9 +1,9 @@
 /* 层叠样式表：就近原则-后定义的样式覆盖之前的样式*/
 /* 基础选择器：类型选择器、类选择器、id选择器、通配符选择器、通配符选择器（*） */
 /* 类型选择器 */
-p {
+/* p {
     color: hsl(0, 100%, 90%);
-}
+} */
 
 /* 类选择器 */
 .username {
@@ -29,26 +29,262 @@ p {
 
 /* 关系选择器：后代选择器、 相邻兄弟选择器、通用兄弟选择器 */
 /* 后代选择器 */
-.box p{
+.box p {
     color: red;
 }
-.box p a{
+
+.box p span {
     color: blue;
 }
 
-
-/* 子选择器 */
-
-.box > p{
-    color: blue;
+/* 子代选择器 */
+.box>span {
+    color: rgb(32, 175, 104);
 }
 
 /* 相邻兄弟选择器 */
-.box p + p{
+.p-green+p {
     color: green;
 }
 
 /* 通用兄弟选择器 */
-.box p ~ p{
-    color: yellow;
+.p-red~p {
+    color: red;
+}
+
+
+.li-blue+li {
+    color: blue;
+}
+
+.li-green~li {
+    color: green;
+}
+
+
+
+/* .blue~li{
+    color: green;
+} */
+
+
+/* 分组选择器 */
+/* p,li{
+    color: rgb(255, 0, 0, 0.5);
+} */
+
+.blue,
+.li-blue-1 {
+    color: blue;
+}
+
+
+
+/* 伪类选择器 */
+.btn {
+    padding: 5px 10px;
+    border: 1px solid hsl(0, 0%, 80%);
+}
+
+.btn:hover {
+    background-color: hsl(0, 100%, 90%);
+}
+
+.btn:active {
+    background-color: hsl(0, 100%, 90%);
+}
+
+.btn:focus {
+    background-color: hsl(0, 100%, 90%);
+}
+
+.btn:disabled {
+    background-color: hsl(0, 0%, 80%);
+}
+
+.link {
+    color: rgb(171, 7, 7);
+    text-decoration: none;
+    font-size: 12px;
+}
+
+/* 未访问过的链接添加样式 */
+/* .link:link{
+    color: rgb(171, 7, 7);
+    text-decoration: none;
+} */
+/* 已访问过的链接添加样式 */
+/* .link:visited {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+} */
+
+/* 鼠标悬停在链接上时添加样式 */
+.link:hover {
+    color: rgb(182, 37, 211);
+    text-decoration: underline;
+}
+
+/* 鼠标持续点击在链接上时添加样式 */
+.link:active {
+    color: rgb(255, 255, 0);
+    text-decoration: none;
+}
+
+
+
+.box-1 {
+    height: 100px;
+    width: 400px;
+    background-color: rgb(171, 7, 7, 0.5);
+    text-align: center;
+    line-height: 100px;
+    color: rgb(33, 184, 108);
+
+    /* box-sizing */
+    box-sizing: border-box;
+    /* 过渡 */
+    transition: all 0.5s;
+}
+
+.box-1:hover {
+    height: 110px;
+    width: 420px;
+    background-color: rgb(171, 7, 7, 0.9);
+    color: rgb(255, 255, 0);
+
+    border: 1px solid rgb(255, 255, 0); 
+    box-shadow: 0 0 10px rgb(0, 0, 0, 0.5);
+
+}
+
+
+.input-1 {
+    width: 200px;
+    height: 30px;
+    border: 1px solid hsl(0, 0%, 80%);
+    border-radius: 10px;
+}
+
+.input-1:focus {
+    background-color: hsl(0, 100%, 90%);
+}
+
+/* 后代选择器 */
+.ul-1 li {
+    color: red;
+}
+
+/* 结构伪类 选择第一个子元素 */
+.ul-1 li:first-child {
+    color: rgb(80, 27, 202);
+}
+
+/* 结构伪类 选择子元素 可写常数，正整数公式2n 2n+1 n+2 （第三个以后） -n+3(前三个)*/
+.ul-1 li:nth-child(2n) {
+    color: rgb(255, 166, 0);
+}
+
+/* 结构伪类 选择最后一个子元素 */
+.ul-1 li:last-child {
+    color: rgb(29, 168, 25);
+}
+
+
+
+.table-1 {
+    width: 600px;
+    height: 300px;
+    margin: 0 auto;
+    border-collapse: collapse;
+    /* border:1; */
+    text-align: center;
+}
+
+.table-1 th {
+    background-color: rgb(127, 193, 231);
+    color: rgb(255, 255, 255);
+}
+
+.table-1 tr:nth-child(2n+1) {
+    text-align: center;
+    background-color: rgb(0, 0, 0, 0.05);
+}
+
+.table-1 tr:nth-child(n+1):hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.p-1 {
+    text-indent: 2em;
+    text-align: justify;
+    line-height: 30px;
+    margin-left: 20px;
+    margin-right: 20px;
+
+}
+
+/* 伪元素选择器 */
+.p-1::first-line {
+    color: rgb(248, 193, 11);
+}
+
+.p-1::first-letter {
+    color: rgb(255, 1, 1);
+    font-size: 24px;
+}
+
+.input-2 {
+    width: 300px;
+    height: 30px;
+    margin-left: 20px;
+}
+
+.input-2::placeholder {
+    color: rgb(230, 122, 122);
+}
+
+
+/* before和after */
+.box-2::before {
+    content: "这是";
+    color: rgb(255, 1, 1);
+}
+
+.box-2::after {
+    content: "落";
+    color: rgb(21, 212, 79);
+}
+
+/* 匹配类名与p-相同的p标签 */
+    p[class="p-3"] {
+        color: rgb(255, 1, 1);
+    }
+/* 匹配类名以p-开头的标签 */
+/* [class^="p-"] {
+    color: rgb(255, 1, 1);
+} */
+
+/* 匹配类名以-5结尾的p标签 */
+/* p[class$="-5"] {
+    color: rgb(255, 1, 1);
+} */
+/* 匹配所有类名含p-的p标签 */
+/* p[class*="p"] {
+    color: rgb(255, 1, 1);
+} */
+
+
+/* 权重计算 */
+/* 0100 */
+#a{
+    color: rgb(255, 0, 0);
+}
+/* 0010 */
+.b{
+    color: rgb(0, 0, 255);
+}
+/* 0111 */
+#a .b a{
+    color: rgb(255, 0, 255);
 }

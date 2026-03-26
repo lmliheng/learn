@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>flexbox</title>
+</head>
+<style>
+    [class^="box"] {
+        width: 400px;
+        height: 200px;
+    }
+
+
+    .box-f {
+        display: flex;
+        width: 1000px;
+        border: 1px solid rgba(0, 0, 0, 0.5);
+        gap: 10px;
+    }
+
+    .box-s:nth-child(2n) {
+        width: 200px;
+        background-color: pink;
+    }
+
+    .box-s:nth-child(2n-1) {
+        width: 200px;
+        background-color: rgb(218, 40, 70);
+    }
+
+    .box-s:nth-child(4) {
+        flex: 2;
+        width: 200px;
+        background-color: rgba(92, 35, 145, 0.308);
+    }
+
+
+    .text-center {
+        text-align: center;
+    }
+
+    .table-main {
+        width: 500px;
+        margin: 0 auto;
+        border-collapse: collapse;
+        border: 1px solid rgba(0, 0, 0, 0.5);
+    }
+
+    .table-main th {
+        border: 1px solid rgba(0, 0, 0, 0.5);
+        padding: 10px;
+        background-color: #f2f2f2;
+    }
+
+    .table-main td {
+        border: 1px solid rgba(0, 0, 0, 0.5);
+        padding: 10px;
+    }
+
+    .link {
+        text-decoration: dashed;
+    }
+</style>
+
+<body>
+    <h1 class="text-center">flexbox</h1>
+    <p class="text-center">父容器（容器）控制子元素（项目）的布局</p>
+    <p>父容器属性</p>
+    <table class="table-main">
+        <tr>
+            <th>属性</th>
+            <th>默认值</th>
+            <th>说明</th>
+        </tr>
+        <tr>
+            <td>display</td>
+            <td>flex</td>
+            <td>将元素转换为flex容器，主轴为行方向</td>
+        </tr>
+
+        <tr>
+            <td><a class="link" href="../image/data-image/justify-content.png" target="_blank"
+                    title="查看justify-content具体内容">justify-content</a></td>
+            <td>flex-start</td>
+            <td>定义主轴的对齐方式(justify-content): 默认flex-start 为左对齐</td>
+        </tr>
+        <tr>
+            <td><a class="link" href="../image/data-image/align-items.png" target="_blank"
+                    title="查看align-items具体内容">align-items</a></td>
+            <td>flex-start</td>
+            <td>仅单行有效 在交叉轴上对齐 默认flex-start 为上对齐，一般用flex-center 为下对齐</td>
+        </tr>
+        <tr>
+            <td><a class="link" href="../image/data-image/flex-direction.png" target="_blank"
+                    title="查看flex-direction具体内容">flex-direction</a></td>
+            <td>row</td>
+            <td>改变主轴方向 默认row 为行方向,一般用column 为列方向</td>
+        </tr>
+        <tr>
+            <td> <a class="link" href="../image/data-image/flex-wrap.png" target="_blank"
+                    title="查看flex-wrap具体内容">flex-wrap</a></td>
+            <td>nowrap</td>
+            <td>控制是否换行 默认nowrap 不为换行，一般用wrap 为换行</td>
+        </tr>
+        <tr>
+            <td>align-content</td>
+            <td>flex-start</td>
+            <td>当交叉轴上有多行情况下的对齐方式: 默认flex-start 为上对齐</td>
+        </tr>
+        <tr>
+            <td>gap</td>
+            <td>10px</td>
+            <td>默认值，等价于gap: 10px</td>
+        </tr>
+    </table>
+
+
+    <p>
+        <a class="link" href="../image/data-image/子容器flex布局属性.png" target="_blank"
+            title="查看子容器flex布局属性具体内容">子容器flex布局属性</a>
+    </p>
+    <table class="table-main">
+        <tr>
+            <th>属性</th>
+            <th>值</th>
+            <th>说明</th>
+        </tr>
+        <tr>
+            <td>flex</td>
+            <td>1 auto</td>
+            <td>flex:1 剩余空间占1份，优先级高于子容器宽高 自动填充父容器</td>
+        </tr>
+        <tr>
+            <td>gap</td>
+            <td>10px</td>
+            <td>写在父容器样式里 子容器之间的间距 gap:20px 30px 为行间距 20px，列间距 30px</td>
+        </tr>
+
+    </table>
+
+
+    <h3>Flex布局子容器的属性</h3>
+    <h4>flex 是 剩余空间的分配比例</h4>
+    <div class="box-f">
+        <div class="box-s"></div>
+        <div class="box-s"></div>
+        <div class="box-s"></div>
+        <div class="box-s"></div>
+    </div>
+    <br>
+    <p>使用gap后第四个元素占的两份空间被拿出30px用做间距</p>    
+
+
+
+</body>
+
+</html>

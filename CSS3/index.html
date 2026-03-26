@@ -7,16 +7,53 @@
     <title>CSS-Learner</title>
     <link rel="stylesheet" href="css/test.css">
     <style>
-        h1 {
-            text-align: center;
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        ul li {
+            list-style: none;
+        }
+
+
+
+        [class^="hr"] {
+            height: 0px;
+            border-radius: 0px;
+            margin: 0;
+        }
+
+        .hr-header {
+            border-top: 4px solid rgba(223, 75, 30, 0.5);
+            width: 100%;
+        }
+
+        .hr-yellow {
+            border-top: 4px solid rgba(240, 140, 26, 0.5);
+            width: 400px;
         }
     </style>
 </head>
 
 <body>
     <h1 style="text-align: center;">CSS-Learner</h1>
-    <div style="align-items: center;"><a href="布局/display.html" style="color: rgb(171, 7, 7);">布局案例</a></div>
-<br>
+    <p style="text-align: center;">
+        <a href="布局/display.html" class="link">布局案例</a>&nbsp;
+        <a href="布局/div居中.html" class="link">div居中</a>&nbsp;
+        <a href="文字/dot.html" class="link">文字样式</a>&nbsp;
+        <a href="布局/盒子.html" class="link">盒子样式</a>&nbsp;
+        <a href="文字/dot-layout.html" class="link">文字布局</a>&nbsp;
+        <a href="布局/盒子.html#rank" class="link">排行榜</a>&nbsp;
+        <a href="布局/精灵图.html" class="link">精灵图使用</a>&nbsp;
+    </p>
+    <br>
+    <div class="hr-header"></div>
+    <br>
     <div style="border: 1px solid hsl(0, 0%, 80%); margin-left: 10px; width: 50%;">
 
         <strong>css内联样式:</strong>
@@ -38,24 +75,253 @@
     </div>
 
     <h3>css选择器:</h3>
+    <div class="hr-yellow"></div>
     <ul>
-        <li>基础选择器:</li>
-        <li>关系选择器:</li>
-        <li>分组选择器:</li>
-        <li>伪类选择器:</li>
-        <li>伪元素选择器:</li>
+        <li>基础选择器:类型，类，id，通配符，伪类，伪元素</li>
+        <li>关系选择器:子代选择器，后代选择器，相邻兄弟选择器，通用兄弟选择器</li>
+        <li>分组选择器:多个选择器用逗号隔开</li>
+        <li>伪类选择器:状态伪类，结构伪类，表单伪类</li>
+        <li>伪元素选择器:行内元素伪元素，块级元素伪元素</li>
     </ul>
 
-    <h3>优先级对比</h3>
+    <h3>基础选择器以及优先级对比</h3>
+    <div class="hr-yellow"></div>
     <p>张三 类型选择器</p>
     <p class="username">李四 类选择器</p>
     <p class="username" id="username">王五 类选择器 id选择器</p>
-<!-- 多类名 -->
+    <!-- 多类名 -->
     <p class="username username2">
         通配符选择器 优先级最高,其次id，类，类型。
         <br>本句样式有多类选择器,其后定义的样式覆盖之前的样式
     </p>
 
+
+    <h3>关系选择器:</h3>
+    <div class="hr-yellow"></div>
+    <div class="hr-yellow"></div>
+    <br>
+    <div class="box">
+        <span>子代选择器</span>
+        <p>
+            <span>后代选择器</span>
+        </p>
+    </div>
+
+    <div class="box1">
+        <p class="p-green">
+            相邻兄弟选择器
+        </p>
+        <p class="p-red">
+            通用兄弟选择器
+        </p>
+        <p>
+            通用兄弟选择器
+        </p>
+        <p>
+            通用兄弟选择器
+        </p>
+        <p>
+            通用兄弟选择器
+        </p>
+        <ul>
+            <li>
+                通用兄弟选择器
+            </li>
+            <li class="li-blue">
+                相邻/通用兄弟选择器
+            </li>
+            <li>蓝色</li>
+            <li class="li-green">绿色</li>
+            <li>绿色</li>
+            <li>绿色</li>
+        </ul>
+        <p>优先级：通用大于相邻</p>
+    </div>
+
+
+    <h3>分组选择器:</h3>
+    <div class="hr-yellow"></div>
+    <p class="blue">blue</p>
+    <li class="li-blue-1">也是blue</li>
+
+
+
+    <h3>伪类选择器( 配合过渡使用 )</h3>
+    <div class="hr-yellow"></div>
+    <div style="border: 1px solid hsl(0, 0%, 80%); margin-left: 10px; width: 50%;">
+        <p style="margin-left: 10px;">状态伪类：按钮button:hover, :active, :focus, :disabled</p>
+        <button class="btn">按钮 hover</button>
+        <button class="btn-disabled">按钮 active</button>
+
+        <hr>
+        <p style="margin-left: 10px;">状态伪类：链接a:link, :visited, :hover, :active</p>
+        <p style="margin-left: 10px;">
+            <a href="布局/display.html" class="link" target="_blank">布局案例</a>&nbsp;
+            <a href="布局/div居中.html" class="link" target="_blank">div居中</a>&nbsp;
+            <a href="文字/dot-layout.html" class="link" target="_blank">文字样式</a>&nbsp;
+            <a href="文字/dot-layout.html" class="link" target="_blank">文字布局</a>&nbsp;
+        </p>
+        <hr>
+
+
+        <h4>伪类选择器的动态伪类hover，focus可以被div,p标签使用</h4>
+        <!-- div,p使用hover -->
+        <div class="box-1">
+            <p>点击鼠标在div框上悬停 样式变化</p>
+            <!-- 怎么p的内容也在抖动 -->
+        </div>
+        <br>
+        <label> input使用focus动态伪类:
+            <input type="text" class="input-1" placeholder="请输入">
+        </label>
+    </div>
+
+
+
+    <h4>结构伪类</h4>
+
+    <ul class="ul-1">
+        <li>第一
+        </li>
+        <li>第二
+        </li>
+        <li>第三
+        </li>
+        <li>第四
+        </li>
+        <li>第五
+        </li>
+        <li>第六
+        </li>
+        <li>第七
+        </li>
+        <li>第八
+        </li>
+        <li>第九
+        </li>
+    </ul>
+    <p>由上知：符合层叠上文，会覆盖之前的样式</p>
+
+    <br>
+    <table class="table-1">
+        <tr>
+            <th>姓名</th>
+            <th>年龄</th>
+            <th>性别</th>
+            <th>手机号</th>
+            <th>邮箱</th>
+            <th>地址</th>
+        </tr>
+        <tr>
+            <td>张三</td>
+            <td>18</td>
+            <td>男</td>
+            <td>13800000000</td>
+            <td>123@qq.com</td>
+            <td>北京市</td>
+        </tr>
+        <tr>
+            <td>李四</td>
+            <td>20</td>
+            <td>女</td>
+            <td>13800000001</td>
+            <td>456@qq.com</td>
+            <td>上海市</td>
+        </tr>
+        <tr>
+            <td>王五</td>
+            <td>22</td>
+            <td>男</td>
+            <td>13800000002</td>
+            <td>789@qq.com</td>
+            <td>广州市</td>
+        </tr>
+
+        <td>王五1</td>
+        <td>22</td>
+        <td>男</td>
+        <td>13800000003</td>
+        <td>101@qq.com</td>
+        <td>北京市</td>
+        </tr>
+        <tr>
+            <td>王五</td>
+            <td>22</td>
+            <td>男</td>
+            <td>13800000004</td>
+            <td>102@qq.com</td>
+            <td>上海市</td>
+        </tr>
+        <td>王五</td>
+        <td>22</td>
+        <td>男</td>
+        <td>13800000005</td>
+        <td>103@qq.com</td>
+        <td>广州市</td>
+        </tr>
+    </table>
+
+    <p>结构伪类可用在表格奇数偶数行背景颜色</p>
+
 </body>
 
+
+
+<h4>表单伪类</h4>
+<!--input type="checkbox"的 checked和after -->
+<a href="no-css-page/login.html" target="_blank" class="link">表单伪类例子在这里</a>
+
+
+
+<h3>伪元素选择器</h3>
+<div class="hr-yellow"></div>
+<ul>
+    <li>选择首行</li>
+    <li>选择首字母</li>
+    <li>选择input/text-aera的占位符</li>
+    <li>before</li>
+    <li>after</li>
+
+
+</ul>
+<div style="border: 1px solid hsl(0, 0%, 80%); margin-left: 10px; width: 50%;">
+    <p class="p-1">北京大学创办于1898年，是戊戌变法的产物，也是中华民族救亡图存、兴学图强的结果，初名京师大学堂，是中国近现代第一所国立综合性大学，辛亥革命后，于1912年改为现名。
+        在悠久的文明历程中，古代中国曾创立太学、国子学、国子监等国家最高学府，在中国和世界教育史上具有重要影响。北京大学“上承太学正统，下立大学祖庭”，既是中华文脉和教育传统的传承者，也标志着中国现代高等教育的开端。其创办之初也是国家最高教育行政机关，对建立中国现代学制作出重要历史贡献。
+    </p>
+</div>
+<br>
+<input class="input-2" type="text" placeholder="请输入">
+
+<br>
+<div class="box-2"><span>一个段</span></div>
+
+
+
+
+<h3>属性选择器</h3>
+<div class="hr-yellow"></div>
+<p>1. 这是一个段落</p>
+<p class="p-2">2. 这是一个段落</p>
+<p class="p-3">3. 这是一个段落</p>
+<p class="p-4">4. 这是一个段落</p>
+<p class="p-5">5. 这是一个段落</p>
+
+
+
+<h3>优先级权重</h3>
+<div id="a">
+    <p class="">
+        <a href="">权重: 0111</a>
+    </p>
+</div>
+
+<a href="">权重:0001</a>
+
+<h3>块级元素和行内元素</h3>
+<ul>
+    <li>块级元素 display:block;</li>
+    <li>行内元素 display:inline;</li>
+    <li>行内块元素 display:inline-block;</li>
+</ul>
+ 
 </html>

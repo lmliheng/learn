@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>浮动</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        h1 {
+            margin-top: 100px;
+            text-align: center;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        .box-outside {
+            width: 600px;
+            /* height: 363px; */
+            border: 4px dotted rgba(0, 0, 0, 0.3);
+            margin: 100px auto;
+        }
+
+        .box-outside li {
+            float: left;
+
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            margin: 10px;
+            border-radius: 10px;
+        }
+
+        .clear-float::after {
+            content: "";
+            display: block;
+            height: 0px;
+            clear: both;
+        }
+
+        .footer {
+            width: 600px;
+            height: 100px;
+            background-color: rgb(252, 1, 43);
+            margin: 0 auto;
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+    <!-- <h1>浮动</h1> -->
+    
+    <!-- <div class="box-outside">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+
+    </div> -->
+
+    <h1>清除父元素高度为0时的浮动</h3>
+    <div class="box-outside clear-float">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      
+    </div>
+    <div class="footer"></div>
+
+
+</body>
+
+
+
+
+</html>

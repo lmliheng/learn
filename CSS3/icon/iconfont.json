@@ -1,0 +1,72 @@
+{
+  "id": "5147638",
+  "name": "learn",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "11891795",
+      "name": "history",
+      "font_class": "history",
+      "unicode": "e66d",
+      "unicode_decimal": 58989
+    },
+    {
+      "icon_id": "12129940",
+      "name": "动态",
+      "font_class": "dongtai",
+      "unicode": "e672",
+      "unicode_decimal": 58994
+    },
+    {
+      "icon_id": "19949531",
+      "name": "收藏",
+      "font_class": "shoucang",
+      "unicode": "e60a",
+      "unicode_decimal": 58890
+    },
+    {
+      "icon_id": "44402178",
+      "name": "消息 全部消息-copy-copy",
+      "font_class": "a-xiaoxiquanbuxiaoxi-copy",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "46650552",
+      "name": "投币-copy",
+      "font_class": "toubi",
+      "unicode": "e601",
+      "unicode_decimal": 58881
+    },
+    {
+      "icon_id": "47082810",
+      "name": "创作者中心",
+      "font_class": "chuangzuozhezhongxin",
+      "unicode": "e61b",
+      "unicode_decimal": 58907
+    },
+    {
+      "icon_id": "577907",
+      "name": "大于号",
+      "font_class": "dayuhao",
+      "unicode": "e66f",
+      "unicode_decimal": 58991
+    },
+    {
+      "icon_id": "4598257",
+      "name": "大于号",
+      "font_class": "dayuhao1",
+      "unicode": "e625",
+      "unicode_decimal": 58917
+    },
+    {
+      "icon_id": "6877124",
+      "name": "大于",
+      "font_class": "dayu",
+      "unicode": "e61e",
+      "unicode_decimal": 58910
+    }
+  ]
+}
