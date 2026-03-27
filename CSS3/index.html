@@ -21,6 +21,17 @@
         }
 
 
+        .header-fixed  {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 70px;
+            z-index: 1000;
+           background-color: rgba(223, 75, 30, 1);
+        }
+
+
 
         [class^="hr"] {
             height: 0px;
@@ -41,20 +52,25 @@
 </head>
 
 <body>
-    <h1 style="text-align: center;">CSS-Learner</h1>
-    <p style="text-align: center;">
-        <a href="布局/display.html" class="link">布局案例</a>&nbsp;
-        <a href="布局/div居中.html" class="link">div居中</a>&nbsp;
-        <a href="文字/dot.html" class="link">文字样式</a>&nbsp;
-        <a href="布局/盒子.html" class="link">盒子样式</a>&nbsp;
-        <a href="文字/dot-layout.html" class="link">文字布局</a>&nbsp;
-        <a href="布局/盒子.html#rank" class="link">排行榜</a>&nbsp;
-        <a href="布局/精灵图.html" class="link">精灵图使用</a>&nbsp;
-    </p>
+    <div class="header-fixed">
+        <h1 style="text-align: center;">CSS-Learner</h1>
+        <p style="text-align: center;">
+            <a href="布局/display.html" class="link">布局案例</a>&nbsp;
+            <a href="布局/div居中.html" class="link">div居中</a>&nbsp;
+            <a href="文字/dot.html" class="link">文字样式</a>&nbsp;
+            <a href="布局/盒子.html" class="link">盒子样式</a>&nbsp;
+            <a href="文字/dot-layout.html" class="link">文字布局</a>&nbsp;
+            <a href="布局/盒子.html#rank" class="link">排行榜</a>&nbsp;
+            <a href="布局/精灵图.html" class="link">精灵图使用</a>&nbsp;
+        </p>
+       
+    </div>
+
+
+
+
     <br>
-    <div class="hr-header"></div>
-    <br>
-    <div style="border: 1px solid hsl(0, 0%, 80%); margin-left: 10px; width: 50%;">
+    <div style="border: 1px solid hsl(0, 0%, 80%); margin:100px 0px 0px 10px; width: 50%;">
 
         <strong>css内联样式:</strong>
         <br>
@@ -323,5 +339,5 @@
     <li>行内元素 display:inline;</li>
     <li>行内块元素 display:inline-block;</li>
 </ul>
- 
+
 </html>

@@ -125,25 +125,70 @@
 
 
     .icon-1 {
+        position: relative;
         font-size: 24px;
     }
 
-    .header-show {
-        width: 100%;
-        height: 500px;
-        margin: 0 auto;
-        background-color: #F5F5F5;
+    .num {
+        position: absolute;
+        top: 0px;
+        right: -2px;
+        width: 12px;
+        height: 12px;
+        background-color: rgb(245, 10, 10);
+        border-radius: 50%;
+
+    }
+
+    .num-text {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        font-size: 7px;
+        color: #ffffff;
     }
 
     .header-show-container {
+        position: relative;
         /* display: flex; */
         width: 1240px;
         height: 500px;
         margin: 0 auto;
         background-image: url(uploads/banner1.png);
         /* 为什么不是全覆盖 */
+
     }
 
+    .header-show-image-converse {
+        position: absolute;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        bottom: 30px;
+        right: 20px;
+
+        width: 200px;
+        height: 40px;
+        /* border: 1px solid #fff; */
+    }
+
+    .header-show-image-converse-circle {
+        font-size: 24px;
+        background-color: rgb(255, 255, 255, 0.5);
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+    }
+
+
+    .header-show-image-converse-circle:hover {
+        font-size: 24px;
+        background-color: rgb(255, 255, 255, 0.7);
+        box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.5);
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+    }
 
 
     .header-show-subbar {
@@ -468,14 +513,30 @@
     }
 
     .main-2-content-column-top {
+        display: block;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
         align-items: left;
         width: 100%;
         height: 305px;
+        border: 1px solid #ffffff;
 
     }
+
+    .main-2-content-column-top:hover {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: left;
+        width: 100%;
+        height: 305px;
+        border: 1px solid #00BE9A;
+
+
+    }
+
+
 
     .main-2-content-column-top img {
         width: 100%;
@@ -571,7 +632,7 @@
         height: 581.5px;
 
         margin: 0 auto;
-        
+
     }
 
     .footer-content-title {
@@ -580,8 +641,8 @@
         align-items: center;
         width: 100%;
         height: 200px;
-        
-   
+
+
     }
 
     .footer-content-title-column {
@@ -591,10 +652,11 @@
         align-items: center;
         width: 310px;
         height: 200px;
-        
-   
+
+
         gap: 20px;
     }
+
     .footer-content-title-column img {
         width: 70px;
     }
@@ -692,7 +754,11 @@
                 <input class="search-input" type="text" placeholder="搜一搜">
             </li>
             <li>
-                <i class="iconfont icon-cart-full icon-vertical-align icon-1"></i>
+                <i class="iconfont icon-cart-full icon-vertical-align icon-1">
+                    <div class="num"></div>
+                    <span class="num-text">11</span>
+
+                </i>
             </li>
         </ul>
 
@@ -700,7 +766,11 @@
 
     <div class="header-show">
         <div class="header-show-container">
-
+            <div class="header-show-image-converse">
+                <div class="header-show-image-converse-circle"></div>
+                <div class="header-show-image-converse-circle"></div>
+                <div class="header-show-image-converse-circle"></div>
+            </div>
             <div class="header-show-subbar">
                 <ul>
                     <li>
@@ -926,6 +996,8 @@
     </div>
     <br>
     <br>
+
+
     <div class="main-2">
         <div class="main-2-nav">
             <div class="main-2-title">
@@ -971,12 +1043,12 @@
             </div>
 
             <div class="main-2-content-column">
-                <div class="main-2-content-column-top">
+                <a class="main-2-content-column-top" href="#">
                     <img src="uploads/fresh1.png" alt="">
                     <p class="content-name">双味千层，手抓饼烤肉组合240g/袋 四片装</p>
                     <p class="content-name">加热即食</p>
                     <p class="content-price">￥89.99</p>
-                </div>
+                </a>
                 <div class="main-2-content-column-top">
                     <img src="uploads/fresh5.png" alt="">
                     <p class="content-name">秘制外皮五福摩提大福点心150g/盒</p>

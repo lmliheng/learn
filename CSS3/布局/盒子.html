@@ -14,6 +14,10 @@
         border-radius: 10px;
     }
 
+    .logo-div {
+        display: block;
+    }
+
 
 
     .box-1 {
@@ -133,6 +137,15 @@
         width: 210px;
         height: 110px;
     }
+
+    .logo-rotate {
+        transition: all 1s;
+        /* 离开要转回去 过渡写在logo-rotate中 */
+    }
+
+    .logo-rotate:hover {
+        transform: rotate(360deg);
+    }
 </style>
 
 <body>
@@ -143,6 +156,8 @@
         <li>边框 border 宽度 颜色 样式(solid,dashed,dotted)</li>
         <li>外边距 margin</li>
     </ul>
+
+    <h3>Overflow:hidden溢出隐藏</h3>
 
 
     <h3>边框样式</h3>
@@ -158,8 +173,10 @@
 
     <div class="box-3">
         <img src="../image/2.png" alt="华莱" width="150px" class="logo">
-        <img src="../image/2.png" alt="华莱" width="150px" class="logo-circle">
     </div>
+    
+    <h3>圆形 + 旋转效果</h3>
+    <img src="../image/2.png" alt="华莱" width="150px" class="logo-circle logo-div logo-rotate">
     <h3>margin外边距</h3>
     <p>margin-right: auto;实现盒子占满整行</p>
     <div class="box-margin"> </div>

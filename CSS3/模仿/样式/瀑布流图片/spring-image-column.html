@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>瀑布流图片-多列布局实现</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+
+    .container {
+
+        column-count: 4;
+        column-gap: 40px;
+        width: 1600px;
+        /* height: 1000px; */
+        margin: 100px auto;
+        /* border: 1px solid #000; */
+    }
+
+    .container img {
+        display: block;
+        width: 380px;
+        margin-bottom: 20px;
+        border-radius: 15px;
+        box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.5);
+        transition: all 0.3s ease-in-out;
+    }
+
+    .container img:hover {
+        display: block;
+        width: 380px;
+        margin-bottom: 20px;
+        transform: translate(-2px, -5px);
+    }
+</style>
+
+<body>
+    <div class="container">
+        <img src="../../../image/a1.png" alt="">
+        <img src="../../../image/a2.png" alt="">
+        <img src="../../../image/a3.png" alt="">
+        <img src="../../../image/a4.png" alt="">
+        <img src="../../../image/a5.png" alt="">
+        <img src="../../../image/a6.png" alt="">
+        <img src="../../../image/a7.png" alt="">
+        <img src="../../../image/a8.png" alt="">
+        <img src="../../../image/a9.png" alt="">
+        <img src="../../../image/4-1.webp" alt="">
+        <img src="../../../image/4-2.webp" alt="">
+        <img src="../../../image/4-5.webp" alt="">
+        <img src="../../../image/3-1.webp" alt="">
+        <img src="../../../image/3-2.webp" alt="">
+        <img src="../../../image/3-3.webp" alt="">
+        <img src="../../../image/3-5.webp" alt="">
+    </div>
+
+</body>
+
+
+
+</html>
