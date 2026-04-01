@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>获取元素</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    ul {
+        list-style: none;
+    }
+
+    h1 {
+        margin: 20px auto;
+        text-align: center;
+    }
+
+    .dom-container {
+        width: 500px;
+        height: 300px;
+        border: 1px solid #da6464;
+        margin: 30px auto;
+    }
+
+    .dom-container ul li {
+        display: block;
+        width: 100px;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        /* border: 1px solid #da6464; */
+        margin: 10px auto;
+        cursor: pointer;
+        transition: all 0.5s;
+        border-radius: 5px;
+    }
+
+    .dom-container ul li:hover {
+        background-color: #da6464;
+        color: #fff;
+    }
+</style>
+
+<body>
+    <h1>DOM</h1>
+    <div class="dom-container">
+        <ul>
+            <li class="li-0">
+                <p>111</p>
+            </li>
+            <li class="li-1">222</li>
+            <li class="li-2">333</li>
+            <li class="li-3">444</li>
+        </ul>
+
+    </div>
+</body>
+<script>
+    // 获取元素
+    const liList = document.querySelectorAll('li');
+    console.log(liList, typeof liList);
+    for (var i = 0; i < liList.length; i++) {
+        liList[i].style.backgroundColor = ('#' + Math.floor(Math.random() * 0xffffff).toString(16));
+        // style 修改样式
+        liList[i].innerText=`${i}`;
+        // Element 
+        // console.log(liList[i].className);
+        // console.log(liList[i].tagName);
+    }
+</script>
+
+</html>

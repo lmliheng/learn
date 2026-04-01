@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Element</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    ul {
+        list-style: none;
+    }
+
+    h1 {
+        margin: 20px auto;
+        text-align: center;
+    }
+
+    .dom-container {
+        width: 500px;
+        height: 300px;
+        border: 1px solid #da6464;
+        margin: 30px auto;
+    }
+
+    .dom-container ul li {
+        display: block;
+        width: 100px;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        /* border: 1px solid #da6464; */
+        margin: 10px auto;
+        cursor: pointer;
+        transition: all 0.5s;
+        border-radius: 5px;
+    }
+
+    .dom-container ul li:hover {
+        background-color: #da6464;
+        color: #fff;
+    }
+</style>
+
+<body>
+    <h1>DOM</h1>
+    <div class="dom-container">
+        <ul>
+            <li class="li-0">
+                <p>111</p>
+            </li>
+            <li class="li-1">222</li>
+            <li class="li-2">333</li>
+            <li class="li-3">444</li>
+        </ul>
+        <div>哈哈哈</div>
+    </div>
+</body>
+<script>
+    const box = document.querySelector('.dom-container');
+    // console.log(box.children);
+
+    console.log(box.classList);
+    box.classList.add('active');
+    console.log(box.classList);
+    box.classList.replace('active', 'active2');
+    console.log(box.classList);
+    box.classList.remove('active2');
+    console.log(box.classList);
+
+
+
+
+
+
+
+    // console.log(box.children[0]);
+    // console.log(box.children[0].children);
+    // console.log(box.children[0].children[0]);
+</script>
+
+</html>
+
+
+

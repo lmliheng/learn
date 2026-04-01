@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数据类型转换</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+</style>
+
+<body>
+
+</body>
+
+<script>
+    let num = 10;
+    let str = '10';
+    let bool = true;
+    let nullVal = null;
+    let undefinedVal = undefined;
+    let nanVal = NaN;
+    let array = [];
+    let obj = {};
+
+    let num_16 = 0xffffff;
+
+    console.log("变量num是:", num, ",类型是:", typeof num);
+    console.log("变量str是:", str, ",类型是:", typeof str);
+    console.log("变量bool是:", bool, ",类型是:", typeof bool);
+    console.log("变量nullVal是:", nullVal, ",类型是:", typeof nullVal);
+    console.log("变量undefinedVal是:", undefinedVal, ",类型是:", typeof undefinedVal);
+    console.log("变量array是:", array, ",类型是:", typeof array);
+    console.log("变量obj是:", obj, ",类型是:", typeof obj);
+    // console.log("变量nanVal是:", nanVal, ",类型是:", typeof nanVal);
+    console.log("变量null+1是:", null + 1, ",类型是:", typeof (null + 1));
+    console.log("变量undefined+1是:", undefined + 1, ",类型是:", typeof (undefined + 1));
+
+
+    console.log("变量num_16是:", num_16, ",类型是:", typeof num_16);
+    console.log("变量num_16.toString(16)是:", num_16.toString(16), ",类型是:", typeof (num_16.toString(16))); // 16进制字符串
+
+
+
+
+
+
+
+    console.log("变量num+str是:", num + str, ",类型是:", typeof (num + str));
+    console.log("变量2+2是:", 2 + 2, ",类型是:", typeof (2 + 2)); // 4，number
+    console.log("变量2+'2'是:", 2 + '2', ",类型是:", typeof (2 + '2')); // '22'，string
+    console.log("变量2-2是:", 2 - 2, ",类型是:", typeof (2 - 2)); // 0，number
+    console.log("变量2-'2'是:", 2 - '2', ",类型是:", typeof (2 - '2')); // 0，number
+    console.log("变量+2是:", +2, ",类型是:", typeof (+2)); // 2，number
+    console.log("变量+'2'是:", +'2', ",类型是:", typeof (+'2')); // 2，number
+
+    // 显式
+    //parseInt()
+    //parseFloat()
+    //Number()
+    console.log("变量parseInt('10.5px')是:", parseInt('10.5px'), ",类型是:", typeof parseInt('10.5px')); // 10，number
+    console.log("变量parseFloat('10.5px')是:", parseFloat('10.5px'), ",类型是:", typeof parseFloat('10.5px')); // 10.5，number
+    console.log("变量Number('10')是:", Number('10'), ",类型是:", typeof Number('10')); // 10，number
+    console.log("变量Number('10.5')是:", Number('10.5'), ",类型是:", typeof Number('10.5')); // 10.5，number
+
+
+    // Boolean
+    console.log("变量Boolean(0)是:", Boolean(0), ",类型是:", typeof (Boolean(0))); // false，boolean
+    console.log("变量Boolean('')是:", Boolean(''), ",类型是:", typeof (Boolean(''))); // false，boolean
+    console.log("变量Boolean(null)是:", Boolean(null), ",类型是:", typeof (Boolean(null))); // false，boolean
+    console.log("变量Boolean(undefined)是:", Boolean(undefined), ",类型是:", typeof (Boolean(undefined))); // false，boolean
+    console.log("变量Boolean(NaN)是:", Boolean(NaN), ",类型是:", typeof (Boolean(NaN))); // false，boolean
+
+
+
+</script>
+
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<!-- 怎么用js写排序算法的图示 -->
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <meta http-equiv="X-UA-Compatible" content="ie=edge"> -->
+    <title>算法图示</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    li {
+        list-style: none;
+    }
+
+    h1 {
+        text-align: center;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 20px auto;
+
+        width: 800px;
+        height: 600px;
+        border: 5px dotted #da4f4f;
+
+        box-sizing: border-box;
+    }
+
+    .container input {
+        margin-top: 20px;
+        width: 400px;
+        height: 40px;
+        border-radius: 10px;
+        padding: 5px;
+        box-sizing: border-box;
+    }
+
+    .container button {
+        margin-left: 10px;
+        margin-top: 20px;
+        width: 60px;
+        height: 50px;
+        border-radius: 10px;
+        padding: 5px;
+        box-sizing: border-box;
+        border: none;
+        box-shadow: 4px 4px 10px 0px rgb(0, 0, 0, 0.1);
+        transition: all 0.3s ease-in-out;
+        font-size: 16px;
+        font-weight: 400;
+    }
+
+    .container button:hover {
+        background-color: #da4f4f;
+        transform: translateY(-2px);
+        color: #fff;
+    }
+
+    .input-result {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 10px;
+        width: 90%;
+        height: 400px;
+        border: 1px solid #da4f4f;
+
+    }
+
+    .input-result .num {
+        width: 50px;
+        height: 30px;
+        background-color: #da4f4f;
+        border-radius: 5px;
+        margin: 5px;
+
+        text-align: center;
+        line-height: 30px;
+        color: #fff;
+        font-size: 20px;
+        font-weight: bold;
+
+    }
+
+    .array-btn {
+        margin-top: 20px;
+        width: 200px;
+        height: 30px;
+
+        box-sizing: border-box;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .array-btn button {
+        width: 60px;
+        height: 50px;
+        border-radius: 10px;
+        padding: 5px;
+        box-sizing: border-box;
+    }
+</style>
+
+<body>
+    <h1>bubble sort</h1>
+    <div class="container">
+        <div class="input-btn">
+            <input type="text" name="array" id="array" placeholder="请输入数组">
+            <button>输入</button>
+
+        </div>
+        <div class="input-result">
+            <!-- <div class="num">11</div> -->
+        </div>
+        <div class="array-btn">
+            <button onclick="prev()">后退</button>
+            <button onclick="next()">前进</button>
+        </div>
+
+    </div>
+
+
+</body>
+
+<script>
+
+
+    let btn_input = document.querySelector(".container .input-btn button");
+    btn_input.onclick = function () {
+        let array = document.querySelector("#array").value.split(',');
+        console.log(array);
+        document.querySelector("#array").value = '';
+        document.querySelector(".input-result").innerHTML = '';
+        for (let i = 0; i < array.length; i++) {
+            document.querySelector(".input-result").innerHTML += `<div class="num">${array[i]}</div>`;
+        }
+    }
+
+
+    // function inputArray() {
+    //     let array = document.querySelector("#array").value.split(',');
+    //     console.log(array);
+    //     document.querySelector("#array").value = '';
+    //     document.querySelector(".input-result").innerHTML = '';
+    //     for (let i = 0; i < array.length; i++) {
+
+    //         document.querySelector(".input-result").innerHTML += `<div class="num">${array[i]}</div>`;
+
+    //     }
+
+
+    // }
+
+    // function next() {
+
+    // }
+
+    // function prev() {
+
+    // }
+
+
+</script>
+
+</html>

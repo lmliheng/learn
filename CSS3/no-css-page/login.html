@@ -5,145 +5,341 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>小米登陆注册界面</title>
+    <link rel="icon" href="image/小米.svg">
+    <title>小米账号 - 登录</title>
 </head>
 <style>
-    *{
+    * {
         margin: 0;
         padding: 0;
-    }
-    .header {
-        height: 100px;
-        background-color: #ebbdbd;
-    }
-
-    .main
-    {
+        overflow: hidden;
+        font-family: MiSans, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
         
-        height: 800px;
-        background-color: rgb(0, 0, 0, 0.05);
-        margin: 0 auto;
+    }
+    /* 需要统一选中颜色 */
+    p::selection {
+        background: #FF6900;
+        color: white;
     }
 
-    .login-form{
-        background-color: #fff;
-        width: 500px;
-        height: 500px;
-        margin: 0 auto;
+    li {
+        list-style: none;
+
     }
 
-    .login-form input{
-        width: 300px;
-        height: 30px;
-        margin: 0 auto;
+    a {
+        text-decoration: none;
     }
 
-    .login-form label{
-        margin: 0 auto;
+    body {
+        display: flex;
+        width: 100%;
+        height: 100%;
     }
 
-    .login-btn{
-        width: 100px;
-        height: 50px;
-        background-color: #FF6900;
-        color: #fff;
-        border: none;
-        border-radius: 5px;
-        font-size: 20px;
+    .left {
+        width: 375px;
+        height: 100%;
+        /* overflow: hidden; */
     }
 
-    .footer{
-        height: 100px;
-        background-color: #21b34d;
+    .left img {
+        /* display: block;
+        /* width: 375px; */
+        width: 362px;
+        height: 100%;
+
     }
-    .header_title{
+
+    body .main {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 100%;
+        height: 850px;
+
+    }
+
+    .main-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        height: 80px;
+
+    }
+
+    .header-title {
         width: 200px;
-        height: 100px;
-        font-size: 30px;
-        font-weight: bold;
-        color: #FF6900;
+        height: 80px;
+        line-height: 80px;
+        text-align: center;
+        font-size: 26px;
+        font-weight: 500;
+        color: rgb(0, 0, 0, 0.8);
     }
 
-    /* .nav{
-        width: 100px;
-        height: 100px;
-        background-color: #FF6900;
-    } */
+    .header-title img {
+        height: 37px;
+        margin-right: 10px;
+        vertical-align: middle;
+        border-radius: 14px;
+    }
+
+    .header-nav {
+        width: 400px;
+        height: 80px;
+        line-height: 80px;
+        text-align: center;
+    }
+
+    .header-nav ul {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        gap: 7px;
+    }
+
+    .header-nav ul li {
+        font-size: 16px;
+        font-weight: 500;
+        color: rgb(0, 0, 0, 0.8);
+    }
+
+    .header-nav ul li a {
+        color: #838383;
+        font-size: 14px;
+        font-weight: 400;
+        height: 40px;
+        line-height: 40px;
+
+        text-decoration: none;
+    }
+
+    .header-nav ul li a:hover {
+        color: #ff5c00;
+        font-size: 14px;
+        font-weight: 400;
+        height: 40px;
+        line-height: 40px;
+        text-decoration: none;
+    }
 
 
+    .main-content {
+        width: 380px;
+        height: 560px;
+        margin: 138px auto;
+        /* border: 1px solid #e97a7a; */
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .content-form {
+        padding: 30px;
+    }
+
+    .main-content .content-form .form-title {
+        display: flex;
+        gap: 20px;
+    }
+
+    .hr {
+        position: absolute;
+        top: 0px;
+        left: 3px;
+        height: 3px;
+        border-radius: 2px;
+        width: 39px;
+        background-color: #ff5c00;
+
+    }
+
+    .main-content .content-form .form-title div:first-child {
+        position: relative;
+
+        font-size: 22px;
+        font-weight: 500;
+    }
+
+    .main-content .content-form .form-title p:last-child {
+        font-size: 22px;
+        font-weight: 500;
+        color: rgb(0, 0, 0, 0.2);
+    }
+
+    .main-content .content-form .form-content .form-item {
+        margin: 20px auto;
+    }
+
+    .main-content .content-form .form-content .form-item input {
+
+        width: 95%;
+        height: 52px;
+        border-radius: 8px;
+        border: none;
+        padding-left: 10px;
+        background-color: #f5f5f5;
+
+    }
+
+    .main-content .content-form .form-content div {
+        line-height: 52px;
+        text-align: center;
+    }
+
+    .main-content .content-form .form-content div label {
+        font-size: 12px;
+        font-weight: 400;
+        color: #838383;
+    }
+
+    .main-content .content-form .form-content button {
+        width: 95%;
+        height: 52px;
+        border-radius: 8px;
+        border: none;
+        padding-left: 10px;
+        background-color: #ff5c00;
+        color: #fff;
+        font-size: 16px;
+        font-weight: 500;
+    }
+
+    .main-content .content-form .form-content .form-item-other {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        height: 40px;
+        color: #ff5c00;
+    }
+
+    .main-content .content-form .p-1 {
+        font-size: 15px;
+        color: #AAAAAA;
+        text-align: center;
+
+    }
+
+    .main-content .content-form .login-way {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 40px;
+        margin-top: 20px;
+    }
+
+    .main-content .content-form .login-way img {
+        height: 30px;
+        margin-right: 10px;
+        vertical-align: middle;
+        border-radius: 14px;
+    }
+
+
+    .main-footer {
+        width: 100%;
+        height: 20px;
+        /* background-color: bisque; */
+        /* border:1px solid #000; */
+    }
+
+    .main-footer p {
+        text-align: center;
+        color: #999;
+        font-size: 12px;
+    }
+
+    .main-footer p a {
+        color: #999;
+        font-size: 12px;
+        text-decoration: underline;
+    }
 </style>
 
 <body>
-    <div class="header">
-        <div class="header_title">
-            <svg width="70px" viewBox="0 0 193 193" xmlns="http://www.w3.org/2000/svg"
-                xmlns:xlink="http://www.w3.org/1999/xlink" class="mi-header__logo" aria-label="小米账号">
-                <desc>Created with Sketch.</desc>
-                <defs>
-                    <polygon id="path-1"
-                        points="1.78097075e-14 0.000125324675 192.540685 0.000125324675 192.540685 192.540058 1.78097075e-14 192.540058">
-                    </polygon>
-                </defs>
-                <g id="\u9875\u9762-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                    <g id="\u7F16\u7EC4">
-                        <mask id="mask-2" fill="white">
-                            <use xlink:href="#path-1"></use>
-                        </mask>
-                        <g id="Clip-2"></g>
-                        <path
-                            d="M172.473071,20.1164903 C154.306633,2.02148701 128.188344,-1.78097075e-14 96.2706558,-1.78097075e-14 C64.312237,-1.78097075e-14 38.155724,2.0452987 19.9974318,20.1872987 C1.84352597,38.3261656 1.78097075e-14,64.4406948 1.78097075e-14,96.3640227 C1.78097075e-14,128.286724 1.84352597,154.415039 20.0049513,172.556412 C38.1638701,190.704052 64.3141169,192.540058 96.2706558,192.540058 C128.225942,192.540058 154.376815,190.704052 172.53636,172.556412 C190.694653,154.409399 192.540685,128.286724 192.540685,96.3640227 C192.540685,64.3999643 190.672721,38.2553571 172.473071,20.1164903"
-                            id="Fill-1" fill="#FF6900" mask="url(#mask-2)"></path>
-                        <path
-                            d="M89.1841721,131.948836 C89.1841721,132.594885 88.640263,133.130648 87.9779221,133.130648 L71.5585097,133.130648 C70.8848896,133.130648 70.338474,132.594885 70.338474,131.948836 L70.338474,89.0100961 C70.338474,88.3584078 70.8848896,87.8251513 71.5585097,87.8251513 L87.9779221,87.8251513 C88.640263,87.8251513 89.1841721,88.3584078 89.1841721,89.0100961 L89.1841721,131.948836 Z"
-                            id="Fill-3" fill="#FFFFFF" mask="url(#mask-2)"></path>
-                        <path
-                            d="M121.332896,131.948836 C121.332896,132.594885 120.786481,133.130648 120.121633,133.130648 L104.492393,133.130648 C103.821906,133.130648 103.275491,132.594885 103.275491,131.948836 L103.275491,131.788421 L103.275491,94.9022357 C103.259198,88.4342292 102.889491,81.7863818 99.5502146,78.445226 C96.6790263,75.5652649 91.3251562,74.9054305 85.7557276,74.7669468 L57.4242049,74.7669468 C56.7555977,74.7669468 56.2154484,75.3045896 56.2154484,75.9512649 L56.2154484,128.074424 L56.2154484,131.948836 C56.2154484,132.594885 55.6640198,133.130648 54.9954127,133.130648 L39.3555198,133.130648 C38.6875393,133.130648 38.1498964,132.594885 38.1498964,131.948836 L38.1498964,60.5996188 C38.1498964,59.9447974 38.6875393,59.4121675 39.3555198,59.4121675 L84.4786692,59.4121675 C96.2717211,59.4121675 108.599909,59.9498104 114.680036,66.0380831 C120.786481,72.1533006 121.332896,84.4595571 121.332896,96.2657682 L121.332896,131.948836 Z"
-                            id="Fill-5" fill="#FFFFFF" mask="url(#mask-2)"></path>
-                        <path
-                            d="M153.53056,131.948836 C153.53056,132.594885 152.978505,133.130648 152.316164,133.130648 L136.678778,133.130648 C136.010797,133.130648 135.467515,132.594885 135.467515,131.948836 L135.467515,60.5996188 C135.467515,59.9447974 136.010797,59.4121675 136.678778,59.4121675 L152.316164,59.4121675 C152.978505,59.4121675 153.53056,59.9447974 153.53056,60.5996188 L153.53056,131.948836 Z"
-                            id="Fill-7" fill="#FFFFFF" mask="url(#mask-2)"></path>
-                    </g>
-                </g>
-            </svg>
-            <span>小米账号</span>
+    <div class="left"><img src="image/left.jpg" alt=""></div>
+    <div class="main">
+        <div class="main-header">
+            <div class="header-title">
+                <img src="image/小米.svg" alt="">
+                <span>小米账号</span>
+            </div>
+            <div class="header-nav">
+
+                <ul>
+                    <li>
+                        <a href="#">用户协议</a>
+                    </li>
+                    <li>
+                        <a href="#">隐私政策</a>
+                    </li>
+                    <li>
+                        <a href="#">帮助中心</a>
+                    </li>
+
+                    <li>
+                        <a href="#">中文（简体）</a>
+                    </li>
+
+
+                </ul>
+            </div>
+
 
         </div>
+        <div class="main-content">
+            <div class="content-form">
+                <div class="form-title">
+                    <div>
+                        登录<div class="hr"></div>
+                    </div>
+                    <p>注册</p>
+                </div>
+                <div class="form-content">
+                    <div class="form-item">
 
-        <div class="nav"></div>
+                        <input type="text" id="username" name="username" placeholder="邮箱/手机号码/小米ID">
+                    </div>
+                    <div class="form-item">
+                        <input type="password" id="password" name="password" placeholder="密码">
+                    </div>
+                    <div>
+                        <input type="checkbox" id="Agree" name="Agree">
+                        <label for="Agree">已阅读并同意小米账号使用协议和小米账号隐私政策</label>
+
+                    </div>
+
+                    <button type="submit">登录</button>
+                    <div class="form-item-other">
+                        <p>忘记密码？</p>
+                        <p>手机登录</p>
+                    </div>
+
+                </div>
+                <div class="p-1">其他方式登录</div>
+
+                <div class="login-way">
+                    <img src="image/支付宝.svg" alt="">
+                    <img src="image/微信.svg" alt="">
+                    <img src="image/qq.svg" alt="">
+                    <img src="image/微博.svg" alt="">
+
+                </div>
+            </div>
+
+
+        </div>
+        <div class="main-footer">
+            <p>小米公司版权所有-京ICP备10046444-<a href="#">京公网安备11010802020134</a>号-京ICP证110507号</p>
+        </div>
 
 
 
     </div>
 
 
-
-
-    <div class="main">
-        <form class="login-form" action="">
-            <input type="text">
-            <br>
-            <input type="password">
-            <br>
-            
-            <input type="checkbox">
-            <label>
-                已阅读并同意 <a href="">小米账号使用协议</a>和<a href="">小米账号隐私政策</a>
-            </label>
-            <br>
-            <button class="login-btn" type="submit">登录</button>
-
-        </form>
-
-
-
-    </div>
-
-<div class="footer">
-
-
-
-</div>
-    
 </body>
 
 </html>

@@ -1,0 +1,19 @@
+* {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    /* overflow-y: visible; */
+}
+
+a {
+    text-decoration: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+li {
+    list-style: none;
+}
+
+body {
+    box-sizing: border-box;
+}

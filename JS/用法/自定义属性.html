@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自定义属性</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+</style>
+
+<body>
+    <div data-index="0" data-item="item">
+        自定义属性1
+    </div>
+    <div data-index="1">
+        自定义属性2
+    </div>
+    <div data-index="2">
+        自定义属性3
+    </div>
+
+</body>
+
+<script>
+const dataIndex = document.querySelector('div');
+console.log(dataIndex.dataset); // DOMStringMap{index: '0', item: 'item'}
+
+</script>
+
+</html>

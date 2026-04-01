@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>轮播图</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    li {
+        list-style: none;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    h1 {
+        margin: 20px auto;
+        text-align: center;
+    }
+
+    .circle-image-container {
+        width: 800px;
+        height: 500px;
+        margin: 0 auto;
+        border: 1px solid #eb8989;
+    }
+
+    .circle-image {
+        position: relative;
+        width: 100%;
+        height: 100%;
+
+    }
+
+    .circle-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+
+    }
+
+    .image-desc {
+        position: absolute;
+
+        width: 800px;
+        height: 150px;
+        bottom: 0px;
+        background-color: rgba(197, 159, 35, 0.8);
+        color: #fff;
+        /* 去除padding影响的怪异盒子 */
+        box-sizing: border-box;
+        padding: 10px;
+        font-size: 20px;
+        font-weight: bold;
+        letter-spacing: 2px;
+
+        box-shadow: 0px -2px 10px rgb(197, 159, 35);
+
+    }
+
+    .bool {
+        position: absolute;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        bottom: 13px;
+        left: 20px;
+        width: 250px;
+        height: 40px;
+        /* border: 1px solid #eb8989; */
+
+    }
+
+    .bool-item {
+
+        width: 20px;
+        height: 20px;
+        background-color: rgba(255, 255, 255, 0.4);
+        border-radius: 50%;
+        margin-right: 10px;
+    }
+
+    .prev {
+        position: absolute;
+        top: 50%;
+        left: 0px;
+        transform: translateY(-50%);
+        width: 60px;
+        height: 120px;
+        background-color: rgba(255, 255, 255, 0.1);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+
+    }
+
+
+    .prev svg {
+        width: 60px;
+        height: 40px;
+        fill: rgba(255, 255, 255, 0.3);
+
+    }
+
+    .next {
+        position: absolute;
+        top: 50%;
+        right: 0px;
+        transform: translateY(-50%);
+        width: 60px;
+        height: 120px;
+        background-color: rgba(255, 255, 255, 0.1);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .next svg {
+        width: 60px;
+        height: 40px;
+        fill: rgba(255, 255, 255, 0.3);
+    }
+
+    .prev:hover {
+        background-color: rgba(255, 255, 255, 0.5);
+
+    }
+
+    .next:hover {
+        background-color: rgba(255, 255, 255, 0.5);
+    }
+
+    .bool-item-active {
+        background-color: rgba(255, 255, 255, 0.8);
+    }
+</style>
+
+<body>
+    <h1>轮播图三种切换模式</h1>
+    <div class="circle-image-container">
+        <div class="circle-image">
+            <img src="img/1.png" alt="">
+            <div class="image-desc">
+                <p>
+                    三角洲蛟龙特战队
+                </p>
+            </div>
+            <div class="bool">
+                <div class="bool-item"></div>
+                <div class="bool-item"></div>
+                <div class="bool-item"></div>
+                <div class="bool-item"></div>
+                <div class="bool-item"></div>
+            </div>
+            <div class="prev"> <svg t="1775017775094" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                    xmlns="http://www.w3.org/2000/svg" p-id="7063" width="200" height="200">
+                    <path
+                        d="M779.855076 80.440889L699.300409 0l-455.111111 455.111111a56.888889 56.888889 0 0 0 0 80.440889l455.111111 455.111111L779.855076 910.222222 364.90752 495.388444 779.855076 80.440889z"
+                        p-id="7064"></path>
+                </svg></div>
+            <div class="next"> <svg t="1775017741522" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                    xmlns="http://www.w3.org/2000/svg" p-id="6083" width="200" height="200">
+                    <path
+                        d="M270.9504 138.6496l72.4992-72.4992 409.6 409.6a51.2 51.2 0 0 1 0 72.4992l-409.6 409.6-72.4992-72.4992L644.4032 512 270.9504 138.6496z"
+                        p-id="6084"></path>
+                </svg></div>
+        </div>
+
+    </div>
+
+
+
+
+    </div>
+</body>
+<script>
+    let imgData = [{
+        id: 0,
+        img: '1.png',
+        desc: '三角洲蛟龙特战队'
+    },
+    {
+        id: 1,
+        img: '2.png',
+        desc: '猎枭'
+    },
+    {
+        id: 2,
+        img: '3.png',
+        desc: '哈继峰'
+    }, {
+        id: 3,
+        img: '4.png',
+        desc: '彦祖'
+    },
+    {
+        id: 4,
+        img: '5.png',
+        desc: '特勤处'
+    }
+
+    ]
+    let index = 0;
+    const circleImageContainer = document.querySelector('.circle-image-container .circle-image');
+    const boolItems = document.querySelectorAll('.bool .bool-item');
+    const circleImage = document.querySelector('.circle-image img');
+    changeImg = function (index) {
+        circleImage.src = 'img/' + imgData[index].img;
+        circleImageContainer.querySelector('.image-desc p').textContent = imgData[index].desc;
+        for (let i = 0; i < boolItems.length; i++) {
+            boolItems[i].classList.remove('bool-item-active');
+        }
+        // 给当前图片添加bool-item-active类名
+        boolItems[index].classList.add('bool-item-active');
+    }
+
+    //loop 在鼠标经过时暂停切换，鼠标离开时继续切换
+    timerloopId = setInterval(() => {
+        next.click();
+    }, 1000);
+    circleImageContainer.addEventListener('mouseleave', function () {
+        console.log('触发-鼠标离开事件');
+        timerloopId = setInterval(() => {
+            next.click();
+        }, 1000);
+        console.log(timerloopId, '鼠标离开时继续切换图片框');
+    })
+    circleImageContainer.addEventListener('mouseenter', function () {
+        console.log('触发-鼠标经过事件');
+        console.log('鼠标经过时前的id', timerloopId, '鼠标经过');
+        clearInterval(timerloopId);
+        console.log('已销毁定时器,但id未改变', timerloopId);
+    })
+
+
+
+    // prev next
+    const prev = document.querySelector('.prev');
+    const next = document.querySelector('.next');
+    prev.addEventListener('click', function () {
+        if (index === 0) {
+            index = imgData.length;
+        }
+        index--;
+        changeImg(index);
+    })
+    next.addEventListener('click', function () {
+        if (index === imgData.length - 1) {
+            index = -1;
+        }
+        index++;
+        changeImg(index);
+    })
+
+    // bool item click
+    for (let i = 0; i < boolItems.length; i++) {
+        boolItems[i].addEventListener('click', function () {
+            index = i;
+            changeImg(index);
+        })
+    }
+
+
+</script>
+
+</html>

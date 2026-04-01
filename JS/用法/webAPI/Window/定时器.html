@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>定时器</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    h1 {
+        margin: 20px auto;
+        text-align: center;
+    }
+</style>
+
+<body>
+    <h1>定时器</h1>
+</body>
+<script>
+
+    timeIntervalId = setInterval(() => {
+        const h1_id = document.querySelector('h1');
+        h1_id.style.color = ('#' + Math.floor(Math.random() * 0xffffff).toString(16));
+        console.log('定时器运行中,每一秒执行一次,直到清除定时器停止');
+    }, 1000);
+    // 清除定时器
+    // clearInterval(timeIntervalId);
+    let i = 0
+    countdownIntervalId = setInterval(() => {
+        console.log('计时开始，倒计时定时器ID为:', countdownIntervalId);
+        i += 1
+        console.log(`倒计时${i}秒`);
+        if (i === 10) {
+            clearInterval(countdownIntervalId);
+            console.log(`倒计时结束,定时器ID为${countdownIntervalId}`);
+        }
+    }, 1000);
+
+
+</script>
+
+</html>
