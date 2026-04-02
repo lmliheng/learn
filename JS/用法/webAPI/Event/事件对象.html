@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件对象</title>
+</head>
+<style>
+    .father {
+
+        margin: 200px auto;
+        width: 500px;
+        height: 400px;
+        background-color: #243e92;
+    }
+
+    .son {
+        width: 200px;
+        height: 300px;
+        background-color: #b62020;
+    }
+</style>
+
+<body>
+    <div href="https://www.baidu.com" class="father">
+        <div class="son"></div>
+    </div>
+</body>
+<script>
+    let father = document.querySelector('.father');
+    let son = document.querySelector('.son');
+    // 事件对象
+    // window.addEventListener('click', function (e) { // 点击窗口，窗口触发
+    //     e.stopPropagation();
+    //     console.log('点击了窗口'); 
+    // })
+    // father.addEventListener('click', function (e) { // 点击父元素，父元素和窗口触发
+    //     e.stopPropagation();
+    //     console.log('点击了父元素');
+
+    // })
+    // son.addEventListener('click', function (e) { // 点击子元素，仅子元素触发
+    //     e.stopPropagation();
+    //     console.log('点击了子元素');
+    // })
+
+    father.addEventListener('touchstart', function (e) { // 点击父元素，父元素和窗口触发
+        console.log('触摸了父元素了');
+    })
+    father.addEventListener('touchend', function (e) { // 松开了父元素，父元素和窗口触发
+        console.log('松开了父元素了');
+    })
+
+
+
+
+
+</script>
+
+</html>

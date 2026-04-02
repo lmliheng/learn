@@ -26,7 +26,7 @@
     }
 
     .tab-container button {
-        margin-top: 20px;   
+        margin-top: 20px;
         width: 100px;
         height: 40px;
         background-color: #fcfcfc;
@@ -64,8 +64,16 @@
 
 </body>
 <script>
+    let tabData = [
+
+        {
+
+        }
+
+
+    ]
     prompt('请输入姓名');
-//    alert('hello world');
+    //    alert('hello world');
     let bts = document.querySelectorAll('.tab-container button');
     for (let i = 0; i < bts.length; i++) {
         bts[i].addEventListener('click', function () {

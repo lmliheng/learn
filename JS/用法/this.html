@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>this</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    h1 {
+        margin: 100px auto;
+        font-size: 30px;
+        text-align: center;
+    }
+</style>
+
+<body>
+    <h1>this</h1>
+</body>
+
+<script>
+    // 环境对象 是函数调用的对象
+    (function fun() {
+        console.log(this, typeof this);// window{...}  object
+    })();
+
+
+    const h1 = document.querySelector('h1');
+    h1.addEventListener('mouseenter', function () {
+        console.log(this);// <h1 style="color: black;">this</h1>
+        this.style.color = 'red';
+    })
+    h1.addEventListener('mouseleave', function () {
+        console.log(this);
+        this.style.color = 'black';
+    })
+
+
+
+
+</script>
+
+</html>

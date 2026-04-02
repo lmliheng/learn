@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>节点</title>
+</head>
+<style>
+    h1 {
+        text-align: center;
+    }
+</style>
+
+<body>
+    <h1>节点</h1>
+    <div class="father">
+        <div class="son1"></div>
+        <div class="son2"></div>
+        <div class="son3"></div>
+    </div>
+</body>
+
+
+<script>
+    const father = document.querySelector('.father');
+    const son1 = document.querySelector('.son1');
+    const son2 = document.querySelector('.son2');
+    const son3 = document.querySelector('.son3');
+
+    // son1.parentNode.style.width = '500px'
+    console.log(son1.parentNode); // father object
+    console.log(father.children); // son1, son2, son3 NodeList
+    console.log(father.children[0]); // son1 object
+    console.log(father.childNodes); // son1, son2, son3 HTMLCollection
+    console.log(son2.nextElementSibling); // son3 object
+    console.log(son2.previousElementSibling); // son1 object
+
+
+
+    const cloneSon1 = father.appendChild(son1.cloneNode(true)); // 追加子元素的克隆节点，不会删除原先子元素
+    father.appendChild(son1);   // 追加子元素,但是原先子元素会被删除
+
+    father.removeChild(son1); // 父元素删除子元素
+    cloneSon1.parentNode.removeChild(cloneSon1); // 或者子元素获取到父元素，再删除子元素
+
+
+
+
+
+
+
+</script>
+
+</html>

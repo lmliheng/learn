@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>字符串</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    h1,
+    h2 {
+        text-align: center;
+    }
+</style>
+
+<body>
+    <h1></h1>
+    <h2></h2>
+</body>
+
+<script>
+    const h1 = document.querySelector('h1');
+    const h2 = document.querySelector('h2');
+    // 必须用new实例化
+    // 参数 value时间戳 datestring
+    // console.log(new Date());//Thu Apr 02 2026 16:39:09 GMT+0800 (中国标准时间)
+    // console.log(new Date().toLocaleString());//2026-04-02 16:39:09
+    // console.log(new Date('year-month-day hour:minute:second'));
+
+
+    function getMyDate() {
+        // return new Date().toLocaleString();
+        const date = new Date();
+        return date.getFullYear() + '年' + (date.getMonth() + 1) + '月' + date.getDate() + '日' + date.getHours() + '时' + date.getMinutes() + '分' + date.getSeconds() + '秒';
+    }
+
+
+    // 打印时间戳
+    console.log(new Date().getTime());
+    console.log(+new Date());
+    // 指定时间的时间戳
+
+
+    //计算距离睡眠还有多少时间
+    function Tosleeptime() {
+        date = new Date();
+        date_sleep = + new Date(`${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()} 23:30:00`);
+        date_now = +new Date();
+        let hour = parseInt((date_sleep - date_now) / 1000 / 60 / 60 % 24);
+        let minute = parseInt((date_sleep - date_now) / 1000 / 60 % 60);
+        let second = parseInt((date_sleep - date_now) / 1000 % 60);
+        return '距离睡眠还有' + hour + '小时' + minute + '分钟' + second + '秒';
+        // return '距离睡眠还有' + (date_sleep - date_now) / 1000 / 60 / 60 + '小时';
+    }
+
+    setInterval(() => {
+        h1.innerHTML = getMyDate();
+        h2.innerHTML = Tosleeptime();
+    }, 1000);
+
+
+</script>
+
+</html>
