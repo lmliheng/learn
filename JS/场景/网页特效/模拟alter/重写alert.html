@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>自定义 Alert 示例</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <h3>点击按钮测试自定义 alert</h3>
+  <button onclick="alert('这是一条测试消息！')">弹出自定义 Alert</button>
+
+  <script>
+    // 自定义的 alert 方法
+    window.alert = function(message) {
+      // 创建一个新的对话框元素
+      const dialog = document.createElement('div');
+
+      // 为对话框添加样式
+      dialog.style.position = 'fixed';
+      dialog.style.top = '50%';
+      dialog.style.left = '50%';
+      dialog.style.transform = 'translate(-50%, -50%)';
+      dialog.style.padding = '20px';
+      dialog.style.backgroundColor = 'white';
+      dialog.style.border = '1px solid black';
+      dialog.style.zIndex = '1000';
+      dialog.innerText = message; // 设置对话框的内容
+
+      // 创建关闭按钮
+      const closeButton = document.createElement('button');
+      closeButton.innerText = '关闭';
+      closeButton.onclick = function() {
+        document.body.removeChild(dialog); // 移除对话框
+      };
+
+      // 将关闭按钮添加到对话框中
+      dialog.appendChild(closeButton);
+      document.body.appendChild(dialog); // 将对话框添加到 body 中
+    };
+
+    // 这个自定义的 alert 方法会创建一个对话框并添加关闭按钮
+  </script>
+
+</body>
+</html>

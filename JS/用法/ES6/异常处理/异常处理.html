@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>异常处理</title>
+</head>
+<style>
+
+</style>
+
+<body>
+
+</body>
+<script>
+    // 异常处理
+    try {
+        // 抛出异常 中断程序执行  模拟一个错误
+        throw new Error('这是一个错误');
+
+    } catch (error) {
+        console.log(error.message);
+    } finally {
+        console.log('finally');
+    }
+
+</script>
+
+</html>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- 接口文档 https://s.apifox.cn/apidoc/docs-site/1937884/api-49760219-->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>async函数实现的异步</title>
+    <link rel="stylesheet" href="lib/bootstrap.min.css">
+    <script src="lib/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="lib/axios.js"></script>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    .my-container {
+        width: 800px;
+        height: 500px;
+        margin: 50px auto;
+        border: 1px solid #000;
+    }
+
+    .container-header {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 10px;
+        height: 50px;
+
+
+        font-size: 16px;
+    }
+
+    .container-header p {
+        margin-bottom: 0;
+    }
+
+    .my-select {
+        width: 100px;
+        margin-left: 20px;
+    }
+
+    .my-select option {
+        width: 100px;
+    }
+</style>
+
+<body>
+    <div class="my-container">
+        <div class="container-header">
+            <select class="my-select" id="province">
+                <option value="">请选择省份</option>
+            </select>
+
+            <select class="my-select" id="city">
+                <option value="">请选择城市</option>
+            </select>
+
+            <select class="my-select" id="district">
+                <option value="">请选择区县</option>
+            </select>
+            <button type="button" class="btn btn-primary">提交</button>
+        </div>
+
+    </div>
+</body>
+
+<script>
+    const ContainerHeader = document.querySelector('.container-header');
+
+    axios({
+        method: 'get',
+        url: 'https://hmajax.itheima.net/api/province'
+    }).then(res => {
+        console.log(res.data.list);
+        let provinceList = res.data.list.map((item, index) => `<option value="${index}">${item}</option>`).join('');
+        console.log(provinceList);
+        ContainerHeader.children[0].innerHTML = provinceList;
+        // change事件
+        ContainerHeader.children[0].addEventListener('change', () => {
+            console.log(res.data.list[ContainerHeader.children[0].value], '作为参数运行selectProvince');
+            selectProvince(res.data.list[ContainerHeader.children[0].value]);
+        })
+
+    })
+
+    // try catch 没有使用
+    async function selectProvince(prinvce) {
+        let city = document.querySelector('#city');
+
+        let cityRes = await axios({
+            method: 'get',
+            url: 'https://hmajax.itheima.net/api/city',
+            params: {
+                pname: prinvce
+            }
+        })
+
+        let cityList = cityRes.data.list.map((item, index) => `<option value="${index}">${item}</option>`).join('');
+        console.log(cityList);
+        // console.log(city.value[0]);
+        city.innerHTML = cityList;
+        console.log(city.children[0].textContent);
+
+        ContainerHeader.children[1].addEventListener('change', () => {
+            console.log(cityRes.data.list[ContainerHeader.children[1].value], '作为参数运行selectCity');
+            selectCity(prinvce, cityRes.data.list[ContainerHeader.children[1].value]);
+        })
+
+        let district = document.querySelector('#district');
+        let districtRes = await axios({
+            method: 'get',
+            url: 'https://hmajax.itheima.net/api/area',
+            params: {
+                pname: prinvce,
+                cname: city.children[0].textContent
+            }
+        })
+
+        let districtList = districtRes.data.list.map((item, index) => `<option value="${index}">${item}</option>`).join('');
+        district.innerHTML = districtList;
+
+
+    }
+
+    async function selectCity(prinvce, cityName) {
+        let district = document.querySelector('#district');
+        let districtRes = await axios({
+            method: 'get',
+            url: 'https://hmajax.itheima.net/api/area',
+            params: {
+                pname: prinvce,
+                cname: cityName
+            }
+        })
+
+        let districtList = districtRes.data.list.map((item, index) => `<option value="${index}">${item}</option>`).join('');
+        district.innerHTML = districtList;
+    }
+
+
+
+
+
+
+
+
+
+
+
+    // // 更改：怎么才能实现下拉选择框的联动，选择省份后，城市和区县会根据省份动态加载
+    // axios({
+    //     method: 'get',
+    //     url: 'https://hmajax.itheima.net/api/province'
+    // }).then(res => {
+    //     console.log(res.data.list);
+    //     let provinceList = res.data.list.map((item, index) => `<option value="${index}">${item}</option>`).join('');
+    //     console.log(provinceList);
+    //     ContainerHeader.children[1].innerHTML = provinceList;
+
+    //     return axios({
+    //         method: 'get',
+    //         url: 'https://hmajax.itheima.net/api/city',
+    //         params: {
+    //             pname: '四川省'
+    //         }
+    //     });
+    // }).then(res => {
+    //     let cityList = res.data.list.map((item, index) => `<option value="${index}">${item}</option>`).join('');
+    //     console.log(cityList);
+    //     ContainerHeader.children[3].innerHTML = cityList;
+    //     return axios({
+    //         method: 'get',
+    //         url: 'https://hmajax.itheima.net/api/area',
+    //         params: {
+    //             pname: '四川省',
+    //             cname: '成都市'
+    //         }
+    //     });
+    // }).then(res => {
+    //     let districtList = res.data.list.map((item, index) => `<option value="${index}">${item}</option>`).join('');
+    //     console.log(districtList);
+    //     ContainerHeader.children[5].innerHTML = districtList;
+    // });
+
+
+
+
+
+
+
+
+
+
+</script>
+
+
+</html>

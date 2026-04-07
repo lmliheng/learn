@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>字符串</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+</style>
+
+<body>
+
+</body>
+
+<script>
+
+    let str1 = new String('hello').toString();
+    let str2 = 'world';
+    // 字符串是不可变的，不能直接修改字符串的字符
+    // str1.charAt(0) = '1' // error
+    // str1[1] = '2' // 无效
+    console.log(str1);// object
+    console.log(str2);
+    //拼接
+    console.log(str1 + str2);
+    console.log(str1.concat(str2));
+    // 提取
+    console.log(str1.substring(0, 2));
+    // 字符串转化为数组
+    let array = str1.split('');
+    console.log(str1.split(''), 'str1.split("")的类型是', typeof (str1.split('')));
+    // acill码相减
+    console.log('a'.charCodeAt() - 'A'.charCodeAt())
+    console.log('a' - 'A')// NaN
+    // 字符串反转
+    function reverseStr(str) {
+        return str.split('').reverse().join('');
+    }
+    // 检查是否以指定字符串开头
+    console.log(str1.startsWith('h'));
+    // 检查是否以指定字符串结尾
+    console.log(str1.endsWith('o'));
+
+</script>
+
+</html>

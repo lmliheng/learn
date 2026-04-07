@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>location</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    h1 {
+        margin: 20px auto;
+        text-align: center;
+    }
+
+    .container {
+        margin: 20px auto;
+        width: 500px;
+        height: 400px;
+        border: 1px solid #000;
+        text-align: center;
+        line-height: 100px;
+    }
+</style>
+
+<body>
+    <h1>location</h1>
+    <!-- <a href="https://www.baidu.com">跳转</a> -->
+    <div class="container">
+        <a href="#my">跳转到my.html</a>
+        <button>刷新</button>
+    </div>
+
+</body>
+<script>
+    console.log(location)// 输出当前对象
+    console.log(location.host)// 127.0.0.1:8080
+    console.log(location.hostname)// 127.0.0.1
+    console.log(location.port)// 8080
+    console.log(location.origin)// http://127.0.0.1:8080
+    console.log(location.href)// http://127.0.0.1:8080/index.html
+
+    console.log(location.pathname)// /index.html
+    console.log(location.search)// 输出当前查询字符串
+    console.log(location.hash)// 输出当前哈希值
+    console.log(location.protocol)// http:
+
+    const myAnchor = document.querySelector('a');
+    const reload = document.querySelector('button');
+    reload.addEventListener('click', (e) => {
+        location.reload();
+    })
+    myAnchor.addEventListener('click', (e) => {
+        console.log(location.hash)
+    })
+
+
+
+</script>
+
+</html>

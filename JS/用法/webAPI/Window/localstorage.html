@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<!-- 132集的12:43秒，const arrayTodo = JSON.parse(localStorage.getItem('todo')) || []; // 为什么视频里是数组 -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>localStorage</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    h1 {
+        margin: 1.25rem auto;
+        text-align: center;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 1.25rem auto;
+        width: 31.25rem;
+        height: 37.5rem;
+        border: .0625rem solid #000;
+
+    }
+
+    .todo-form {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+
+        width: 31.25rem;
+        height: 6.25rem;
+        text-align: center;
+        line-height: 6.25rem;
+    }
+
+    .todo-form input:first-child {
+        width: 8.5rem;
+        height: 1.875rem;
+        padding: .3125rem;
+        border-radius: .3125rem;
+
+    }
+
+    .todo-form input:nth-child(2) {
+        width: 4.25rem;
+        height: 1.875rem;
+        padding: .3125rem;
+        border-radius: .3125rem;
+
+    }
+
+    .todo-form button {
+        width: 5rem;
+        height: 1.875rem;
+        border: none;
+        border-radius: .3125rem;
+        background-color: #aa8c8c;
+        color: #fff;
+        cursor: pointer;
+    }
+
+    .todo-list {
+
+        width: 31.25rem;
+        height: 31.25rem;
+
+    }
+
+    table {
+        margin: 0 auto;
+        width: 90%;
+        border-collapse: collapse;
+    }
+
+    th,
+    td {
+        border: .0625rem solid #000;
+        padding: .625rem;
+        text-align: center;
+    }
+
+    th {
+        background-color: #aa8c8c;
+        color: #fff;
+    }
+
+    td {
+        background-color: #fff;
+    }
+</style>
+
+<body>
+    <h1>localStorage</h1>
+    <!-- <a href="https://www.baidu.com">跳转</a> -->
+    <div class="container">
+        <div class="todo-form">
+            <input type="text" id="todo" name="todo" placeholder="请输入待办事项" autocomplete="off">
+            <input type="time" id="time" name="time" placeholder="请输入时间" autocomplete="off">
+            <button id="btn">提交</button>
+        </div>
+
+        <div class="todo-list">
+            <table>
+                <tr>
+                    <th>序号</th>
+                    <th>待办事项</th>
+                    <th>时间</th>
+                    <th>操作</th>
+                </tr>
+                <!-- <tr>
+                    <td>1</td>
+                    <td>学习JS</td>
+                    <td>10:00</td>
+                    <td><a href="#">删除</a></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>学习HTML</td>
+                    <td>11:00</td>
+                    <td><a href="#">删除</a></td>
+                </tr> -->
+            </table>
+        </div>
+
+    </div>
+
+
+</body>
+<script>
+
+
+
+    //todo是一个字符串
+    let arrayTodo = [];//  存储多个待办事项对象
+
+    const trArr = {};
+
+
+    // 提交 存储数据到localStorage
+    const todoForm = document.querySelector('.container .todo-form');
+    todoForm.children[2].addEventListener('click', function (e) {
+        let todo = document.querySelector('#todo').value;
+        let time = document.querySelector('#time').value;
+        if (todo == '' || time == '') {
+            Swal.fire({
+                title: '提示',
+                text: '请输入待办事项和时间',
+                icon: 'warning'
+            })
+            return;
+        }
+        let todoobj = [{
+            id: Date.now(),
+            todo: todo,
+            time: time
+        }
+        ];
+        localStorage.setItem('todo', todoobj);
+        // 更新todo的值，增添对象
+        LocalTodo = JSON.parse(localStorage.getItem('todo'));  //string 转换为对象
+        // arrayTodo.push(todoobj);
+        //console.log(arrayTodo);
+        //renderTodoList();
+
+        Swal.fire({
+            title: '成功',
+            text: '提交成功',
+            icon: 'success'
+        })
+    })
+
+
+    // 渲染
+    function renderTodoList() {
+
+        const trArr = arrayTodo.map(item => {
+            return `
+        <tr>
+            <td>${item.id}</td>
+            <td>${item.todo}</td>
+            <td>${item.time}</td>
+            <td><a href="#">删除</a></td>
+        </tr>
+    `;
+        })
+    }
+    console.log(trArr);
+
+
+
+
+
+
+
+    // 删除
+
+</script>
+
+
+</html>

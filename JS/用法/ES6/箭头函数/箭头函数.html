@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>箭头函数</title>
+</head>
+<style>
+    .box {
+        width: 100px;
+        height: 100px;
+        background-color: pink;
+    }
+</style>
+
+<body>
+    <div class="box"></div>
+</body>
+<script>
+    // 箭头函数 
+    let add10_1 = a => {
+        return a + 10;
+    }
+
+    let add10_2 = a => a + 10;
+
+
+    let add = (a, b) => {
+        return a + b;
+    }
+
+    let add_2 = (a, b) => a + b;
+
+    const box = document.querySelector('.box');
+    box.addEventListener('click', function () {
+        console.log('普通函数的this指向', this);// box
+    })
+    box.addEventListener('click', () => {
+        console.log('箭头函数的this指向', this);// window
+    })
+
+
+
+</script>
+
+</html>

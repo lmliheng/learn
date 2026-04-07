@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>原型对象继承</title>
+</head>
+<style>
+
+</style>
+
+<body>
+
+</body>
+<script>
+
+
+    // 对象的继承 通过原型对象实现
+
+    function ChineseMan() {
+        this.eye = '黑色';
+        this.hairColor = '黑色';
+        this.pifuColor = '黄色';
+        this.country = '中国';
+    }
+
+    // 男性
+    function ChineseSexMan(name, age, sex) {
+        this.name = name;
+        this.age = age;
+        this.sex = sex;
+    }
+    // 原型对象继承
+    ChineseSexMan.prototype = new ChineseMan();
+    console.log(ChineseSexMan.prototype); // 没有了constructor属性
+    // 再将constructor属性添加到原型对象上，让继承的构造函数的原型对象有constructor属性，指向继承的构造函数
+    ChineseSexMan.prototype.constructor = ChineseSexMan;
+    console.log(ChineseSexMan.prototype);
+
+    let liheng = new ChineseSexMan('liheng', 18, '男');
+    console.log(liheng);
+
+    // 女性
+    function ChineseSexWoman(name, age, sex) {
+        this.name = name;
+        this.age = age;
+        this.sex = sex;
+    }
+    // 原型对象继承
+    ChineseSexWoman.prototype = new ChineseMan();
+    // 再将constructor属性添加到原型对象上，让继承的构造函数的原型对象有constructor属性，指向继承的构造函数
+    ChineseSexWoman.prototype.constructor = ChineseSexWoman;
+    ChineseSexWoman.prototype.say = function () {
+        console.log('我是' + this.name + '，我' + this.age + '岁，我是' + this.sex);
+    }
+
+    console.log(ChineseSexWoman.prototype);//ChineseMan {eye: '黑色', hairColor: '黑色', pifuColor: '黄色', country: '中国', say: ƒ}
+    console.log(ChineseSexMan.prototype);// ChineseMan {eye: '黑色', hairColor: '黑色', pifuColor: '黄色', country: '中国'}
+
+    // 不能让ChineseSexMan和ChineseSexWoman的原型对象都指向ChineseMan,不然Woman和man无法单独创建原型方法，不然就共用一个原型方法
+    // 把ChinexeMan构造函数化
+
+
+
+    console.log(ChineseSexMan.prototype.__proto__ === ChineseMan.prototype);// true
+
+    console.log(liheng instanceof ChineseSexMan);// true
+    console.log(liheng instanceof ChineseMan);// true
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+</html>

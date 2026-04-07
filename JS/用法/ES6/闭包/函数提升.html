@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>函数提升</title>
+</head>
+<style>
+
+</style>
+
+<body>
+
+</body>
+<script>
+    // 函数提升
+    fun();
+    function fun() {
+        console.log('hello world');
+    }
+    
+    // fn(); 
+    // error
+    let fn = function () {
+        console.log('hello world');
+    }
+    
+
+    // 变量提升  
+    console.log(a);
+    var a = 20;
+</script>
+
+</html>

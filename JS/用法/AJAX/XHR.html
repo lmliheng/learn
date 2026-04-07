@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- 接口文档 https://s.apifox.cn/apidoc/docs-site/1937884/api-49760219-->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XMLHttpRequest</title>
+    <link rel="stylesheet" href="lib/bootstrap.min.css">
+    <script src="lib/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="lib/axios.js"></script>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    .my-container {
+        width: 50rem;
+        height: 31.25rem;
+        margin: 3.125rem auto;
+        border: .0625rem solid #000;
+    }
+</style>
+
+<body>
+    <div class="my-container">
+
+        <button id="btn_test" class="btn btn-primary">点击请求</button>
+        <button id="btn_prinvce" class="btn btn-primary">查询省份和城市</button>
+        <button id="register" class="btn btn-primary">注册</button>
+        <button id="login" class="btn btn-primary">登录</button>
+    </div>
+</body>
+
+<script>
+    const MyContainer = document.querySelector('.my-container');
+    MyContainer.children[0].addEventListener('click', () => {
+        const xhr_test = new XMLHttpRequest();  // 创建 xhr 实例
+        xhr_test.open('get', 'http://127.0.0.1:3001/api/test'); // 打开请求
+        xhr_test.addEventListener('load', () => {  // 监听响应事件
+            console.log('监听到 响应 load事件');
+            if (xhr_test.status === 200) {
+                console.log(xhr_test.responseText);
+            }
+        })
+        xhr_test.send(); // 发送请求
+    })
+
+    MyContainer.children[1].addEventListener('click', () => {
+        console.log('点击了/api/prinvce');
+        // 查询参数Param
+        let province = '四川省';// 模拟DOM查找提取
+        let city = '达州市';// 模拟DOM查找提取
+        const xhr = new XMLHttpRequest();  // 创建 xhr 实例
+        xhr.open('get', 'https://hmajax.itheima.net/api/area' + '?pname=' + province + '&cname=' + city);  // 设置请求
+        xhr.send(); // 发送请求
+        xhr.addEventListener('load', () => {  // 监听响应事件
+            console.log('监听到 响应 load事件');
+            console.log(xhr);
+            if (xhr.status === 200) {
+                console.log(xhr.responseText);
+
+            } else {
+                console.log('查询失败');
+            }
+        })
+
+    })
+
+    MyContainer.children[2].addEventListener('click', () => {
+        console.log('点击了/api/register');
+        // 模拟注册参数
+        let username = 'lmliheng';
+        let password = '123456';
+
+        const xhr = new XMLHttpRequest();
+        xhr.open('post', 'https://hmajax.itheima.net/api/register');
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.send('username=' + username + '&password=' + password);
+
+        xhr.addEventListener('load', () => {
+            console.log('监听到 响应 load事件');
+            console.log(xhr);
+            if (xhr.status === 200) {
+                console.log(xhr.responseText);
+            } else {
+                console.log('注册失败');
+            }
+        })
+    })
+
+    MyContainer.children[3].addEventListener('click', () => {
+        console.log('点击了/api/login');
+        // 模拟登录参数
+        let username = 'lmliheng';
+        let password = '123456';
+
+        const xhr = new XMLHttpRequest();
+        xhr.open('post', 'https://hmajax.itheima.net/api/login');
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.send('username=' + username + '&password=' + password);
+
+        xhr.addEventListener('load', () => {
+            console.log('监听到 响应 load事件');
+            console.log(xhr);
+            if (xhr.status === 200) {
+                console.log(xhr.responseText);
+            } else {
+                console.log('登录失败');
+            }
+        })
+    })
+
+
+</script>
+
+
+</html>

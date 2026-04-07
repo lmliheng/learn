@@ -1,7 +1,7 @@
 // 定义链表节点
 class ListNode {
     constructor(data) {
-        this.data = data;
+        this.data = data ;
         this.next = null;
     }
 }

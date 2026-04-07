@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>函数动态参数</title>
+</head>
+<style>
+
+</style>
+
+<body>
+
+</body>
+<script>
+    // 函数动态参数
+    function add() {
+        //arguments 是存在于函数内部的类数组对象，包含所有传入函数的参数，可以使用数组的方法，不能用属性
+        console.log(arguments); // [1, 2]
+        let sum = 0;
+        for (let i = 0; i < arguments.length; i++) {
+            sum += arguments[i];
+        }
+        return sum;
+    }
+    console.log(add(1)); // 1
+    console.log(add(1, 2)); // 3
+    console.log(add(1, 2, 3)); // 5
+
+    //类似的，剩余参数
+    function sub1(...args) {
+        console.log(args); // [1, 2]
+        let sum = 0;
+        for (let i = 0; i < args.length; i++) {
+            sum += args[i];
+        }
+        return sum;
+    }
+    console.log(sub1(1)); // 1
+    console.log(sub1(1, 2)); // 3
+    console.log(sub1(2, 3)); // 5
+
+    function sub2(a,b, ...args) {
+        console.log(args); // [1, 2]
+        let sum = a+b;
+        for (let i = 0; i < args.length; i++) {
+            sum += args[i];
+        }
+        return sum;
+    }
+    console.log(sub2(1)); // NaN
+    console.log(sub2(1, 2)); // 3
+    console.log(sub2(1, 2, 3)); // 6
+
+
+</script>
+
+</html>

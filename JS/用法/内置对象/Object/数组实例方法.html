@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组实例方法</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+</style>
+
+<body>
+
+</body>
+
+<script>
+
+    // map 迭代器
+    let array = [18, 2, 3, 4, 10]
+    let Array_map = array.map((ele) => ele * 2); // [36, 4, 6, 8, 20]
+    console.log(Array_map);
+    // foreach
+    let array_foreach = array.forEach(ele => console.log(ele)); // undefined
+    // fillter
+    let Array_filter = array.filter(ele => ele > 5); // [18,  10]
+    console.log(Array_filter);
+    //reduce
+    let Array_reduce = array.reduce((pre, cur) => pre + cur, 0); // 54 number 0+18+2+3+4+10
+    console.log(Array_reduce, typeof Array_reduce);
+
+
+
+    // join
+    let str = ['hello', 'world', 'js', 'html', 'css']
+    let str2 = str.join('') // 不用连接符
+    let str3 = str.join() // 用英文逗号
+
+
+
+</script>
+
+</html>

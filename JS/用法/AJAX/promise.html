@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- 接口文档 https://s.apifox.cn/apidoc/docs-site/1937884/api-49760219-->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise</title>
+    <link rel="stylesheet" href="lib/bootstrap.min.css">
+    <script src="lib/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="lib/axios.js"></script>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    .my-container {
+        width: 50rem;
+        height: 31.25rem;
+        margin: 3.125rem auto;
+        border: .0625rem solid #000;
+    }
+</style>
+
+<body>
+    <div class="my-container">
+        <button id="test_btn">查询城市地区</button>
+        <button id="test_btn_1">查询省份</button>
+        <button id="test_btn_2">登录</button>
+        <button id="test_btn_3">注册</button>
+    </div>
+</body>
+
+<script>
+    let MyContainer = document.querySelector('.my-container');
+
+    MyContainer.children[0].addEventListener('click', () => {
+        myAixos({
+            method: 'get',
+            url: 'http://hmajax.itheima.net/api/area',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            params: {
+                pname: '四川省',
+                cname: '成都市',
+            }
+        }).then(res => {
+            console.log(res);
+        }).catch(error => {
+            console.log(error);
+        })
+    })
+    MyContainer.children[1].addEventListener('click', () => {
+        myAixos({
+            method: 'get',
+            url: 'http://hmajax.itheima.net/api/province',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': '',
+            },
+
+        }).then(res => {
+            console.log(res);
+        }).catch(error => {
+            console.log(error);
+        })
+    })
+    MyContainer.children[2].addEventListener('click', () => {
+
+        myAixos({
+            method: 'post',
+            url: 'http://hmajax.itheima.net/api/login',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            data: {
+                username: 'lmliheng',
+                password: '123456'
+            }
+        }).then(res => {
+            console.log(res);
+        }).catch(error => {
+            console.log(error);
+        })
+    })
+    MyContainer.children[3].addEventListener('click', () => {
+        myAixos({
+            method: 'post',
+            url: 'http://hmajax.itheima.net/api/register',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            data: {
+                username: 'lmliheng',
+                password: '123456'
+            }
+        }).then(res => {
+            console.log(res);
+        }).catch(error => {
+            console.log(error);
+        })
+    })
+
+
+
+    // 函数提升 xhr+promise实现的axios函数
+    // method 无默认值get,headers和params可以不写
+    function myAixos(config) {
+        const promise = new Promise((resolve, reject) => {
+            //xhr
+            const xhr = new XMLHttpRequest();
+            if (config.params) {
+                config.url += '?' + new URLSearchParams(config.params).toString();
+            }
+            xhr.open(config.method, config.url);
+            // 多个请求头
+            for (let key in config.headers) {
+                console.log(key, config.headers[key]);
+                xhr.setRequestHeader(key, config.headers[key]);
+            }
+            // 请求体
+            if (config.data) {
+                xhr.send(JSON.stringify(config.data));
+            } else {
+                xhr.send();
+            }
+
+            xhr.addEventListener('load', () => {
+                if (xhr.status === 200) {
+                    resolve('reponseText:' + xhr.responseText);
+                } else {
+                    reject('reponseText:' + xhr.responseText);
+                }
+            })
+        })
+        return promise;
+    }
+
+
+
+
+
+    const myPromise = new Promise((resolve, reject) => {
+        // console.log('兑现前的promise', myPromise);
+        setTimeout(() => {
+            resolve("foo");
+        }, 300);
+    })
+
+    console.log('兑现后的promise', myPromise);
+    //  或者 写 myPromise.then(handleFulfilledA, handleRejectedA)
+
+    myPromise_1 = myPromise.then(res => { // new Promise
+        console.log('myPromise成功', res);
+//  新的promise==============
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve("bar");
+            }, 300);
+        }).then(res => {
+            console.log('myPromise_1成功', res);
+        }).catch(error => {
+            console.log('myPromise_1失败', error);
+        })
+//==========================
+
+    }).catch(error => {
+        console.log('myPromise失败', error);
+    })
+
+
+
+
+
+
+
+
+
+
+</script>
+
+
+</html>

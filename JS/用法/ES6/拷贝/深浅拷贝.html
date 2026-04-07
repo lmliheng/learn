@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>深浅拷贝</title>
+</head>
+<style>
+
+</style>
+
+<body>
+
+</body>
+<script src="lodash.js"></script>
+<script>
+    let obj = {
+        name: '张三',
+        age: 18,
+        sex: '男',
+        // 二级属性
+        address: {
+            city: '北京',
+            street: '东城区'
+        },
+        array: [1, 2, 3, 4, 5],
+        // 函数属性
+        sayName: function () {
+            console.log('调用了SayName方法');
+        }
+    }
+    // 浅拷贝  只能拷贝一级属性，不能拷贝二级属性
+    let obj2 = { ...obj };
+    let obj3 = Object.assign({}, obj);
+
+    obj2.address.city = '广州';
+    console.log(obj);
+    console.log(obj2);
+    console.log(obj3);
+    console.log('-----------------');
+
+
+
+
+    console.log('-----------------');
+
+
+
+    // 深拷贝函数 用JSON.stringify()方法实现，无法拷贝函数属性
+    function deepClone_json(obj) {
+        return JSON.parse(JSON.stringify(obj));
+    }
+    console.log('JSON.stringify()方法实现的深拷贝:', deepClone_json(obj));
+
+    // 深拷贝函数 可以用函数递归实现，碰到数组，对象，函数需要特殊处理
+    function deepClone_recursive(obj) {
+        let newObj = {};
+        for (let key in obj) {
+            newObj[key] = obj[key];
+            // 还要处理 数组 对象 函数 现在不是深拷贝
+        }
+        return newObj;
+        console.log(newObj);
+    }
+    deepClone_recursive(obj).array.push(6);
+    deepClone_recursive(obj).address.city = '日本';
+    console.log(obj);
+    console.log('递归实现的深拷贝:', deepClone_recursive(obj));
+
+
+
+    // 使用lodash
+    console.log('lodash实现的深拷贝:', _.cloneDeep(obj));
+
+
+
+</script>
+
+</html>

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<!-- 132集的12:43秒，const arrayTodo = JSON.parse(localStorage.getItem('todo')) || []; // 为什么视频里是数组 -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>表单数据存储</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    h1 {
+        margin: 20px auto;
+        text-align: center;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 20px auto;
+        width: 500px;
+        height: 600px;
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+        border-left: 2px solid rgba(0, 0, 0, 0.1);
+        box-shadow: 5px 5px 3px 0px #bebebe;
+
+    }
+
+    .todo-form {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+
+        width: 500px;
+        height: 100px;
+        text-align: center;
+        line-height: 100px;
+    }
+
+    .todo-form input:first-child {
+        width: 136px;
+        height: 30px;
+        padding: 5px;
+        border-radius: 5px;
+
+    }
+
+    .todo-form input:nth-child(2) {
+        width: 68px;
+        height: 30px;
+        padding: 5px;
+        border-radius: 5px;
+
+    }
+
+    .todo-form button {
+        width: 80px;
+        height: 30px;
+        border: none;
+        border-radius: 5px;
+        background-color: #aa8c8c;
+        color: #fff;
+        cursor: pointer;
+    }
+
+    .todo-list {
+
+        width: 500px;
+        height: 500px;
+
+    }
+
+    table {
+        margin: 0 auto;
+        width: 90%;
+        border-collapse: collapse;
+    }
+
+
+
+    th,
+    td {
+
+        padding: 10px;
+        text-align: center;
+    }
+
+    th {
+        background-color: #aa8c8c;
+        width: 100px;
+        text-align: left;
+    }
+
+    td {
+        background-color: #fff;
+    }
+
+    .todo-header {
+        width: 500px;
+        height: 50px;
+        text-align: center;
+
+    }
+</style>
+
+<body>
+    <h1>localStorage</h1>
+    <!-- <a href="https://www.baidu.com">跳转</a> -->
+    <div class="container">
+        <div class="todo-form">
+            <input type="text" id="todo" name="todo" placeholder="请输入待办事项" autocomplete="off">
+            <input type="time" id="time" name="time" placeholder="请输入时间" autocomplete="off">
+            <button id="btn">提交</button>
+        </div>
+        <div class="todo-header">
+            <table>
+                <tr>
+                    <th>序号</th>
+                    <th>待办事项</th>
+                    <th>时间</th>
+                    <th>操作</th>
+                </tr>
+            </table>
+
+
+        </div>
+        <div class="todo-list">
+            <table>
+                <tr>
+                    <th>序号</th>
+                    <th>待办事项</th>
+                    <th>时间</th>
+                    <th>操作</th>
+                </tr>
+
+                <!-- <tr>
+                    <td>1</td>
+                    <td>学习JS</td>
+                    <td>10:00</td>
+                    <td><a href="#">删除</a></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>学习HTML</td>
+                    <td>11:00</td>
+                    <td><a href="#">删除</a></td>
+                </tr> -->
+            </table>
+
+        </div>
+
+    </div>
+
+
+
+
+</body>
+<script>
+
+
+
+    //todo是一个字符串
+    let arrayTodo = [];//  存储多个待办事项对象
+    arrayTodo = JSON.parse(localStorage.getItem('todo')) || [];
+
+    renderTodoList();
+
+    // 提交 存储数据到localStorage
+    const todoForm = document.querySelector('.container .todo-form');
+    todoForm.children[2].addEventListener('click', function (e) {
+        let todo = document.querySelector('#todo').value;
+        let time = document.querySelector('#time').value;
+        if (todo == '' || time == '') {
+            Swal.fire({
+                title: '提示',
+                text: '请输入待办事项和时间',
+                icon: 'warning'
+            })
+            return;
+        }
+        let todoobj = [{
+            id: Date.now(),
+            todo: todo,
+            time: time
+        }
+        ];
+        arrayTodo.push(todoobj);
+        localStorage.setItem('todo', JSON.stringify(arrayTodo));
+        renderTodoList();
+        todoForm.children[0].value = '';
+        todoForm.children[1].value = '';
+        Swal.fire({ title: '成功', text: '提交成功', icon: 'success' })
+    })
+
+
+    // 渲染
+    function renderTodoList() {
+        TodoListTbody = document.querySelector('.todo-list table tbody');
+        trArray = arrayTodo.map((item, index) => {
+            return `<tr>
+                <td>${index + 1}</td>
+                <td>${item[0].todo}</td>
+                <td>${item[0].time}</td>
+                <td><a href="#">删除</a></td>
+            </tr>`
+        })
+
+        TodoListTbody.innerHTML = trArray.join('');
+
+    }
+
+    // 删除 事件委托写法
+    TodoListTbody.addEventListener('click', function (e) {
+        if (e.target.tagName == 'A') {
+            let index = e.target.parentNode.parentNode.rowIndex;
+            arrayTodo.splice(index, 1);
+            localStorage.setItem('todo', JSON.stringify(arrayTodo));
+            renderTodoList();
+            Swal.fire({ title: '成功', text: '删除成功', icon: 'success' })
+        }
+    })
+
+</script>
+
+
+</html>

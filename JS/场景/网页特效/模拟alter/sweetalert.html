@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自定义 Alert 示例</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        font-family: 'noto sans sc';
+        font-size: 16px;
+    }
+
+    h1 {
+        text-align: center;
+    }
+
+    a {
+
+        text-decoration: none;
+    }
+
+    .BaseAlertBtn {
+        width: 800px;
+        margin: 100px auto;
+        height: 400px;
+        border: 1px solid #000;
+
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        justify-items: center;
+        align-items: center;
+        grid-gap: 20px;
+
+    }
+
+    .BaseAlertBtn button {
+        display: block;
+
+        width: 100px;
+        height: 70px;
+        margin: 0 10px;
+        border: 1px solid #000;
+        border-radius: 5px;
+        padding: 10px 0;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .BaseAlertBtn button:hover {
+        background-color: #eba9a9;
+        color: #fff;
+    }
+</style>
+
+<body>
+
+    <h1>自定义alert</h1>
+    <div class="BaseAlertBtn">
+
+        <button>提交</button>
+        <button>失败加提示</button>
+        <button>登录成功</button>
+        <button>是否保存这个订单</button>
+        <button>是否删除这个订单</button>
+        <button>输入GitHub用户名</button>
+        <button>登录成功</button>
+        <button>登录成功</button>
+    </div>
+
+
+
+</body>
+
+
+<script>
+    const BaseAlertBtn = document.querySelector('.BaseAlertBtn');
+    BaseAlertBtn.children[0].addEventListener('click', () => Swal.fire({ title: '成功', icon: 'success', showConfirmButton: false, timer: 1500 }))
+    BaseAlertBtn.children[1].addEventListener('click', () => Swal.fire({ title: '失败', icon: 'error', showConfirmButton: false, timer: 1500, footer: "<a href=\"#\">联系客服</a>", }))
+    BaseAlertBtn.children[2].addEventListener('click', () => Swal.fire({ title: '登录成功', icon: 'success', showConfirmButton: false, timer: 1500 }))
+    BaseAlertBtn.children[3].addEventListener('click', () => Swal.fire({
+        title: '是否保存这个订单',
+        icon: 'warning',
+        showCancelButton: true,
+        cancelButtonText: '取消',
+        cancelButtonColor: '#d33',
+
+        confirmButtonText: '保存',
+        confirmButtonColor: '#3085d6',
+        confirmButtonClass: 'btn btn-primary',
+    }).then((result) => {
+        if (result.isConfirmed) {
+            Swal.fire({
+                title: '已保存',
+                text: '您的订单已保存',
+                icon: 'success',
+                showConfirmButton: false,
+                timer: 1500
+            })
+        }
+    })
+    )
+    BaseAlertBtn.children[5].addEventListener('click', () => Swal.fire({
+        title: "请输入您的GitHub用户名",
+        input: "text",
+        inputAttributes: { autocapitalize: "off" },
+        showCancelButton: true,
+        confirmButtonText: "查看你的头像",
+        cancelButtonText: "取消",
+        showLoaderOnConfirm: true,
+        preConfirm: async (login) => {
+            try {
+                const githubUrl = `
+        https://api.github.com/users/${login}
+      `;
+                const response = await fetch(githubUrl);
+                if (!response.ok) return Swal.showValidationMessage(`
+          ${JSON.stringify(await response.json())}
+        `);
+                return response.json();
+            } catch (error) {
+                Swal.showValidationMessage(`
+        Request failed: ${error}
+      `);
+            }
+        },
+        allowOutsideClick: () => !Swal.isLoading()
+    }).then((result) => {
+        if (result.isConfirmed) Swal.fire({
+            title: `${result.value.login}'s avatar`,
+            imageUrl: result.value.avatar_url
+        });
+    })
+    )
+
+</script>
+
+</script>
+
+</html>

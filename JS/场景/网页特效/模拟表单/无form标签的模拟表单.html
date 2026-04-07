@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- 参考视频 js 124-125 -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>模拟表单</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    h1 {
+        text-align: center;
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
+
+    li {
+        list-style: none;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    .my-form {
+        margin: 0 auto;
+        width: 1000px;
+        height: 100px;
+        text-align: center;
+
+    }
+
+    .form-submmit {
+
+        margin: 0 auto;
+        width: 1000px;
+        height: 1000px;
+        text-align: center;
+    }
+
+    .form-submmit table {
+
+        border: 1px solid #dad8d8;
+        margin: 0 auto;
+    }
+
+    .form-submmit table tr {
+        width: 600px;
+    }
+
+    .form-submmit table th {
+        width: 130px;
+        height: 40px;
+        background-color: #adabab;
+        border: 1px solid #adabab;
+    }
+
+    .form-submmit table td {
+        width: 130px;
+        height: 50px;
+        border: 1px solid #dad8d8;
+    }
+</style>
+
+<body>
+    <h1>模拟表单</h1>
+    <div class="my-form">
+        姓名：<input type="text" name="name" id="name" autocomplete="off">
+        年龄：<input type="number" name="age" id="age" autocomplete="off">
+        性别：
+        <select id="gender" name="gender" autocomplete="off">
+            <option value="1">男</option>
+            <option value="2">女</option>
+        </select>
+
+        选择：
+        <select id="select" name="select" autocomplete="off">
+            <option value="1">工作</option>
+            <option value="2">读书</option>
+            <option value="3">待业</option>
+        </select>
+        <button>提交</button>
+    </div>
+    <div class="form-submmit">
+        <table cellspacing="0">
+
+            <tr>
+                <th>姓名</th>
+                <th>年龄</th>
+                <th>性别</th>
+                <th>选择</th>
+            </tr>
+            <tr>
+                <td>张三</td>
+                <td>18</td>
+                <td>男</td>
+                <td>工作</td>
+            </tr>
+
+        </table>
+
+
+
+    </div>
+
+</body>
+<script>
+    const myForm = document.querySelector('.my-form');
+    const formSubmitTable = document.querySelector('.form-submmit table');
+    console.log(myForm.children);
+    myForm.children[4].addEventListener('click', function () {
+        if (myForm.children[0].value === '') {
+            alert('请输入姓名');
+            return;
+        }
+        if (myForm.children[1].value === '') {
+            alert('请输入年龄');
+            return;
+        }
+        if (myForm.children[2].value === '') {
+            alert('请选择性别');
+            return;
+        }
+        if (myForm.children[3].value === '') {
+            alert('请选择');
+            return;
+        }
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+        <td>${myForm.children[0].value}</td>
+        <td>${myForm.children[1].value}</td>
+        <td>${myForm.children[2].value}</td>
+        <td>${myForm.children[3].value}</td>
+        `;
+        formSubmitTable.appendChild(tr);
+        for (let i = 0; i <= 3; i++) {
+            myForm.children[i].value = '';
+        }
+    })
+</script>
+
+</html>

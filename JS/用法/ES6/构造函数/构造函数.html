@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>构造函数</title>
+</head>
+<style>
+
+</style>
+
+<body>
+
+</body>
+<script>
+
+    // 构造函数和原型方法里面的this均指向实例对象 
+
+    // 构造函数
+    function User(name, age, sex) {
+        console.log('构造函数的this指向', this);// object
+        this.name = name;
+        this.age = age;
+        this.sex = sex;
+    }
+    // 原型对象里面有constructor属性 指向构造函数
+    User.prototype.phoneello = function () {
+        console.log('hello world');
+    } // 原型方法
+
+    // 一次加多个原型方法 覆盖了phoneello方法
+    User.prototype = {
+        constructor: User,// 不写就无constructor属性,指向构造函数User
+        phoneello_1: function () {
+            console.log('hello world');
+        },
+        sayAge: function () {
+            console.log(this.age);
+        }
+    }
+    console.log('User.prototype', User.prototype); // 构造函数的原型对象 {Constructor: User, }
+
+
+    User.power = '普通用户'; // 静态属性
+
+    let user1 = new User('张三', 20, '男');
+    let user2 = new User('李四', 21, '女');
+    console.log(user1.name);// 实例属性
+    console.log(user1.phoneello_1() == user2.phoneello_1()); // 方法共享
+    console.log(user1.power); // 用不了静态属性
+    console.log(User.power); // 静态属性
+
+
+    // 对象静态方法
+    let userByObj = {
+        name: '张三',
+        age: 20,
+        sex: '男',
+        phoneello: function () {
+            console.log('hello world');
+        }
+    }
+    let arrAttributeName = Object.keys(userByObj); // 获取对象的所有属性名 返回一个真数组
+    console.log(arrAttributeName);
+    let arrAttributeValue = Object.values(userByObj); // 获取对象的所有属性值 返回一个真数组
+    console.log(arrAttributeValue);
+    let userByobj2 = {}
+    Object.assign(userByobj2, userByObj); // 拷贝对象
+    console.log(userByobj2);
+    console.log('====================');
+
+    // 不变的方法 可以写在原型身上实现方法共享
+    //console.log(User.prototype); // 构造函数的原型对象 {Constructor: User, }
+
+
+    // 实例对象的_proto_属性
+    console.log(user1.__proto__);
+    //对象原型，也就是实例对象下的 [prototype]，里面有constructor属性(指向构造函数User)和原型方法
+
+    console.log(user1.__proto__ === User.prototype);// true
+    console.log(User.prototype.__proto__ === Object.prototype);// true
+
+
+
+
+
+
+
+
+
+
+</script>
+
+</html>

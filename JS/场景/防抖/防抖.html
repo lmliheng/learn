@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>防抖debounce</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<style>
+    .container {
+        width: 800px;
+        margin: 100px auto;
+        height: 400px;
+        border: 1px solid #000;
+        text-align: center;
+        font-size: 30px;
+        line-height: 300px;
+    }
+</style>
+
+<body>
+
+    <div class="container">
+        11
+
+    </div>
+
+
+</body>
+
+
+<script>
+    // error
+    let i = 0;
+    const container = document.querySelector('.container');
+    mouseMove = () => {
+        console.log('鼠标移动');
+        container.innerHTML = i++;
+    }
+
+    container.addEventListener('mousemove', debounce(mouseMove, 3000))
+    // 防抖函数
+    function debounce(fn, delay) {
+        console.log(delay);
+        return function () {
+            let timer;
+            if (timer) {
+                console.log('清除定时器');
+                clearTimeout(timer);
+            }
+            setTimeout(function () {
+                console.log('防抖函数执行');
+                fn();
+            }, delay);
+        }
+    }
+
+
+</script>
+
+</script>
+
+</html>

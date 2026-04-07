@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>扩展数组对象的原型方法</title>
+</head>
+<style>
+
+</style>
+
+<body>
+
+</body>
+<script>
+    let array = [18, 2, 3, 4, 10, 6, 7, 8, 91, 10]
+
+    // 扩展数组对象的原型方法
+    Array.prototype.myMap = function (callback) {
+        let arr = [];
+        for (let i = 0; i < this.length; i++) {
+            arr.push(callback(this[i], i, this));
+        }
+        return arr;
+    }
+
+    // 最大值
+    Array.prototype.Array_Max = function () {
+        return Math.max(...this);
+    }
+    // 最小值
+    Array.prototype.Array_Min = function () {
+        return Math.min(...this);
+    }
+    console.log(array.Array_Max()); // 91
+    console.log(array.Array_Min()); // 2
+
+
+
+</script>
+
+</html>

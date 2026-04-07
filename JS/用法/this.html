@@ -42,6 +42,53 @@
     })
 
 
+    for (let n = 0; n < 1; n++) {
+        let o = 1;
+        var m = 1;
+        console.log('块作用域内的m', m); //1
+        console.log('块作用域内的o', o); //1
+    }
+    console.log('全局作用域内的m', m); //1
+    // console.log('全局作用域内的o', o); //undefined 未定义
+
+
+
+
+    let ii = 10;
+    a = function () {
+        b = function () {
+            let ii = 1;
+            console.log(ii);
+
+        }
+        b();
+    }
+    a();//1
+
+    // 改变this指向
+    // 1. call apply bind
+    // 2. new 关键字
+    // 3. 箭头函数的this指向父级作用域
+
+    obj = { userName: '张三', age: 20, sex: '男' }
+
+    fn.call(obj, 1, 2); // 函数提升，先调用后定义 
+    // call() 作用是调用函数，但第一个参数作为this指向的对象
+    function fn(x, y) {
+        console.log('this指向', this);// {userName:'张三'...} 改变是obj ,this指向obj
+        console.log(x, y);// 1 2
+    }
+    // apply() 作用是调用函数，但第一个参数作为this指向的对象 第二个参数是一个数组，数组中的元素作为函数的参数
+    fn.apply(obj, [1, 2]);
+
+    // bind() 和call()写法相似，但bind()返回的是一个函数，不调用函数
+    fn.bind(obj, [1, 2]);
+    // 调用bind()返回的函数
+    fn.bind(obj, [1, 2])(1,2);
+
+
+
+
 
 
 </script>

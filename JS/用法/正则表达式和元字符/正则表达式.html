@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>正则表达式</title>
+</head>
+<style>
+
+</style>
+
+<body>
+
+</body>
+<script>
+    const str = 'js事件循环就是一个无限循环，每次循环执行一个事件，直到没有事件可执行，js先在主线程完成同步任务，再检查是否有异步任务完成，js最后返回主线程执行已完成的异步任务，再检查是否有新的异步事件需要执行'
+    // 创建一个正则表达式对象，匹配js，可以用RegExp()函数创建
+    const reg = /js/g // 简单模式,g 表示全局匹配
+    
+    const reg2 = /j*s/ // * 表示匹配0个或多个s字符
+    // 参考MDN正则表达式
+
+    // 是否有reg匹配的实例，返回true或false
+    console.log(reg.test(str));
+    // 匹配reg的一个实例，返回一个数组
+    console.log(reg.exec(str));
+    // 匹配reg的所有实例，返回一个数组，和exec数组不一样
+    console.log(str.match(reg));
+    // 匹配reg的所有实例，返回一个迭代器
+    for (let item of str.matchAll(reg)) {
+        console.log(item);
+    }
+
+
+    console.log("***************************")
+    console.log(/你好/.test("1你好===")) // true
+    console.log(/^你好/.test("1你好===")) // false
+    console.log(/^你好/.test("你好===")) // true
+    console.log(/你好$/.test("1你好===")) // false
+    console.log(/你好$/.test("1你好")) // true  
+
+    console.log("***************************")
+    console.log(/1*/.test("1")) // true
+    console.log(/1*/.test("211")) // true
+    console.log(/1?/.test("121")) // 
+    console.log(/1?/.test("12")) // 
+
+
+
+</script>
+
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URLsearchParams</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+</style>
+
+<body>
+
+</body>
+
+<script>
+
+    let obj = {
+        pname: '四川省',
+        cname: '成都市',
+    }
+    let params = new URLSearchParams(obj);
+    console.log(params, typeof params); // size:2 ?
+    console.log(params.toString(), typeof params.toString());
+</script>
+
+</html>

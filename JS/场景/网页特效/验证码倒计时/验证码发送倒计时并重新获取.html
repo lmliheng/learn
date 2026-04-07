@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- hover的去除是将样式移除 -->
+<!-- 检测到类名code-no-allowed 返回click事件 -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>验证码倒计时并重新获取</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        font-size: 16px;
+    }
+
+    .container {
+        margin: 200px auto;
+        width: 500px;
+        height: 400px;
+        border: 1px solid #797474;
+    }
+
+    /* .code-box {
+        margin: 30px auto;
+        width: 80px;
+        height: 40px;
+        background-color: #78d82a;
+        text-align: center;
+        line-height: 40px;
+        color: #fff;
+        font-size: 20px;
+        cursor: pointer;
+        border-radius: 10px;
+    } */
+    .code-box {
+        margin: 30px auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 400px;
+        height: 50px;
+        border: 2px solid rgba(0, 0, 0, 0.2);
+    }
+
+    #code {
+        width: 230px;
+        height: 50px;
+        padding-left: 10px;
+        border: none;
+
+    }
+
+    #code:focus {
+        outline: none;
+    }
+
+    .code-box span:first-child {
+        display: block;
+        margin-left: 10px;
+        height: 50px;
+        width: 50px;
+        text-align: center;
+        line-height: 50px;
+    }
+
+    .code-get-btn {
+        box-sizing: border-box;
+        display: block;
+        height: 50px;
+        width: 100px;
+        text-align: center;
+        line-height: 50px;
+        cursor: pointer;
+    }
+
+    .code-get-btn:hover {
+        box-sizing: border-box;
+        display: block;
+        height: 50px;
+        width: 100px;
+        text-align: center;
+        line-height: 50px;
+        cursor: pointer;
+        color: #1366EC;
+    }
+
+    .container .code-box .code-no-allowed {
+        color: #999;
+        cursor: not-allowed;
+        box-sizing: border-box;
+        display: block;
+        height: 50px;
+        width: 100px;
+        text-align: center;
+        line-height: 50px;
+
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="code-box">
+            <span>验证码</span>
+            <input type="text" id="code" placeholder="请输入验证码" autocomplete="off">
+            <span class="code-get-btn">获取验证码</span>
+        </div>
+
+    </div>
+</body>
+<script>
+    const codeBox = document.querySelector('.code-box');
+    const codeGetBtn = codeBox.children[2];
+
+
+    // codeGetBtn.addEventListener('mouseenter', function (e) {
+    //     if (this.classList.contains('code-no-allowed')) return;
+    //     this.style.color = '#1366EC';
+    // })
+    // codeGetBtn.addEventListener('mouseleave', function (e) {
+    //     if (this.classList.contains('code-no-allowed')) return;
+    //     this.style.color = '#000';
+    // })
+    // 有冒泡
+    codeBox.children[1].addEventListener('focus', function (e) {
+        codeBox.style.borderColor = '#1366EC';
+    })
+    codeBox.children[1].addEventListener('blur', function (e) {
+        codeBox.style.borderColor = 'rgba(0, 0, 0, 0.2)';
+    })
+    codeBox.addEventListener('mouseenter', function (e) {
+        codeBox.style.borderColor = 'rgba(0, 0, 0, 0.4)';
+    })
+    codeBox.addEventListener('mouseleave', function (e) {
+        codeBox.style.borderColor = 'rgba(0, 0, 0, 0.2)';
+    })
+
+
+    codeGetBtn.addEventListener('click', function (e) {
+        // 后端逻辑
+
+        // 倒计时
+
+        e.preventDefault();
+
+        // 防止重复点击
+        if (this.classList.contains('code-no-allowed')) return;
+
+
+        this.classList.add('code-no-allowed');
+        this.classList.remove('code-get-btn');
+
+        let timer = 5;
+        this.innerHTML = timer + 's';
+        let timerIntervalId = setInterval(() => {
+            --timer;
+            this.innerHTML = timer + 's';
+            if (timer <= 0) {
+
+                codeGetBtn.classList.remove('code-no-allowed');
+                codeGetBtn.classList.add('code-get-btn');
+                codeGetBtn.innerHTML = '重新获取';
+                clearInterval(timerIntervalId);
+            }
+        }, 1000);
+    })
+</script>
+
+</html>
