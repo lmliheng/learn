@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>新拟态组件库</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="toast-container"></div>
+
+    <nav class="navbar neumorphic" role="navigation" aria-label="主导航">
+        <div class="logo" aria-label="网站Logo">Neumorphism</div>
+        <div class="nav-actions">
+            <button class="btn btn-primary" data-modal="loginModal">登录</button>
+            <button class="btn btn-primary" data-modal="registerModal">注册</button>
+        </div>
+    </nav>
+
+    <main class="container">
+        <header class="page-header">
+            <h1>新拟态设计系统</h1>
+            <p>基于 Neumorphism 风格的 UI 组件库</p>
+            <div style="margin-top: 20px;">
+                <button class="btn btn-primary" onclick="showToast('这是一条成功消息', 'success')">Toast 成功</button>
+                <button class="btn btn-primary" onclick="showToast('这是一条错误消息', 'error')">Toast 错误</button>
+                <button class="btn btn-primary" onclick="showToast('这是一条提示消息', 'info')">Toast 提示</button>
+            </div>
+        </header>
+
+        <section class="components-grid">
+
+            <article class="component-card neumorphic">
+                <h2 class="component-title">按钮</h2>
+                <div class="component-group">
+                    <button class="btn btn-primary">主要按钮</button>
+                    <button class="btn btn-primary btn-accent">强调</button>
+                    <button class="btn btn-secondary">次要</button>
+                </div>
+            </article>
+
+            <article class="component-card neumorphic">
+                <h2 class="component-title">输入框</h2>
+                <div class="input-group">
+                    <label class="input-label" for="username">用户名</label>
+                    <input type="text" id="username" class="input-field" placeholder="请输入用户名">
+                </div>
+                <div class="input-group">
+                    <label class="input-label" for="password">密码</label>
+                    <input type="password" id="password" class="input-field" placeholder="请输入密码">
+                </div>
+            </article>
+
+            <article class="component-card neumorphic">
+                <h2 class="component-title">下拉选择</h2>
+                <div class="select-wrapper">
+                    <div class="select-trigger">
+                        <span>请选择...</span>
+                    </div>
+                    <div class="select-dropdown">
+                        <div class="select-option" data-value="option1">选项一</div>
+                        <div class="select-option" data-value="option2">选项二</div>
+                        <div class="select-option" data-value="option3">选项三</div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="component-card neumorphic">
+                <h2 class="component-title">文本域</h2>
+                <textarea class="textarea-field" placeholder="请输入内容..."></textarea>
+            </article>
+
+            <article class="component-card neumorphic">
+                <h2 class="component-title">选择控件</h2>
+
+                <h3>单选</h3>
+                <div class="radio-group">
+                    <input type="radio" id="r1" name="radioGroup" class="radio-input" checked>
+                    <label for="r1" class="radio-custom" aria-hidden="true"></label>
+                    <label for="r1" class="radio-label">选项一</label>
+                </div>
+
+                <h3>复选</h3>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="c1" class="checkbox-input" checked>
+                    <label for="c1" class="checkbox-custom" aria-hidden="true"></label>
+                    <label for="c1" class="checkbox-label">选择项 A</label>
+                </div>
+
+                <h3>开关</h3>
+                <label class="switch" for="switch1">
+                    <input type="checkbox" id="switch1" class="switch-input" checked>
+                    <span class="switch-slider"></span>
+                </label>
+            </article>
+
+            <article class="component-card neumorphic">
+                <h2 class="component-title">滑块</h2>
+                <input type="range" class="slider" value="50" aria-label="滑块1">
+                <input type="range" class="slider" value="80" aria-label="滑块2">
+            </article>
+
+            <article class="component-card neumorphic">
+                <h2 class="component-title">卡片 & 进度</h2>
+
+                <div class="card neumorphic-inset">
+                    <div class="card-header">信息卡片</div>
+                    <div class="card-content">这是内凹效果的卡片示例。</div>
+                </div>
+
+                <div class="progress-container" role="progressbar" aria-valuenow="65" aria-valuemin="0"
+                    aria-valuemax="100">
+                    <div class="progress-bar" style="width:65%"></div>
+                </div>
+            </article>
+
+            <article class="component-card neumorphic">
+                <h2 class="component-title">列表项</h2>
+
+                <div class="list-item">
+                    <div class="list-icon">📧</div>
+                    <div class="list-content">
+                        <div class="list-title">消息通知</div>
+                        <div class="list-desc">您有 3 条未读消息</div>
+                    </div>
+                    <div class="list-arrow">›</div>
+                </div>
+
+                <div class="list-item">
+                    <div class="list-icon">⚙️</div>
+                    <div class="list-content">
+                        <div class="list-title">系统设置</div>
+                        <div class="list-desc">自定义您的偏好设置</div>
+                    </div>
+                    <div class="list-arrow">›</div>
+                </div>
+            </article>
+
+            <article class="component-card neumorphic">
+                <h2 class="component-title">分页</h2>
+
+                <div class="pagination">
+                    <button class="page-item disabled">‹</button>
+                    <button class="page-item active">1</button>
+                    <button class="page-item">2</button>
+                    <button class="page-item">3</button>
+                    <button class="page-item">4</button>
+                    <button class="page-item">5</button>
+                    <button class="page-item">›</button>
+                </div>
+            </article>
+
+            <article class="component-card neumorphic">
+                <h2 class="component-title">折叠面板</h2>
+
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <span class="accordion-title">第一项</span>
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                这是第一项的内容，可以放置任意描述文本或组件。
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <span class="accordion-title">第二项</span>
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                这是第二项的内容，点击可以展开或折叠。
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <span class="accordion-title">第三项</span>
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                这是第三项的内容，支持多个同时展开或互斥展开。
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="component-card neumorphic">
+                <h2 class="component-title">加载动画</h2>
+                <div style="display: flex; justify-content: center; gap: 30px; align-items: center;">
+                    <div class="spinner spinner-sm"></div>
+                    <div class="spinner"></div>
+                    <div class="spinner spinner-lg"></div>
+                </div>
+            </article>
+
+            <article class="component-card neumorphic">
+                <h2 class="component-title">分割线</h2>
+
+                <div class="divider"></div>
+
+                <div class="divider-text">
+                    <span>或者</span>
+                </div>
+
+                <div class="divider"></div>
+            </article>
+
+            <article class="component-card neumorphic">
+                <h2 class="component-title">标签页</h2>
+
+                <div class="tabs">
+                    <div class="tabs-nav">
+                        <button class="tab-btn active" data-tab="tab1">标签一</button>
+                        <button class="tab-btn" data-tab="tab2">标签二</button>
+                        <button class="tab-btn" data-tab="tab3">标签三</button>
+                    </div>
+                    <div id="tab1" class="tab-content active">
+                        这是标签一的内容区域。
+                    </div>
+                    <div id="tab2" class="tab-content">
+                        这是标签二的内容区域。
+                    </div>
+                    <div id="tab3" class="tab-content">
+                        这是标签三的内容区域。
+                    </div>
+                </div>
+            </article>
+
+            <article class="component-card neumorphic">
+                <h2 class="component-title">标签 Tag</h2>
+
+                <div>
+                    <span class="tag">标签一<span class="tag-close">&times;</span></span>
+                    <span class="tag">标签二<span class="tag-close">&times;</span></span>
+                    <span class="tag">标签三<span class="tag-close">&times;</span></span>
+                </div>
+
+                <h3 style="margin-top: 15px;">输入标签</h3>
+                <div class="tag-input-wrapper">
+                    <input type="text" class="tag-input" placeholder="输入标签按回车添加">
+                </div>
+            </article>
+
+            <article class="component-card neumorphic">
+                <h2 class="component-title">徽章</h2>
+                <span class="badge badge-primary">UI</span>
+                <span class="badge badge-primary">设计</span>
+                <span class="badge badge-secondary">组件</span>
+            </article>
+
+        </section>
+    </main>
+
+    <article class="modal" id="loginModal" role="dialog" aria-modal="true" aria-labelledby="loginTitle">
+        <div class="modal-content neumorphic">
+            <span class="close" data-close aria-label="关闭">&times;</span>
+            <h2 id="loginTitle">登录</h2>
+            <form>
+                <input type="text" class="input-field" placeholder="账号" name="account" required>
+                <input type="password" class="input-field" placeholder="密码" name="password" required>
+                <button type="submit" class="btn btn-secondary">登录</button>
+            </form>
+        </div>
+    </article>
+
+    <article class="modal" id="registerModal" role="dialog" aria-modal="true" aria-labelledby="registerTitle">
+        <div class="modal-content neumorphic">
+            <span class="close" data-close aria-label="关闭">&times;</span>
+            <h2 id="registerTitle">注册</h2>
+            <form>
+                <input type="tel" class="input-field" placeholder="手机号" name="phone" required pattern="1[3-9]\d{9}">
+                <div class="input-group" style="margin-bottom: 18px;">
+                    <input type="text" class="input-field" placeholder="验证码" name="code" required style="flex:1;">
+                    <button type="button" class="btn btn-primary btn-send-code" style="width:auto;margin:0;">发送</button>
+                </div>
+                <input type="password" class="input-field" placeholder="密码" name="newPassword" required>
+                <button type="submit" class="btn btn-secondary">注册</button>
+            </form>
+        </div>
+    </article>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

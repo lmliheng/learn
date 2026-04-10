@@ -4,6 +4,18 @@ const { register_db_checkExistByEmail, register_db_register } = require('../util
 const { ToHash } = require('../utils/bcrypt_login')
 const { generateId } = require('../utils/id_creator')
 const tokenCreator = require('../utils/token_creator')
+
+//========================================
+//table: user
+//id: 用户id
+//username: 用户名
+//email: 邮箱
+//password: 密码
+//created_at: 创建时间
+//updated_at: 更新时间
+//========================================
+
+
 router.post('/register', async (req, res) => {
     const { username, email, password } = req.body
     // 判断用户名和邮箱是否为空

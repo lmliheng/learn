@@ -1,0 +1,194 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "iPhone 15 Pro Max",
+      "description": "Apple iPhone 15 Pro Max，256GB 钛金属设计，A17 Pro 芯片，专业相机系统",
+      "price": 9999,
+      "originalPrice": 10999,
+      "cover": "https://picsum.photos/seed/iphone/400/400",
+      "images": [
+        "https://picsum.photos/seed/iphone1/800/800",
+        "https://picsum.photos/seed/iphone2/800/800",
+        "https://picsum.photos/seed/iphone3/800/800"
+      ],
+      "categoryId": 1,
+      "brandId": 1,
+      "stock": 100,
+      "sales": 2340,
+      "rating": 4.8,
+      "reviewCount": 1560,
+      "isNew": false,
+      "isHot": true,
+      "isRecommend": true,
+      "status": "active",
+      "createdAt": "2024-01-15T10:00:00.000Z"
+    },
+    {
+      "id": 2,
+      "name": "MacBook Pro 14英寸",
+      "description": "Apple MacBook Pro 14英寸，M3 Pro 芯片，18GB 统一内存，512GB SSD",
+      "price": 16999,
+      "originalPrice": 18999,
+      "cover": "https://picsum.photos/seed/macbook/400/400",
+      "images": [
+        "https://picsum.photos/seed/mac1/800/800",
+        "https://picsum.photos/seed/mac2/800/800"
+      ],
+      "categoryId": 1,
+      "brandId": 1,
+      "stock": 50,
+      "sales": 890,
+      "rating": 4.9,
+      "reviewCount": 678,
+      "isNew": true,
+      "isHot": false,
+      "isRecommend": true,
+      "status": "active",
+      "createdAt": "2024-02-01T10:00:00.000Z"
+    },
+    {
+      "id": 3,
+      "name": "AirPods Pro 第二代",
+      "description": "Apple AirPods Pro (第二代)，主动降噪，空间音频，MagSafe 充电盒",
+      "price": 1899,
+      "originalPrice": 1999,
+      "cover": "https://picsum.photos/seed/airpods/400/400",
+      "images": [
+        "https://picsum.photos/seed/airpod1/800/800",
+        "https://picsum.photos/seed/airpod2/800/800"
+      ],
+      "categoryId": 2,
+      "brandId": 1,
+      "stock": 200,
+      "sales": 5670,
+      "rating": 4.7,
+      "reviewCount": 3450,
+      "isNew": false,
+      "isHot": true,
+      "isRecommend": true,
+      "status": "active",
+      "createdAt": "2023-11-01T10:00:00.000Z"
+    },
+    {
+      "id": 4,
+      "name": "Nike Air Max 270",
+      "description": "Nike Air Max 270 男子运动鞋，经典 Air Max 气垫，舒适缓震",
+      "price": 799,
+      "originalPrice": 999,
+      "cover": "https://picsum.photos/seed/nike/400/400",
+      "images": [
+        "https://picsum.photos/seed/nike1/800/800",
+        "https://picsum.photos/seed/nike2/800/800"
+      ],
+      "categoryId": 3,
+      "brandId": 2,
+      "stock": 150,
+      "sales": 1230,
+      "rating": 4.5,
+      "reviewCount": 890,
+      "isNew": false,
+      "isHot": true,
+      "isRecommend": false,
+      "status": "active",
+      "createdAt": "2024-01-20T10:00:00.000Z"
+    },
+    {
+      "id": 5,
+      "name": "Adidas Ultraboost 22",
+      "description": "Adidas Ultraboost 22 男跑鞋，Boost 中底，Primeknit 鞋面",
+      "price": 899,
+      "originalPrice": 1199,
+      "cover": "https://picsum.photos/seed/adidas/400/400",
+      "images": [
+        "https://picsum.photos/seed/adidas1/800/800"
+      ],
+      "categoryId": 3,
+      "brandId": 3,
+      "stock": 80,
+      "sales": 670,
+      "rating": 4.6,
+      "reviewCount": 456,
+      "isNew": false,
+      "isHot": false,
+      "isRecommend": true,
+      "status": "active",
+      "createdAt": "2024-02-10T10:00:00.000Z"
+    },
+    {
+      "id": 6,
+      "name": "小米电视 ES65",
+      "description": "小米电视 ES65 65英寸，4K 超高清画质，多分区背光，MEMC 运动补偿",
+      "price": 2999,
+      "originalPrice": 3999,
+      "cover": "https://picsum.photos/seed/xiaomitv/400/400",
+      "images": [
+        "https://picsum.photos/seed/xiaomitv1/800/800"
+      ],
+      "categoryId": 4,
+      "brandId": 4,
+      "stock": 60,
+      "sales": 450,
+      "rating": 4.4,
+      "reviewCount": 234,
+      "isNew": true,
+      "isHot": false,
+      "isRecommend": false,
+      "status": "active",
+      "createdAt": "2024-03-01T10:00:00.000Z"
+    },
+    {
+      "id": 7,
+      "name": "索尼 WH-1000XM5",
+      "description": "Sony WH-1000XM5 无线降噪耳机，业界领先降噪，30小时续航，LDAC 高解析度音频",
+      "price": 2699,
+      "originalPrice": 2999,
+      "cover": "https://picsum.photos/seed/sony/400/400",
+      "images": [
+        "https://picsum.photos/seed/sony1/800/800",
+        "https://picsum.photos/seed/sony2/800/800"
+      ],
+      "categoryId": 2,
+      "brandId": 5,
+      "stock": 90,
+      "sales": 890,
+      "rating": 4.8,
+      "reviewCount": 567,
+      "isNew": false,
+      "isHot": true,
+      "isRecommend": true,
+      "status": "active",
+      "createdAt": "2023-12-01T10:00:00.000Z"
+    },
+    {
+      "id": 8,
+      "name": "戴尔显示器 U2723DE",
+      "description": "Dell UltraSharp U2723DE 27英寸，4K USB-C Hub 显示器，IPS Black 技术",
+      "price": 4299,
+      "originalPrice": 4999,
+      "cover": "https://picsum.photos/seed/dell/400/400",
+      "images": [
+        "https://picsum.photos/seed/dell1/800/800"
+      ],
+      "categoryId": 5,
+      "brandId": 6,
+      "stock": 30,
+      "sales": 120,
+      "rating": 4.7,
+      "reviewCount": 89,
+      "isNew": false,
+      "isHot": false,
+      "isRecommend": false,
+      "status": "active",
+      "createdAt": "2024-01-05T10:00:00.000Z"
+    }
+  ],
+  "brands": [
+    { "id": 1, "name": "Apple", "logo": "https://picsum.photos/seed/apple/100/100" },
+    { "id": 2, "name": "Nike", "logo": "https://picsum.photos/seed/nikelogo/100/100" },
+    { "id": 3, "name": "Adidas", "logo": "https://picsum.photos/seed/adidaslogo/100/100" },
+    { "id": 4, "name": "小米", "logo": "https://picsum.photos/seed/xiaomilogo/100/100" },
+    { "id": 5, "name": "索尼", "logo": "https://picsum.photos/seed/sonylogo/100/100" },
+    { "id": 6, "name": "戴尔", "logo": "https://picsum.photos/seed/delllogo/100/100" }
+  ]
+}

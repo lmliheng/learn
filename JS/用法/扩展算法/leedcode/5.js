@@ -66,55 +66,10 @@
  * ========================================
  */
 
-s = "abcdef"
-
-let new_s='';
-let max = 0;
-let x = true;
-for (let i = 0; i < s.length; i++) {
-    if (s[i] != s[i + 1] && i + 1 < s.length) {
-        x = false;
-    }
-}
-if (x) {
-    max = s.length;
-    new_s=s;
-}
-
-
-let max_j = 0
-for (let i = 0; i < s.length; i++) {
-    let j = 0
-    for (let n = 1; n <= Math.ceil(s.length / 2); n++) {
-        if (s[i - n] === s[i + n] && i - n >= 0 && i + n < s.length) {
-            j += 1
-            max_j = max_j < j ? j : max_j
-        } else {
-            break
-        }
-    }
-}
-
-max = Math.max(max, 2 * max_j + 1);
 
 
 
-if (max_j == 0) {
-    for (let i = 0; i < s.length; i++) {
-        if (s[i] == s[i + 1] && i + 1 < s.length) {
-            max = 2
-            break
-        }
 
-    }
-    max != 2 ? max = 0 : max;
-}
-
-
-console.log(max)
-
-
-// 放弃
 
 // 现状
 // 中心扩散法（已经不错）
@@ -127,3 +82,35 @@ console.log(max)
 // 优化点
 // 统一奇偶长度处理
 // 减少不必要的 break / 判断
+
+
+// 中心扩散法
+
+/**
+ * @param {string} s
+ * @return {string}
+ */
+
+var longestPalindrome = function (s) {
+    let res = '';
+    // 一个元素有两种扩散，奇数长度和偶数长度
+    for(let i=0;i<s.length;i++){
+        // 奇数长度
+        expand(i, i);
+        // 偶数长度
+        expand(i, i + 1);
+    }
+    function expand(left, right) {
+        while (left >= 0 && right < s.length && s[left] === s[right]) {
+            left--;
+            right++;
+        }
+        if (right - left - 1 > res.length) {
+            res = s.slice(left + 1, right);
+        }
+    }
+
+    return res;
+
+};
+console.log(longestPalindrome("babad"))

@@ -33,6 +33,9 @@
     <div class="container">
         <a href="#my">跳转到my.html</a>
         <button>刷新</button>
+        <button id="openSettings">打开settings</button>
+        <button id="openNotepad">打开记事本</button>
+
     </div>
 
 </body>
@@ -58,6 +61,15 @@
         console.log(location.hash)
     })
 
+
+    const openSettings = document.querySelector('#openSettings');
+    openSettings.addEventListener('click', (e) => {
+        location.href = 'ms-settings:';
+    })
+    const openNotepad = document.querySelector('#openNotepad');
+    openNotepad.addEventListener('click', (e) => {
+        location.href = 'notepad://';
+    })
 
 
 </script>

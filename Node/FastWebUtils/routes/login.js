@@ -1,7 +1,19 @@
 const express = require('express')
 const router = express.Router()
 const { login_db } = require('../utils/db_curd')
-const tokenCreator = require('../utils/token_creator')
+const { tokenCreator } = require('../utils/token_creator')
+
+
+
+//========================================
+//table: user
+//id: 用户id
+//username: 用户名
+//email: 邮箱
+//password: 密码
+//created_at: 创建时间
+//updated_at: 更新时间
+//========================================
 
 router.post('/login', async (req, res) => {
     try {
@@ -9,6 +21,7 @@ router.post('/login', async (req, res) => {
         // 参数校验
         if (!email || !password) {
             return res.status(400).json({
+                code: 400,
                 success: false,
                 message: '邮箱和密码不能为空'
             })
@@ -19,6 +32,7 @@ router.post('/login', async (req, res) => {
         if (user == null) {
             console.log('login.js 用户不存在或密码错误');
             return res.status(401).json({
+                code: 401,
                 success: false,
                 message: '用户名或密码错误'
             })
@@ -47,5 +61,7 @@ router.post('/login', async (req, res) => {
         })
     }
 })
+
+
 
 module.exports = router

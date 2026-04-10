@@ -1,0 +1,141 @@
+{
+  "messages": [
+    {
+      "id": 1,
+      "senderId": 2,
+      "receiverId": 1,
+      "content": "你好，我想咨询一下 Vue3 的问题",
+      "type": "text",
+      "status": "read",
+      "createdAt": "2024-03-15T10:00:00.000Z"
+    },
+    {
+      "id": 2,
+      "senderId": 1,
+      "receiverId": 2,
+      "content": "你好，请问有什么可以帮到你？",
+      "type": "text",
+      "status": "read",
+      "createdAt": "2024-03-15T10:05:00.000Z"
+    },
+    {
+      "id": 3,
+      "senderId": 2,
+      "receiverId": 1,
+      "content": "组合式 API 和选项式 API 有什么区别？",
+      "type": "text",
+      "status": "read",
+      "createdAt": "2024-03-15T10:10:00.000Z"
+    },
+    {
+      "id": 4,
+      "senderId": 1,
+      "receiverId": 2,
+      "content": "组合式 API 主要是为了更好地组织代码逻辑，特别是对于复杂组件，可以将相关逻辑集中在一起。选项式 API 则更适合简单的组件。",
+      "type": "text",
+      "status": "read",
+      "createdAt": "2024-03-15T10:15:00.000Z"
+    },
+    {
+      "id": 5,
+      "senderId": 2,
+      "receiverId": 1,
+      "content": "明白了，谢谢！",
+      "type": "text",
+      "status": "read",
+      "createdAt": "2024-03-15T10:20:00.000Z"
+    },
+    {
+      "id": 6,
+      "senderId": 3,
+      "receiverId": 1,
+      "content": "管理员你好",
+      "type": "text",
+      "status": "read",
+      "createdAt": "2024-03-14T15:00:00.000Z"
+    },
+    {
+      "id": 7,
+      "senderId": 1,
+      "receiverId": 3,
+      "content": "你好，有什么需要帮助的吗？",
+      "type": "text",
+      "status": "read",
+      "createdAt": "2024-03-14T15:05:00.000Z"
+    },
+    {
+      "id": 8,
+      "senderId": 3,
+      "receiverId": 1,
+      "content": "[图片]",
+      "type": "image",
+      "imageUrl": "https://picsum.photos/seed/chat1/200/200",
+      "status": "read",
+      "createdAt": "2024-03-14T15:10:00.000Z"
+    },
+    {
+      "id": 9,
+      "senderId": 2,
+      "receiverId": 3,
+      "content": "今天有空吗？一起吃饭？",
+      "type": "text",
+      "status": "delivered",
+      "createdAt": "2024-03-15T12:00:00.000Z"
+    },
+    {
+      "id": 10,
+      "senderId": 5,
+      "receiverId": 2,
+      "content": "上次说的项目进展怎么样了？",
+      "type": "text",
+      "status": "unread",
+      "createdAt": "2024-03-15T14:00:00.000Z"
+    }
+  ],
+  "conversations": [
+    {
+      "id": 1,
+      "userId": 1,
+      "friendId": 2,
+      "lastMessage": "明白了，谢谢！",
+      "lastMessageTime": "2024-03-15T10:20:00.000Z",
+      "unreadCount": 0,
+      "createdAt": "2024-03-15T10:00:00.000Z"
+    },
+    {
+      "id": 2,
+      "userId": 1,
+      "friendId": 3,
+      "lastMessage": "[图片]",
+      "lastMessageTime": "2024-03-14T15:10:00.000Z",
+      "unreadCount": 0,
+      "createdAt": "2024-03-14T15:00:00.000Z"
+    },
+    {
+      "id": 3,
+      "userId": 2,
+      "friendId": 3,
+      "lastMessage": "今天有空吗？一起吃饭？",
+      "lastMessageTime": "2024-03-15T12:00:00.000Z",
+      "unreadCount": 0,
+      "createdAt": "2024-03-15T12:00:00.000Z"
+    },
+    {
+      "id": 4,
+      "userId": 2,
+      "friendId": 5,
+      "lastMessage": "上次说的项目进展怎么样了？",
+      "lastMessageTime": "2024-03-15T14:00:00.000Z",
+      "unreadCount": 1,
+      "createdAt": "2024-03-15T14:00:00.000Z"
+    }
+  ],
+  "friends": [
+    { "id": 1, "userId": 1, "friendId": 2, "remark": "John", "createdAt": "2024-01-01T00:00:00.000Z" },
+    { "id": 2, "userId": 1, "friendId": 3, "remark": "Jane", "createdAt": "2024-01-05T00:00:00.000Z" },
+    { "id": 3, "userId": 2, "friendId": 1, "remark": "管理员", "createdAt": "2024-01-01T00:00:00.000Z" },
+    { "id": 4, "userId": 2, "friendId": 3, "remark": "", "createdAt": "2024-02-01T00:00:00.000Z" },
+    { "id": 5, "userId": 2, "friendId": 5, "remark": "Alice", "createdAt": "2024-02-15T00:00:00.000Z" },
+    { "id": 6, "userId": 3, "friendId": 1, "remark": "", "createdAt": "2024-01-05T00:00:00.000Z" }
+  ]
+}

@@ -1,0 +1,121 @@
+{
+  "comments": [
+    {
+      "id": 1,
+      "articleId": 1,
+      "userId": 2,
+      "content": "写得非常好！组合式 API 确实让代码组织更加清晰了。",
+      "likeCount": 15,
+      "replyCount": 2,
+      "status": "approved",
+      "createdAt": "2024-01-11T10:00:00.000Z",
+      "updatedAt": "2024-01-11T10:00:00.000Z"
+    },
+    {
+      "id": 2,
+      "articleId": 1,
+      "userId": 3,
+      "content": "期待更多关于 Vue3 的教程！",
+      "likeCount": 8,
+      "replyCount": 0,
+      "status": "approved",
+      "createdAt": "2024-01-12T14:30:00.000Z",
+      "updatedAt": "2024-01-12T14:30:00.000Z"
+    },
+    {
+      "id": 3,
+      "articleId": 2,
+      "userId": 1,
+      "content": "TypeScript 真的是越用越香，类型系统太强大了！",
+      "likeCount": 23,
+      "replyCount": 5,
+      "status": "approved",
+      "createdAt": "2024-01-16T09:00:00.000Z",
+      "updatedAt": "2024-01-16T09:00:00.000Z"
+    },
+    {
+      "id": 4,
+      "articleId": 2,
+      "userId": 5,
+      "content": "有没有关于泛型的进阶教程？",
+      "likeCount": 5,
+      "replyCount": 1,
+      "status": "approved",
+      "createdAt": "2024-01-17T11:20:00.000Z",
+      "updatedAt": "2024-01-17T11:20:00.000Z"
+    },
+    {
+      "id": 5,
+      "articleId": 3,
+      "userId": 2,
+      "content": "跟着教程做了一遍，终于搞懂 RESTful API 了！",
+      "likeCount": 18,
+      "replyCount": 3,
+      "status": "approved",
+      "createdAt": "2024-02-02T16:00:00.000Z",
+      "updatedAt": "2024-02-02T16:00:00.000Z"
+    },
+    {
+      "id": 6,
+      "articleId": 5,
+      "userId": 3,
+      "content": "useEffect 的依赖数组讲解得太清楚了！",
+      "likeCount": 12,
+      "replyCount": 0,
+      "status": "approved",
+      "createdAt": "2024-02-21T10:15:00.000Z",
+      "updatedAt": "2024-02-21T10:15:00.000Z"
+    },
+    {
+      "id": 7,
+      "articleId": 6,
+      "userId": 1,
+      "content": "Docker 入门必看！",
+      "likeCount": 30,
+      "replyCount": 4,
+      "status": "approved",
+      "createdAt": "2024-03-02T08:30:00.000Z",
+      "updatedAt": "2024-03-02T08:30:00.000Z"
+    },
+    {
+      "id": 8,
+      "articleId": 1,
+      "userId": 4,
+      "content": "写的什么垃圾内容",
+      "likeCount": 0,
+      "replyCount": 0,
+      "status": "rejected",
+      "createdAt": "2024-01-13T12:00:00.000Z",
+      "updatedAt": "2024-01-13T12:00:00.000Z"
+    }
+  ],
+  "replies": [
+    {
+      "id": 1,
+      "commentId": 1,
+      "userId": 1,
+      "content": "感谢支持！有问题欢迎随时提问～",
+      "likeCount": 3,
+      "status": "approved",
+      "createdAt": "2024-01-11T11:00:00.000Z"
+    },
+    {
+      "id": 2,
+      "commentId": 1,
+      "userId": 2,
+      "content": "好的，谢谢作者回复！",
+      "likeCount": 1,
+      "status": "approved",
+      "createdAt": "2024-01-11T12:00:00.000Z"
+    },
+    {
+      "id": 3,
+      "commentId": 3,
+      "userId": 2,
+      "content": "同意！类型安全真的太重要了",
+      "likeCount": 5,
+      "status": "approved",
+      "createdAt": "2024-01-16T10:00:00.000Z"
+    }
+  ]
+}

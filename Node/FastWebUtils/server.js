@@ -12,8 +12,12 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
 app.use(require('./routes/login'))
 app.use(require('./routes/register'))
+app.use(require('./routes/article'))
+app.use(require('./routes/article_cart'))
+app.use(require('./routes/user'))
 // 1. 确保启用 CORS
 app.use(cors({
   origin: ['http://localhost:*', 'http://127.0.0.1:*']

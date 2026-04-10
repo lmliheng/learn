@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@2.7.10/dist/vue.js"></script>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    li {
+        list-style: none;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    .show_2 {
+        margin: 100px auto;
+        width: 600px;
+        height: 300px;
+    }
+
+    .show_2_li {
+        margin-bottom: 10px;
+        padding: 5px;
+        border: 1px solid #ccc;
+    }
+
+    .show_3 {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin: 100px auto;
+        width: 600px;
+        height: 300px;
+    }
+
+    .show_4 {
+
+        margin: 100px auto;
+        width: 600px;
+        height: 300px;
+        border: 1px solid #ccc;
+        text-align: center;
+        font-size: 30px;
+    }
+
+    .translate_in {
+
+        display: block;
+        box-sizing: border-box;
+        width: 300px;
+        height: 300px;
+        border: 1px solid #ccc;
+        text-align: center;
+    }
+
+    .translate_out {
+        box-sizing: border-box;
+        width: 300px;
+        height: 300px;
+        text-align: center;
+        line-height: 300px;
+        border: 1px solid #ccc;
+    }
+
+    .show_4 button {
+        width: 30px;
+        height: 30px;
+        font-size: 30px;
+        text-align: center;
+        line-height: 30px;
+    }
+
+    .show_4 .destroy_btn {
+        width: 100px;
+        height: 30px;
+        font-size: 12px;
+        text-align: center;
+        line-height: 30px;
+    }
+</style>
+
+<body>
+    <div id="app">
+        <div v-if="show_1">
+            <p>{{message}}</p>
+            <!-- v-html -->
+            <p v-html="message" v-show="show"></p>
+            <!-- v-show -->
+            <button v-on:click="show = !show">{{show ? '隐藏' : '显示'}}</button>
+            <!-- v-if -->
+            <p v-if="sex_id">{{sex}}</p>
+            <p v-else>女</p>
+            <!-- v-on -->
+            <button v-on:click="sex_id = !sex_id">切换性别</button>
+            <!-- v-model -->
+            <input type="text" v-model="email">
+            <p>{{email}}</p>
+            <!-- v-for -->
+            <ul>
+                <li v-for="item in list" :key="id">{{item}}</li>
+            </ul>
+            <!-- v-bind -->
+            <button v-bind:disabled="!show">提交</button>
+        </div>
+
+        <div v-if="show_2" class="show_2">
+            <p>购物车列表</p>
+            <ul>
+                <li v-for="item,index in list_shopcar" :key="item.id" class="show_2_li">
+                    <input type="checkbox" v-model="item.checked">
+                    {{index+1}}. {{item.name}} 单价 {{item.price}} 数量 {{item.num}}
+                    <button v-on:click="show_2_add(index)">+</button>
+                    <button v-on:click="show_2_sub(index)" v-bind:disabled="item.num == 0">-</button>
+                    <button v-on:click="show_2_del(index)">删除</button>
+                </li>
+            </ul>
+            <p>总金额 {{show_2_totalPrice}}</p>
+            <button v-on:click="show_2_totalPrice_clear()">清空</button>
+        </div>
+
+        <div v-if="show_3" class="show_3">
+            <input type="text" class="translate_in" v-model="obj_translate.translate_in">
+            <div class="translate_out">
+                <p>{{translate_out}}</p>
+            </div>
+            <p style="position: absolute; top: 4px; left: 10px;">Translate</p>
+            <select style="position: absolute; top: 7px; left: 230px;" v-model="obj_translate.translate_lang" >
+                <option disabled value="">请选择</option>
+                <option>中译英</option>
+                <option>英译中</option>
+            </select>
+        </div>
+
+        <div v-if="show_4" class="show_4">
+            <p style="text-align: center;">生命周期演示</p>
+
+            <button v-on:click="show_4_num++">+</button>
+            {{show_4_num}}
+            <button v-on:click="show_4_num--" v-bind:disabled="show_4_num == 0">-</button>
+            <button v-on:click="destroyElement()" class="destroy_btn">销毁vue实例对象</button>
+        </div>
+    </div>
+</body>
+<script>
+    new Vue({
+        el: '#app', // 挂载点
+        data: {
+            show_1: false,
+            show_2: false,
+            show_3: true,
+            show_4: false,
+            show_4_num: 10,
+            message: '<a href="https://cn.vuejs.org/guide" target="_blank" target="_blank">hello vue</a>',
+            show: true,
+            sex: '男',
+            sex_id: 1,
+            email: '',
+            list: ['123', '456', '789'],
+            list_shopcar: [
+                {
+                    id: 1,
+                    name: '馒头',
+                    price: 3,
+                    num: 2,
+                    checked: true
+                },
+                {
+                    id: 2,
+                    name: '面包',
+                    price: 2,
+                    num: 1,
+                    checked: false
+                },
+                {
+                    id: 3,
+                    name: '牛奶',
+                    price: 3,
+                    num: 10,
+                    checked: false
+                }
+            ],
+            translate_out: 'hello',
+            obj_translate: {
+                translate_in: '缺失机器翻译接口',
+                translate_lang: '',
+            }
+
+        },
+
+        computed: {
+            // 值不能直接修改，只能通过计算属性的set方法修改
+
+            show_2_totalPrice: {
+                get() {
+                    let totalPrice = 0;
+                    this.list_shopcar.forEach(item => {
+                        if (item.checked) {
+                            totalPrice += item.price * item.num;
+                        }
+                    })
+                    return totalPrice;
+                },
+                set(newVal) {
+                    this.show_2_totalPrice = newVal;
+                }
+            }
+            // show_2_totalPrice() {
+            //     let totalPrice = 0;
+            //     this.list_shopcar.forEach(item => {
+            //         if(item.checked){
+            //             totalPrice += item.price * item.num;
+            //         }
+            //     })
+            //     return totalPrice;
+            // }
+        },
+        methods: {
+            show_2_del(index) {
+                this.list_shopcar.splice(index, 1);
+            },
+            show_2_add(index) {
+                this.list_shopcar[index].num++;
+
+            },
+            show_2_sub(index) {
+                this.list_shopcar[index].num--;
+                if (this.list_shopcar[index].num <= 0) {
+                    // 禁止继续减号
+
+                }
+            },
+            show_2_totalPrice_clear() {
+                for (let i = 0; i < this.list_shopcar.length; i++) {
+                    this.list_shopcar[i].checked = false;
+                }
+            },
+            destroyElement() {
+                this.$destroy();
+                this.$el.parentNode.removeChild(this.$el);
+            }
+
+        },
+        watch: {
+            'obj_translate.translate_in': {
+                deep: true,
+                immediate: true,
+                handler(newVal) {
+                    this.translate_out = newVal + '。。。翻译后';
+                }
+            }
+
+        },
+        // 生命周期演示
+        // this => vue实例对象
+        beforeCreate() {
+            console.log('创建前,访问插值表达式，', this.show_4_num); // undefined
+        },
+        created() {
+            console.log('创建后,访问插值表达式，', this.show_4_num); // 10
+        },
+        beforeMount() {
+            console.log('挂载渲染DOM前,访问插值表达式，', document.querySelector('.show_4')); // 未渲染，仅有v指令和插值表达式
+        },
+        mounted() {
+            console.log('挂载渲染DOM后,访问插值表达式，', document.querySelector('.show_4')); // 已渲染，显示10
+        },
+        beforeUpdate() {
+            console.log('数据变化前'); // 已渲染，显示10
+        },
+        updated() {
+            console.log('数据变化后'); // 已渲染，显示10
+        },
+
+        //     this.$destroy(); 销毁vue实例
+        //     this.$el.parentNode.removeChild(this.$el);  删除DOM元素
+
+        beforeDestroy() {
+            console.log('销毁前'); // 已渲染，显示10
+        },
+        destroyed() {
+            console.log('销毁后,vue实例对象已被销毁,但是DOM元素还在内存中'); // 已渲染，显示10
+        }
+
+
+    }
+
+
+
+    )
+
+
+
+</script>
+
+</html>

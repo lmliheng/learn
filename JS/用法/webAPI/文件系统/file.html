@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn">打开文件</button>
+</body>
+
+
+<script>
+    document.querySelector('#btn').addEventListener('click', async () => {
+        const [fileHandle] = await window.showOpenFilePicker(); // 句柄 object
+        console.log(fileHandle);
+        const file = await fileHandle.getFile(); // 获取文件对象
+        const contents = await file.text(); // 读取文件内容
+        console.log(file); // 文件名
+        console.log(file); // 文件大小
+        console.log(contents);
+        // 关闭文件句柄
+        fileHandle.close();
+    })
+</script>
+</html>

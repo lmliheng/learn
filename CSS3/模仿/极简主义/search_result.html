@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>搜索结果</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* 搜索框样式 */
+        .search-container {
+            position: relative;
+            margin: 40px 0;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 15px 20px;
+            padding-right: 60px;
+            font-size: 16px;
+            border: 2px solid #000;
+            border-radius: 8px;
+            outline: none;
+        }
+        
+        .search-button {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            color: #555;
+        }
+        
+        /* 搜索结果样式 */
+        .results-info {
+            margin-bottom: 20px;
+            color: #666;
+        }
+        
+        .search-results {
+            list-style: none;
+        }
+        
+        .result-item {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .result-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .result-title {
+            font-size: 18px;
+            margin-bottom: 8px;
+            color: #000;
+        }
+        
+        .result-url {
+            font-size: 14px;
+            color: #006621;
+            margin-bottom: 8px;
+        }
+        
+        .result-snippet {
+            font-size: 14px;
+            color: #545454;
+        }
+        
+        /* 分页样式 */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+        
+        .pagination a {
+            margin: 0 5px;
+            padding: 8px 15px;
+            text-decoration: none;
+            color: #000;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        .pagination a.active {
+            background-color: #000;
+            color: white;
+            border-color: #000;
+        }
+        
+        .pagination a:hover:not(.active) {
+            background-color: #f0f0f0;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .search-input {
+                padding: 12px 15px;
+            }
+            
+            .result-item {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="search-container">
+            <input type="text" class="search-input" placeholder="SEARCH..." value="人工智能">
+            <button class="search-button">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+        
+        <div class="results-info">
+            找到约 <strong>1,250,000</strong> 条结果 (用时 0.42 秒)
+        </div>
+        
+        <ul class="search-results">
+            <li class="result-item">
+                <h3 class="result-title">人工智能 - 百度百科</h3>
+                <div class="result-url">baike.baidu.com › item › 人工智能</div>
+                <div class="result-snippet">人工智能（Artificial Intelligence），英文缩写为AI。它是研究、开发用于模拟、延伸和扩展人的智能的理论、方法、技术及应用系统的一门新的技术科学。</div>
+            </li>
+            
+            <li class="result-item">
+                <h3 class="result-title">人工智能的发展现状与未来趋势</h3>
+                <div class="result-url">tech.sina.com.cn › it › 2023-05-12 › doc-imyvz...</div>
+                <div class="result-snippet">人工智能近年来发展迅速，已经渗透到各行各业。从语音识别到图像识别，从自动驾驶到智能家居，AI正在改变我们的生活和工作方式。</div>
+            </li>
+            
+            <li class="result-item">
+                <h3 class="result-title">人工智能基础 - 清华大学出版社</h3>
+                <div class="result-url">www.tup.tsinghua.edu.cn › book › detail › id=12345</div>
+                <div class="result-snippet">本书全面系统地介绍了人工智能的基本概念、基本原理和基本方法，适合高等院校计算机及相关专业的学生使用，也可供相关领域的工程技术人员参考。</div>
+            </li>
+        </ul>
+        
+        <div class="pagination">
+            <a href="#">&laquo;</a>
+            <a href="#" class="active">1</a>
+            <a href="#">2</a>
+            <a href="#">3</a>
+            <a href="#">4</a>
+            <a href="#">5</a>
+            <a href="#">&raquo;</a>
+        </div>
+    </div>
+</body>
+</html>

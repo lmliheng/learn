@@ -1,0 +1,21 @@
+{
+  "name": "json-server-data",
+  "version": "1.0.0",
+  "description": "JSON Server 模拟数据 - 多场景支持",
+  "main": "index.js",
+  "scripts": {
+    "start": "json-server --watch db.json --port 3000",
+    "start:full": "json-server --watch db.json --port 3000 --m ./middlewares/custom.js",
+    "users": "json-server --watch users.json --port 3001",
+    "articles": "json-server --watch articles.json --port 3002",
+    "products": "json-server --watch products.json --port 3003",
+    "orders": "json-server --watch orders.json --port 3004",
+    "messages": "json-server --watch messages.json --port 3005"
+  },
+  "keywords": ["json-server", "mock", "api", "rest"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "json-server": "^0.17.4"
+  }
+}

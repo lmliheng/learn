@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>微信</title>
+    <link rel="icon" href="img/wechat_icon.svg">
+       <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: #f7f7f7;
+            color: #333;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .container {
+            position: relative;
+            width: 100%;
+            height: calc(100vh - 50px);
+            overflow-y: auto;
+        }
+
+        /* 顶部状态栏 */
+        .status-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 15px;
+            background-color: #f7f7f7;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .windows-status {
+            display: flex;
+            align-items: center;
+            color: #666;
+        }
+
+        .windows-icon {
+            width: 24px;
+            height: 24px;
+            margin-right: 10px;
+            background-color: #eee;
+            border-radius: 3px;
+        }
+
+        /* 聊天列表项 */
+        .chat-item {
+            display: flex;
+            padding: 12px 15px;
+            background-color: #fff;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 6px;
+            margin-right: 12px;
+            flex-shrink: 0;
+        }
+
+        .chat-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .chat-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+
+        .chat-name {
+            font-size: 17px;
+            font-weight: 400;
+        }
+
+        .chat-time {
+            font-size: 13px;
+            color: #999;
+        }
+
+        .chat-preview {
+            font-size: 14px;
+            color: #888;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 260px;
+        }
+
+        /* 个人信息页面 */
+        .profile-container {
+            padding: 20px 15px;
+            background-color: #fff;
+            display: none;
+        }
+
+        .profile-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .profile-avatar {
+            width: 70px;
+            height: 70px;
+            border-radius: 8px;
+            margin-right: 15px;
+        }
+
+        .profile-info {
+            flex: 1;
+        }
+
+        .profile-name {
+            font-size: 22px;
+            margin-bottom: 8px;
+        }
+
+        .profile-id {
+            font-size: 15px;
+            color: #999;
+        }
+
+        .profile-actions {
+            display: flex;
+            margin-top: 15px;
+        }
+
+        .status-btn,
+        .friends-btn {
+            display: flex;
+            align-items: center;
+            padding: 5px 10px;
+            border-radius: 15px;
+            border: 1px solid #e5e5e5;
+            font-size: 13px;
+            margin-right: 10px;
+            background-color: #f7f7f7;
+        }
+
+        .status-btn::before {
+            content: "+";
+            margin-right: 4px;
+        }
+
+        /* 功能列表 */
+        .function-list {
+            background-color: #fff;
+            margin-top: 15px;
+            border-top: 1px solid #f0f0f0;
+        }
+
+        .function-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .function-icon {
+            width: 25px;
+            height: 25px;
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .function-name {
+            font-size: 16px;
+            flex: 1;
+        }
+
+        .function-arrow {
+            color: #ccc;
+            font-size: 18px;
+        }
+
+        .function-right {
+            color: #999;
+            font-size: 14px;
+        }
+
+        /* 底部导航栏 */
+        .tab-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 50px;
+            background-color: #fff;
+            display: flex;
+            border-top: 1px solid #e5e5e5;
+        }
+
+        .tab-item {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            color: #999;
+        }
+
+        .tab-icon {
+            font-size: 24px;
+            margin-bottom: 3px;
+        }
+
+        .active {
+            color: #07c160;
+        }
+
+        /* 搜索框 */
+        .search-box {
+            display: flex;
+            align-items: center;
+            padding: 8px 15px;
+            background-color: #f7f7f7;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .search-input {
+            flex: 1;
+            height: 34px;
+            background-color: #eaeaea;
+            border-radius: 5px;
+            padding: 0 35px 0 15px;
+            font-size: 15px;
+            border: none;
+            outline: none;
+        }
+
+        .search-icon,
+        .add-icon {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 20px;
+        }
+
+        .search-icon {
+            right: 55px;
+        }
+
+        .add-icon {
+            right: 15px;
+        }
+
+        /* 消息气泡样式 */
+        .message-bubble {
+            max-width: 70%;
+            padding: 8px 12px;
+            border-radius: 4px;
+            margin-bottom: 5px;
+            word-break: break-word;
+        }
+
+        /* 页面切换动画 */
+        .page-transition {
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* 聊天图标样式 */
+        .icon-wechat {
+            color: #07c160;
+        }
+
+        .icon-contact {
+            color: #999;
+        }
+
+        .icon-find {
+            color: #999;
+            position: relative;
+        }
+
+        .icon-me {
+            color: #999;
+        }
+
+        /* 右上角二维码 */
+        .qr-code {
+            width: 24px;
+            height: 24px;
+            color: #999;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- 聊天列表页 -->
+        <div id="chat-page" class="page-transition">
+            <div class="search-box">
+                <input type="text" class="search-input" placeholder="搜索">
+                <div class="search-icon">🔍</div>
+                <div class="add-icon">➕</div>
+            </div>
+
+            <div class="status-bar">
+                <div class="windows-status">
+                    <div class="windows-icon">💻</div>
+                    Windows 微信已登录
+                </div>
+            </div>
+
+            <div class="chat-list">
+                <div class="chat-item">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='40' r='25' fill='white'/%3E%3Cpath d='M35,35 Q50,20 65,35' stroke='black' fill='none' stroke-width='2'/%3E%3Ccircle cx='40' cy='35' r='3' fill='black'/%3E%3Ccircle cx='60' cy='35' r='3' fill='black'/%3E%3Cpath d='M45,45 Q50,55 55,45' stroke='black' fill='none' stroke-width='2'/%3E%3C/svg%3E"
+                        alt="李恒" class="avatar">
+                    <div class="chat-content">
+                        <div class="chat-header">
+                            <div class="chat-name">李恒</div>
+                            <div class="chat-time">凌晨2:56</div>
+                        </div>
+                        <div class="chat-preview">https://yuanbao.tencent.com/sc/rm7dLFpQeqlh...</div>
+                    </div>
+                </div>
+
+                <div class="chat-item">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23f0f0f0'/%3E%3Ctext x='50' y='50' font-size='14' text-anchor='middle' dominant-baseline='middle' fill='%23999'%3E群聊头像%3C/text%3E%3C/svg%3E"
+                        alt="地物三班报寝群" class="avatar">
+                    <div class="chat-content">
+                        <div class="chat-header">
+                            <div class="chat-name">地物三班报寝群</div>
+                            <div class="chat-time">昨天</div>
+                        </div>
+                        <div class="chat-preview">surround: 1</div>
+                    </div>
+                </div>
+
+                <div class="chat-item">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='40' r='25' fill='%23ffcc00'/%3E%3Cpath d='M35,35 Q50,20 65,35' stroke='black' fill='none' stroke-width='2'/%3E%3Ccircle cx='40' cy='35' r='3' fill='black'/%3E%3Ccircle cx='60' cy='35' r='3' fill='black'/%3E%3Cpath d='M45,45 Q50,55 55,45' stroke='black' fill='none' stroke-width='2'/%3E%3C/svg%3E"
+                        alt="刘（code）" class="avatar">
+                    <div class="chat-content">
+                        <div class="chat-header">
+                            <div class="chat-name">刘（code）</div>
+                            <div class="chat-time">昨天</div>
+                        </div>
+                        <div class="chat-preview">收到</div>
+                    </div>
+                </div>
+
+                <div class="chat-item">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%2307c160'/%3E%3Cpath d='M30,30 L70,30 L70,70 L30,70 Z' fill='white'/%3E%3Cpath d='M30,30 L70,70' stroke='white' stroke-width='3'/%3E%3C/svg%3E"
+                        alt="文件传输助手" class="avatar">
+                    <div class="chat-content">
+                        <div class="chat-header">
+                            <div class="chat-name">文件传输助手</div>
+                            <div class="chat-time">昨天</div>
+                        </div>
+                        <div class="chat-preview">[聊天记录]</div>
+                    </div>
+                </div>
+
+                <div class="chat-item">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23eaeaea'/%3E%3Ctext x='50' y='50' font-size='14' text-anchor='middle' dominant-baseline='middle' fill='%23999'%3E群头像%3C/text%3E%3C/svg%3E"
+                        alt="前端训练营会员群" class="avatar">
+                    <div class="chat-content">
+                        <div class="chat-header">
+                            <div class="chat-name">前端训练营会员群（二群）</div>
+                            <div class="chat-time">昨天</div>
+                        </div>
+                        <div class="chat-preview">"SHINE-CMX 🧸" 撤回了一条消息</div>
+                    </div>
+                </div>
+
+                <div class="chat-item">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23aaccff'/%3E%3Ctext x='50' y='50' font-size='14' text-anchor='middle' dominant-baseline='middle' fill='%23333'%3E龙小云%3C/text%3E%3C/svg%3E"
+                        alt="龙小云" class="avatar">
+                    <div class="chat-content">
+                        <div class="chat-header">
+                            <div class="chat-name">龙小云(数学 周六晚6点)</div>
+                            <div class="chat-time">周六</div>
+                        </div>
+                        <div class="chat-preview">行</div>
+                    </div>
+                </div>
+
+                <div class="chat-item">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='40' r='25' fill='white'/%3E%3Cpath d='M35,35 Q50,20 65,35' stroke='black' fill='none' stroke-width='2'/%3E%3Ccircle cx='40' cy='35' r='3' fill='black'/%3E%3Ccircle cx='60' cy='35' r='3' fill='black'/%3E%3Cpath d='M45,45 Q50,55 55,45' stroke='black' fill='none' stroke-width='2'/%3E%3C/svg%3E"
+                        alt="李恒" class="avatar">
+                    <div class="chat-content">
+                        <div class="chat-header">
+                            <div class="chat-name">李恒</div>
+                            <div class="chat-time">周五</div>
+                        </div>
+                        <div class="chat-preview">你撤回了一条消息</div>
+                    </div>
+                </div>
+
+                <div class="chat-item">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23eaeaea'/%3E%3Ctext x='50' y='50' font-size='14' text-anchor='middle' dominant-baseline='middle' fill='%23999'%3E群头像%3C/text%3E%3C/svg%3E"
+                        alt="毛笔书法" class="avatar">
+                    <div class="chat-content">
+                        <div class="chat-header">
+                            <div class="chat-name">毛笔书法 周四晚 D座117</div>
+                            <div class="chat-time">4月1日</div>
+                        </div>
+                        <div class="chat-preview">湘雅医学院 张烨: @所有人 同学们，4.8之前...</div>
+                    </div>
+                </div>
+
+                <div class="chat-item">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='40' r='25' fill='%23ff9900'/%3E%3Cpath d='M35,35 Q50,20 65,35' stroke='black' fill='none' stroke-width='2'/%3E%3Ccircle cx='40' cy='35' r='3' fill='black'/%3E%3Ccircle cx='60' cy='35' r='3' fill='black'/%3E%3Cpath d='M45,45 Q50,55 55,45' stroke='black' fill='none' stroke-width='2'/%3E%3C/svg%3E"
+                        alt="监督" class="avatar">
+                    <div class="chat-content">
+                        <div class="chat-header">
+                            <div class="chat-name">监督</div>
+                            <div class="chat-time">3月23日</div>
+                        </div>
+                        <div class="chat-preview">[动画表情]</div>
+                    </div>
+                </div>
+
+                <div class="chat-item">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='40' r='25' fill='%23996633'/%3E%3Cpath d='M35,35 Q50,20 65,35' stroke='black' fill='none' stroke-width='2'/%3E%3Ccircle cx='40' cy='35' r='3' fill='black'/%3E%3Ccircle cx='60' cy='35' r='3' fill='black'/%3E%3Cpath d='M45,45 Q50,55 55,45' stroke='black' fill='none' stroke-width='2'/%3E%3C/svg%3E"
+                        alt="李恒" class="avatar">
+                    <div class="chat-content">
+                        <div class="chat-header">
+                            <div class="chat-name">李恒 @中南大学ITS</div>
+                            <div class="chat-time">2025年3月28日</div>
+                        </div>
+                        <div class="chat-preview"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 个人主页 -->
+        <div id="profile-page" class="page-transition hidden">
+            <div class="profile-container">
+                <div class="profile-header">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='40' r='25' fill='white'/%3E%3Cpath d='M35,35 Q50,20 65,35' stroke='black' fill='none' stroke-width='2'/%3E%3Ccircle cx='40' cy='35' r='3' fill='black'/%3E%3Ccircle cx='60' cy='35' r='3' fill='black'/%3E%3Cpath d='M45,45 Q50,55 55,45' stroke='black' fill='none' stroke-width='2'/%3E%3C/svg%3E"
+                        alt="李恒" class="profile-avatar">
+                    <div class="profile-info">
+                        <div class="profile-name">李恒</div>
+                        <div class="profile-id">微信号：b13551458597</div>
+                        <div class="profile-actions">
+                            <div class="status-btn">状态</div>
+                            <div class="friends-btn">
+                                <span style="margin-right: 5px;">👤</span>等8个朋友
+                                <span style="color: red; margin-left: 5px;">●</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="qr-code">🔳</div>
+                </div>
+
+                <div class="function-list">
+                    <div class="function-item">
+                        <div class="function-icon">✅</div>
+                        <div class="function-name">服务</div>
+                        <div class="function-arrow">›</div>
+                    </div>
+
+                    <div class="function-item">
+                        <div class="function-icon">📦</div>
+                        <div class="function-name">收藏</div>
+                        <div class="function-arrow">›</div>
+                    </div>
+
+                    <div class="function-item">
+                        <div class="function-icon">🖼️</div>
+                        <div class="function-name">朋友圈</div>
+                        <div class="function-arrow">›</div>
+                    </div>
+
+                    <div class="function-item">
+                        <div class="function-icon">🎬</div>
+                        <div class="function-name">视频号和公众号</div>
+                        <div class="function-arrow">›</div>
+                    </div>
+
+                    <div class="function-item">
+                        <div class="function-icon">🏪</div>
+                        <div class="function-name">小店与卡包</div>
+                        <div class="function-right">2个朋友赞了：2.97元 12瓶怡宝纯净水</div>
+                        <div class="function-arrow">›</div>
+                    </div>
+
+                    <div class="function-item">
+                        <div class="function-icon">😊</div>
+                        <div class="function-name">表情</div>
+                        <div class="function-arrow">›</div>
+                    </div>
+
+                    <div class="function-item">
+                        <div class="function-icon">⚙️</div>
+                        <div class="function-name">设置</div>
+                        <div class="function-arrow">›</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部导航栏 -->
+    <div class="tab-bar">
+        <div class="tab-item active" data-page="chat">
+            <div class="tab-icon icon-wechat">💬</div>
+            <div>微信</div>
+        </div>
+        <div class="tab-item" data-page="contact">
+            <div class="tab-icon icon-contact">👥</div>
+            <div>通讯录</div>
+        </div>
+        <div class="tab-item" data-page="find">
+            <div class="tab-icon icon-find">🧭</div>
+            <div>发现</div>
+            <div
+                style="position: absolute; top: 5px; right: 30px; width: 8px; height: 8px; background-color: red; border-radius: 50%;">
+            </div>
+        </div>
+        <div class="tab-item" data-page="me">
+            <div class="tab-icon icon-me">👤</div>
+            <div>我</div>
+        </div>
+    </div>
+
+    <script>
+        // 页面切换功能
+        document.querySelectorAll('.tab-item').forEach(tab => {
+            tab.addEventListener('click', function () {
+                // 移除所有标签的活动状态
+                document.querySelectorAll('.tab-item').forEach(item => {
+                    item.classList.remove('active');
+                });
+
+                // 添加当前标签的活动状态
+                this.classList.add('active');
+
+                const page = this.getAttribute('data-page');
+
+                // 隐藏所有页面
+                document.querySelectorAll('.page-transition').forEach(p => {
+                    p.classList.add('hidden');
+                });
+
+                // 显示对应的页面
+                if (page === 'chat') {
+                    document.getElementById('chat-page').classList.remove('hidden');
+                } else if (page === 'me') {
+                    document.getElementById('profile-page').classList.remove('hidden');
+                }
+                // 其他页面可以在这里扩展
+            });
+        });
+
+        // 模拟聊天消息点击事件
+        document.querySelectorAll('.chat-item').forEach(item => {
+            item.addEventListener('click', function () {
+                alert('打开聊天窗口：' + this.querySelector('.chat-name').textContent);
+            });
+        });
+
+        // 模拟功能项点击事件
+        document.querySelectorAll('.function-item').forEach(item => {
+            item.addEventListener('click', function () {
+                alert('打开功能：' + this.querySelector('.function-name').textContent);
+            });
+        });
+    </script>
+</body>
+
+</html>
