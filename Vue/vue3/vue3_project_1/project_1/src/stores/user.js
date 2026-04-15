@@ -1,25 +1,25 @@
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
 
-export const useAuthStore = defineStore('auth', () => {
+export const useUserStore = defineStore('user', () => {
     const token = ref('')
-    const obj = ref({})
+    const userInfo = ref({})
 
     const setToken = (newToken) => {
         token.value = newToken
     }
 
     const setUserInfo = (newUserInfo) => {
-        obj.value = newUserInfo
+        userInfo.value = newUserInfo
     }
 
     const deleteToken = () => {
         token.value = ''
     }
 
-    return { token, obj, setToken, deleteToken, setUserInfo }
+    return { token, userInfo, setToken, deleteToken, setUserInfo }
 }, {
-    persist: true,
-},
+    persist: true
+}
 
 )

@@ -1,74 +1,111 @@
 <script setup>
 import { useRouter } from 'vue-router'
 import { getUserInfoRequest } from '@/utils/api'
-import { useAuthStore } from '@/stores/auth'
+import { useUserStore } from '@/stores/user'
 import { useLayoutStore } from '@/stores/layout'
 import { House, User, Goods,  ArrowDown } from '@element-plus/icons-vue'
 import { ref } from 'vue'
+import { useGoToPage } from '@/funcs/useGoToPage.js'
 
-const authStore = useAuthStore()
 const router = useRouter()
 const layoutStore = useLayoutStore()
 layoutStore.changeHelloWord('主页')
 
+// 用户信息 state管理
 const userInfo = ref(null)
-if (!authStore.token) {
+// 用户信息 store管理
+const userStore = useUserStore()
+
+if (!localStorage.getItem('token')) {
   router.push('/login')
 }else{
-
-getUserInfoRequest(authStore.token).then(res => {
-    authStore.setUserInfo(res.data.user_info)
+getUserInfoRequest().then(res => {
     userInfo.value = res.data.user_info
-    console.log(authStore.obj)
+    userStore.setUserInfo(userInfo.value)
+    console.log(userInfo.value)
 })
 }
 
-const handleMyinfo = () => {
-  router.push('/myinfo')
-}
 
-const handleSetting = () => {
-  router.push('/settings')
-}
 
 const logout = () => {
-  authStore.deleteToken()
+  localStorage.removeItem('token')
   router.push('/login')
 }
 
-
-
-// 应该放在articleCom中
+// TDesign导航菜单
+const collapsed = ref(true);
+const iconUrl = ref('https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/logo%402x.png');
+const changeCollapsed = () => {
+  collapsed.value = !collapsed.value;
+  iconUrl.value = collapsed.value
+    ? 'https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/logo%402x.png'
+    : 'https://tdesign.gtimg.com/site/baseLogo-light.png';
+};
+const changeHandler = (active) => {
+  console.log('change', active);
+};
 
 </script>
 
 <template>
   <el-container class="layout-container">
-
-    <el-aside width="220px" class="aside">
-      <div class="logo">
-        <h3>BoardView</h3>
-      </div>
-      <el-menu
-        default-active="1"
-        class="el-menu-vertical"
-        :router="true"
-      >
-        <el-menu-item index="/" >
-          <el-icon><House /></el-icon>
-          <span>首页</span>
-        </el-menu-item>
-        <el-menu-item index="/article">
-          <el-icon><User /></el-icon>
-          <span>我的文章</span>
-        </el-menu-item>
-        <el-menu-item index="/category">
-          <el-icon><Goods /></el-icon>
-          <span @click="handleCategory">我的分类</span>
-        </el-menu-item>
-       
-      </el-menu>
-    </el-aside>
+<t-menu theme="light" default-value="item2" :collapsed="collapsed" @change="changeHandler">
+    <!-- <template #logo>
+      <img :width="collapsed ? 35 : 136" :src="iconUrl" alt="logo" />
+    </template> -->
+    <t-menu-group title="主导航">
+      <t-menu-item value="item1">
+        <template #icon>
+          <t-icon name="app" />
+        </template>
+        仪表盘
+      </t-menu-item>
+    </t-menu-group>
+    <t-menu-group title="组件">
+      <t-submenu title="文章和分类" value="2-1">
+        <template #icon>
+          <t-icon name="server" />
+        </template>
+        <t-menu-item value="2-1-1" @click="useGoToPage('/article')">文章</t-menu-item>
+        <t-menu-item value="2-1-2" @click="useGoToPage('/category')">分类</t-menu-item>
+    
+      </t-submenu>
+      <t-menu-item value="2-2" @click="useGoToPage('/articleWrite')">
+        <template #icon>
+          <t-icon name="edit-1" />
+        </template>
+        写文章
+      </t-menu-item>
+      <t-menu-item value="2-3" @click="useGoToPage('/history')">
+        <template #icon>
+          <t-icon name="root-list" />
+        </template>
+        历史记录
+      </t-menu-item>
+     
+    </t-menu-group>
+    <t-menu-group title="更多">
+      <t-menu-item value="item3" @click="useGoToPage('/myinfo')">
+        <template #icon>
+          <t-icon name="user" />
+        </template>
+        个人页
+      </t-menu-item>
+      <t-menu-item value="item4" @click="useGoToPage('/login')">
+        <template #icon>
+          <t-icon name="login" />
+        </template>
+        登录页
+      </t-menu-item>
+    </t-menu-group>
+    <template #operations>
+      <t-button class="t-demo-collapse-btn" variant="text" shape="square" @click="changeCollapsed">
+        <template #icon><t-icon name="view-list" /></template>
+      </t-button>
+    </template>
+  </t-menu>
+    
     
     <el-container>
 
@@ -77,7 +114,7 @@ const logout = () => {
           <span class="welcome"></span>
         </div>
         <div class="header-right">
-          <el-dropdown @command="handleCommand">
+          <el-dropdown >
             <span class="user-info">
               <el-avatar :size="32" src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png" />
               <span class="username">{{ userInfo?.username || '用户' }}</span>
@@ -85,8 +122,8 @@ const logout = () => {
             </span>
             <template #dropdown>
               <el-dropdown-menu>
-                <el-dropdown-item @click="handleMyinfo">个人中心</el-dropdown-item>
-                <el-dropdown-item  @click="handleSetting">设置设置</el-dropdown-item>
+                <el-dropdown-item @click="useGoToPage('/myinfo')">个人中心</el-dropdown-item>
+                <el-dropdown-item  @click="useGoToPage('/settings')">设置</el-dropdown-item>
                 <el-dropdown-item divided  @click="logout">退出登录</el-dropdown-item>
               </el-dropdown-menu>
             </template>
@@ -99,7 +136,7 @@ const logout = () => {
       </el-main>
       
       <el-footer class="footer">
-         @2026 BoardView - Created with Element Plus
+         @2026 BoardView -Vue3 Created with TDesign Vue Next and Element Plus
       </el-footer>
     </el-container>
 

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type='file' id='file' />
+    <br>
+    <button id="btn">打开文件</button>
+    <p id="result_p"></p>
+</body>
+
+
+<script>
+    document.querySelector('#btn').addEventListener('click', async () => {
+        let result_str = ''
+        const fileList = document.querySelector('#file').files
+        const file = document.querySelector('#file').files[0]
+        const result_p = document.querySelector('#result_p')
+        console.log(file);
+        console.log(fileList);
+        const fileReader = new FileReader()
+
+        fileReader.readAsText(file) // readAsText 读取文件内容为文本 
+        // readAsArrayBuffer 读取文件内容为 ArrayBuffer 对象
+        // readAsDataURL 读取文件内容为 Data URL 格式
+        // readAsBinaryString 读取文件内容为二进制字符串
+        // readAsDataURL 读取文件内容为 Data URL 格式
+        fileReader.onload = () => { // readystate 事件读取完成时触发，无论成功与否。
+
+            result_str = fileReader.result
+            console.log('文件内容result:', result_str);
+            result_p.innerHTML = result_str
+        }
+
+        fileReader.onprogress = () => { // 读取过程中触发 ，提供进度信息
+            console.log(fileReader.progress);
+        }
+        fileReader.onerror = () => {
+            console.log(fileReader.error);
+        }
+
+
+    })
+</script>
+
+</html>

@@ -1,10 +1,7 @@
+
 <script setup>
+import { ref, computed } from 'vue'
 
-
-
-// data()
-import { ref } from 'vue'
-import { computed } from 'vue'
 const msg = ref('HomeView组件')
 const count = ref(100)
 // computed()
@@ -18,14 +15,17 @@ const incrementCount = () => {
     count.value++
 }
 
+
 </script>
 
-<template>
+<template >
   <main>
+
     <h1>{{ msg }}</h1>
     <button @click="changeMsg">改变消息</button>
     <p>当前计数: {{ count }}</p>
     <p>双倍计数: {{ DoubleCount }}</p>
     <button @click="incrementCount">增加</button>
+
   </main>
 </template>

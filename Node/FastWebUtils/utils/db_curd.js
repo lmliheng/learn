@@ -18,10 +18,10 @@ const token_db_getUserInfo = async (token) => {
         throw error
     }
 }
-const user_db_update = async (id, username, email, password) => {
+const user_db_update = async (id, username, email) => {
     try {
-        const sql = 'UPDATE user SET username = ?, email = ?, password = ? WHERE id = ?'
-        await pool.query(sql, [username, email, password, id])
+        const sql = 'UPDATE user SET username = ?, email = ? WHERE id = ?'
+        await pool.query(sql, [username, email, id])
         return true
     } catch (error) {
         console.error('更新用户信息错误:', error)
@@ -75,11 +75,15 @@ const register_db_checkExistByEmail = async (email) => {
         throw error
     }
 }
-// 查询所有文章
+/**
+ * 文章分类
+ */
+
+// 查询本用户下所有文章
 const article_db_getAll = async (user_id) => {
     try {
         // 分页查询文章
-        const sql = 'SELECT * FROM article where user_id = ? order by created_at desc limit 0, 10'
+        const sql = 'SELECT * FROM article where user_id = ? '
         const [rows] = await pool.query(sql, [user_id])
         return rows
     } catch (error) {
@@ -87,7 +91,79 @@ const article_db_getAll = async (user_id) => {
         throw error
     }
 }
-// 删除文章
+// 页码分页查询本用户所有文章
+const article_db_getAllByPage = async (user_id, page, page_size) => {
+    try {
+        const offset = (page - 1) * page_size
+        const sql = `
+        SELECT 
+        a.id,
+        a.title,
+        a.content,
+        a.cart_id,
+        a.cart_name,
+        a.created_at,
+        a.updated_at
+       FROM article a
+       LEFT JOIN article_cart c ON a.cart_id = c.cart_id
+       WHERE a.user_id = ${user_id}
+       ORDER BY a.created_at DESC
+       LIMIT ${page_size} OFFSET ${offset}`
+
+        // 2. 查询总数
+        const countSql = `
+       SELECT COUNT(*) as total
+       FROM article a
+       WHERE a.user_id = ${user_id}
+    `
+        const [rows] = await pool.query(sql)
+        // console.log('rows:', rows)
+        const [countRows] = await pool.query(countSql)
+        // console.log('countRows:', countRows)
+        return {
+            total: countRows[0].total,
+            articleList: rows
+        }
+    } catch (error) {
+        console.error('页码分页查询所有文章错误:', error)
+        throw error
+    }
+}
+// 页码分页查询本用户下某分类下的文章
+const article_db_getByCartIdByPage = async (user_id, cart_id, page, page_size) => {
+    try {
+        const offset = (page - 1) * page_size
+        const sql = `
+SELECT a.id, a.title, a.content, a.cart_id, a.cart_name, a.created_at, a.updated_at
+FROM article a
+    LEFT JOIN article_cart c ON a.cart_id = c.cart_id
+WHERE
+    a.cart_id = ${cart_id}
+    AND a.user_id = ${user_id}
+ORDER BY a.created_at DESC
+LIMIT ${page_size}
+OFFSET ${offset}`
+        const [rows] = await pool.query(sql)
+        return rows
+    } catch (error) {
+        console.error('页码分页查询本用户下某分类下的文章错误:', error)
+        throw error
+    }
+}
+
+// 通过id查某用户下的文章
+const article_db_getById = async (id, user_id) => {
+    try {
+        const sql = 'SELECT * FROM article WHERE id = ? and user_id = ?'
+        const [rows] = await pool.query(sql, [id, user_id])
+        return rows[0]
+    } catch (error) {
+        console.error('通过id查某用户下的文章错误:', error)
+        throw error
+    }
+}
+
+// 删除本用户的文章
 const article_db_deleteById = async (id, user_id) => {
     try {
         const sql = 'DELETE FROM article WHERE id = ? and user_id = ?'
@@ -131,6 +207,8 @@ const article_db_add = async (id, title, content, cart_id, cart_name, user_id) =
         throw error
     }
 }
+
+
 // 查询所有分类
 const article_cart_db_getAll = async (user_id) => {
     try {
@@ -196,7 +274,11 @@ module.exports = {
     article_db_postEdit,
     article_db_add,
     article_db_getDetail,
+    article_db_getById,
     article_db_deleteById,
+    article_db_getAllByPage,
+    article_db_getByCartIdByPage,
+    
     // 分类相关
     article_cart_db_getAll,
     articleCart_db_getArticleListByUserId,

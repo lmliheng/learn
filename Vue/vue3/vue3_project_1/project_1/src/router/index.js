@@ -6,8 +6,12 @@ import LoginFormCom from '../components/LoginFormCom.vue'
 import RegisterFormCom from '../components/RegisterFormCom.vue'
 import SettingCom from '../components/SettingCom.vue'
 import ArticleCom from '../components/ArticleCom.vue'
+import ArticleWrite from '../components/ArticleWrite.vue'
 import CategoryCom from '../components/CategoryCom.vue'
 import Myinfo from '../components/Myinfo.vue'
+import EditMyInfo from '../components/EditMyInfo.vue'
+import EditArticle from '../components/EditArticle.vue'
+import HistoryPage from '../components/HistoryPage.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -17,6 +21,11 @@ const router = createRouter({
       name: 'home',
       component: BoardView,
       children: [
+        {
+          path: '/articleWrite',
+          name: 'articleWrite',
+          component: ArticleWrite,
+        },
         {
           path: '/settings',
           name: 'settings',
@@ -36,10 +45,22 @@ const router = createRouter({
           path: '/myinfo',
           name: 'myinfo',
           component: Myinfo,
-        }
-
-
-
+        },
+        {
+          path: '/editMyInfo',
+          name: 'editMyInfo',
+          component: EditMyInfo,
+        },
+        {
+          path: '/editArticle/:id',
+          name: 'editArticle',
+          component: EditArticle,
+        },
+        {
+          path: '/history',
+          name: 'history',
+          component: HistoryPage,
+        },
       ]
     },
     {
@@ -59,16 +80,16 @@ const router = createRouter({
         },
       ]
     },
-// /* 不生效
-{
-  path: '/:pathMatch(.*)*', 
-  redirect: '/404',
-},
-{
-  path: '/404',
-  name: '404',
-  component: NotFoundView,
-}
+    // /* 不生效
+    {
+      path: '/:pathMatch(.*)*',
+      redirect: '/404',
+    },
+    {
+      path: '/404',
+      name: '404',
+      component: NotFoundView,
+    }
   ],
 })
 

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>录音</title>
+</head>
+
+
+
+<body>
+    <div class="app">
+        <input type="text" placeholder="请输入录音名称" id="fileName" autocomplete="off">
+        <select id="format" name="format">
+            <option value="" selected="selected" disabled>请选择录音格式</option>
+            <option value="wav">wav</option>
+            <option value="webm">webm</option>
+        </select>
+
+        <button id="recordBtn">开始录音</button>
+        <audio id="audioPlayer" controls></audio>
+        <a id="downloadLink" style="display:none;">下载录音</a>
+    </div>
+
+    <script>
+        const recordBtn = document.getElementById('recordBtn')
+        const audioPlayer = document.getElementById('audioPlayer')
+        const downloadLink = document.getElementById('downloadLink')
+        const fileName = document.getElementById('fileName')
+        const format = document.getElementById('format')
+
+        let mediaRecorder = null
+        let recordedChunks = [] // 存储录音数据的数组
+
+        recordBtn.addEventListener('click', async () => {
+            //  防止重复操作
+            if (mediaRecorder && mediaRecorder.state === 'recording') {
+                stopRecording()
+                return
+            }
+            startRecording()
+        })
+
+        async function startRecording() {
+            try {
+                resetState()
+
+                mediaStream = await navigator.mediaDevices.getUserMedia({
+                    audio: true
+                })
+
+
+                mediaRecorder = new MediaRecorder(mediaStream)
+                // 当录音开始时，会触发其 MediaRecorder.ondataavailable 事件，
+                // 从该事件回调的入参为 BlobEvent，从它身上取到 event.data 便是我们需要的音频数据
+                mediaRecorder.ondataavailable = e => {
+                    if (e.data.size > 0) recordedChunks.push(e.data) // 筛选出空数据 添加到数组
+                }
+
+                mediaRecorder.onstop = handleStop
+
+                mediaRecorder.start()
+                recordBtn.textContent = '停止录音'
+            } catch (err) {
+                console.error('录音失败:', err)
+                alert('无法访问麦克风')
+            }
+        }
+
+        function stopRecording() {
+            mediaRecorder?.stop()
+            recordBtn.textContent = '开始录音'
+        }
+
+        function handleStop() {
+            const blob = new Blob(recordedChunks, {
+                type: `audio/${format.value}`
+            })
+
+            const url = URL.createObjectURL(blob) // 生成 URL 对象
+            console.log(url)
+            audioPlayer.src = url
+
+            downloadLink.href = url
+            downloadLink.download = `${fileName.value}.${format.value}`
+            downloadLink.style.display = 'inline-block'
+
+            releaseMediaStream()
+        }
+
+        //  释放麦克风权限
+        function releaseMediaStream() {
+            mediaStream?.getTracks().forEach(track => track.stop())
+            mediaStream = null
+            mediaRecorder = null
+            recordedChunks = []
+        }
+
+        function resetState() {
+            recordedChunks = []
+            audioPlayer.removeAttribute('src')
+            downloadLink.style.display = 'none'
+        }
+    </script>
+</body>
+
+</html>

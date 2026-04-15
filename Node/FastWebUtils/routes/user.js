@@ -49,13 +49,13 @@ router.get('/userInfo', async (req, res) => {
 
 // 更新用户信息
 router.put('/userInfo', async (req, res) => {
-    const { id, username, email, password } = req.body
+    const { id, username, email } = req.body
     // 参数校验
-    if (!id || !username || !email || !password) {
+    if (!id || !username || !email) {
         return res.status(400).json({
             code: 400,
             success: false,
-            message: '用户id、用户名、邮箱、密码不能为空'
+            message: '用户id、用户名、邮箱不能为空'
         })
     }
 
@@ -63,8 +63,7 @@ router.put('/userInfo', async (req, res) => {
 
     try {
         // 密码加密
-        let hashPassword = await ToHash(password)
-        await user_db_update(id, username, email, hashPassword)
+        await user_db_update(id, username, email)
         res.json({
             code: 200,
             success: true,
@@ -79,5 +78,5 @@ router.put('/userInfo', async (req, res) => {
     }
 }
 )
-
+// 修改用户密码
 module.exports = router

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>base64</title>
+</head>
+<style>
+
+</style>
+
+<body>
+
+</body>
+<script>
+    // btoa编码
+    let str = 'hello world'
+    let base64_encode = btoa(str)// 只能输入二进制字符串
+    console.log(base64_encode);//aGVsbG8gd29ybGQ=，
+
+    // atob解码
+    let str_decode = atob(base64_encode)
+    console.log(str_decode);//hello world
+
+    // 任意二进制数据的base64编码
+
+
+</script>
+
+</html>

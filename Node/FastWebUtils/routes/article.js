@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const { article_db_getDetail, article_db_getAll, article_db_add, article_db_deleteById, article_db_postEdit } = require('../utils/db_curd')
+const { article_db_getById, article_db_getDetail, article_db_getAll, article_db_getAllByPage, article_db_getByCartIdByPage, article_db_add, article_db_deleteById, article_db_postEdit } = require('../utils/db_curd')
 const { tokenValidator } = require('../utils/token_creator')
 //========================================
 
@@ -42,6 +42,123 @@ router.get('/article/getAll', async (req, res) => {
     } catch (error) {
         console.error('获取文章列表错误:', error)
         return res.status(500).send('获取文章列表失败', error.message)
+    }
+})
+
+// 页码分页查询所有文章 没有传入排序字段，直接写在sql中按创建时间降序排序
+router.get('/article/getAllByPage', async (req, res) => {
+    const { page, page_size } = req.query
+    if (!page || !page_size) {
+        return res.status(400).json({
+            code: 400,
+            success: false,
+            message: '页码和每页数量不能为空'
+        })
+    }
+    // token拿取user_id
+    const token = req.headers.authorization
+    const decoded = tokenValidator(token)
+    if (!decoded) {
+        return res.status(401).json({
+            code: 401,
+            success: false,
+            message: '未授权'
+        })
+    }
+    const user_id = decoded.id
+    try {
+        const { total, articleList } = await article_db_getAllByPage(user_id, page, page_size)
+
+        // console.log('total:', total)
+        // console.log('articleList:', articleList)
+
+        res.json({
+            code: 200,
+            success: true,
+            message: '获取成功',
+            data: {
+                total: total,
+                articleList: articleList
+            },
+        })
+    } catch (error) {
+        console.error('获取文章列表错误:', error)
+        return res.status(500).send('获取文章列表失败', error.message)
+    }
+
+}
+)
+// 页码分页查询本用户下某分类下的文章
+router.get('/article/getSomeByPageAndCart', async (req, res) => {
+    const { page, page_size, cart_id } = req.query
+    if (!page || !page_size || !cart_id) {
+        return res.status(400).json({
+            code: 400,
+            success: false,
+            message: '页码、每页数量、分类id不能为空'
+        })
+    }
+    const token = req.headers.authorization
+    const decoded = tokenValidator(token)
+    if (!decoded) {
+        return res.status(401).json({
+            code: 401,
+            success: false,
+            message: '未授权'
+        })
+    }
+    const user_id = decoded.id
+    try {
+        const { total, articleList } = await article_db_getByCartIdByPage(user_id, cart_id, page, page_size)
+        res.json({
+            code: 200,
+            success: true,
+            message: '获取成功',
+            data: {
+                total: total,
+                articleList: articleList
+            },
+
+        })
+    } catch (error) {
+        console.error('获取文章列表错误:', error)
+        return res.status(500).send('获取文章列表失败', error.message)
+    }
+}
+)
+
+// 通过id查某用户下的文章
+router.get('/article/detail',async(req,res)=>{
+    const { id } = req.query
+    if (!id) {
+        return res.status(400).json({
+            code: 400,
+            success: false,
+            message: '文章id不能为空'
+        })
+    }
+    // token拿取user_id
+    const token = req.headers.authorization
+    const decoded = tokenValidator(token)
+    if (!decoded) {
+        return res.status(401).json({
+            code: 401,
+            success: false,
+            message: '未授权'
+        })
+    }
+    const user_id = decoded.id
+    try {
+        const article = await article_db_getById(id, user_id)
+        res.json({
+            code: 200,
+            success: true,
+            message: '获取成功',
+            article: article
+        })
+    } catch (error) {
+        console.error('通过id查某用户下的文章错误:', error)
+        return res.status(500).send('通过id查某用户下的文章失败', error.message)
     }
 })
 // 添加文章

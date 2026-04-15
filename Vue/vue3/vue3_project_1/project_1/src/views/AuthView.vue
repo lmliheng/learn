@@ -2,15 +2,13 @@
 import LoginFormCom from '@/components/LoginFormCom.vue'
 import RegisterFormCom from '@/components/RegisterFormCom.vue'
 import { ref } from 'vue'
-const isShow = ref(true)
+
 
 </script>
 
 <template>
  <div class="auth-view">
- 
-  <LoginFormCom v-if="isShow" />
-  <RegisterFormCom v-else />
+  <router-view />
   </div>
 </template>
 

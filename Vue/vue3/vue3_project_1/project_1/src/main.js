@@ -7,9 +7,13 @@ import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 import App from './App.vue'
 import router from './router'
 
+import 'tdesign-vue-next/es/style/index.css';
+
+
 const app = createApp(App)
 const pinia = createPinia()
 pinia.use(piniaPluginPersistedstate)
+
 
 
 app.use(pinia)

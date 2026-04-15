@@ -1,38 +1,81 @@
-# project_1
+# FastWeb Project
 
-This template should help get you started developing with Vue 3 in Vite.
+一个基于 Vue 3 + Element Plus +  TDesign Vue Next 1.19+的后台管理系统。
 
-## Recommended IDE Setup
+## 项目简介
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+本项目是一个轻量级后台管理系统，提供文章管理、分类管理、用户信息等功能。前端采用 Vue 3 + Element Plus 构建，后端服务基于 [Fast-NodeServer](https://github.com/lmliheng/Fast-NodeServer) 实现。
 
-## Recommended Browser Setup
+## 技术栈
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+| 类别 | 技术 |
+|------|------|
+| 框架 | Vue 3.5+ |
+| UI 组件库 | Element Plus 2.13+ / TDesign Vue Next 1.19+ |
+| 状态管理 | Pinia 3.0+ |
+| 路由 | Vue Router 5.0+ |
+| HTTP 客户端 | Axios 1.15+ |
+| 构建工具 | Vite 8.0+ |
+| 工具库 | Lodash ES 4.18+ |
 
-## Customize configuration
+## 快速开始
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+### 前置要求
 
-## Project Setup
+- Node.js >= 20.19.0
+- MySQL 8.0+
 
-```sh
+### 安装依赖
+
+```bash
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+### 配置后端
 
-```sh
+1. 克隆后端服务：
+   ```bash
+   git clone https://github.com/lmliheng/Fast-NodeServer.git
+   cd Fast-NodeServer
+   ```
+
+2. 配置数据库连接（编辑 `.env` 文件）
+
+3. 启动后端服务：
+   ```bash
+   npm run dev
+   ```
+
+后端服务默认运行在 `http://localhost:7000`
+
+### 启动前端
+
+```bash
 npm run dev
 ```
 
-### Compile and Minify for Production
+前端默认运行在 `http://localhost:5173`
 
-```sh
-npm run build
+### 登录账号
+
+- 邮箱：`test@1`
+- 密码：`test`
+
+## 项目结构
+
 ```
+src/
+├── components/      # 业务组件
+├── views/          # 页面视图
+├── router/         # 路由配置
+├── stores/         # Pinia 状态管理
+├── utils/          # 工具函数
+├── funcs/          # 组合式函数
+└── assets/         # 静态资源
+```
+
+## 相关文档
+
+- [Element Plus 组件库](https://element-plus.org/)
+- [Vue 3 官方文档](https://vuejs.org/)
+- [Fast-NodeServer 后端](https://github.com/lmliheng/Fast-NodeServer)

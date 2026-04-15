@@ -1,5 +1,11 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
+import { ref } from 'vue'
+
+const styleObj = {
+    isActive:  'active',
+    isLight: 'light',
+}
 
 </script>
 
@@ -10,13 +16,18 @@ import { RouterLink, RouterView } from 'vue-router'
     <div class="wrapper">
      
       <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
+        <RouterLink to="/home" >Home</RouterLink> |
+        <RouterLink to="/about">About</RouterLink> |
+        <RouterLink to="/watch-test">WatchTest</RouterLink> |
+        <RouterLink to="/tab-test">TabTest</RouterLink> |
+        <RouterLink to="/props-view">PropsView</RouterLink> |
+        <RouterLink to="/model-test-view">ModelTestView</RouterLink>
       </nav>
+
     </div>
   </header>
 
-  <RouterView></RouterView>
+  <RouterView :class="styleObj"></RouterView>
 </template>
 
 <style scoped>
