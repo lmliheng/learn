@@ -1,0 +1,73 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+    <title>rem和viewport</title>
+</head>
+<style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: 'Courier New', Courier, monospace;
+    }
+
+    html {
+        font-size: 16px;
+    }
+    .container{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        
+        justify-content: flex-start;
+        padding: 1rem;
+        font-size: 0.4rem;
+    }
+    
+    .container img{
+        width: 100%;
+        
+    }
+</style>
+
+<body>
+    <div class="container">
+        <img src="./image.png" alt="weilong" >
+        <br>
+        <P style="font-size: 0.5rem;" id="test_p">
+            角色名：威龙
+        </P>
+        <br>
+
+        <p>
+            台词：
+        </p>
+        <br>
+        <ul >
+            <li>事贵应机，我作先锋！</li>
+            <li>威龙之势横扫一切，可它凌驾不了时间，也改变不了已定的—霸者之路</li>
+            <li>威龙，即使身陷困境，也毫无惧色，犹如在黑夜中摸索，但坚定的目光始终望向光明。</li>
+            <li>在命运的挑战下，威龙如烟花般璀璨绽放，而后傲然挺立，彰显出不屈的霸气。</li>
+            <li>威龙之眼如暗夜星辰，闪烁着的霸气，无人能及。</li>
+            
+        </ul>
+    </div>
+</body>
+
+<script>
+    
+MAX_FONT_SIZE = 42
+window.addEventListener("DOMContentLoaded", () => {
+    const html = document.querySelector("html");
+    fontSize = html.clientWidth / 10
+    fontSize = fontSize < MAX_FONT_SIZE ? fontSize : MAX_FONT_SIZE;
+    html.style.fontSize = fontSize + "px";
+    console.log('html字体大小:', html.style.fontSize);
+});
+  
+</script>
+
+</html>

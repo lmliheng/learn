@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVG</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+<canvas id="canvas_1" width="500" height="500"></canvas>
+<!-- 创造了一个固定大小的画布，它公开了一个或多个渲染上下文，
+ 其可以用来绘制和处理要展示的内容。我们将会将注意力放在 2D 渲染上下文中 -->
+
+<body>
+
+</body>
+<script>
+// path2D是一个2D路径对象，它包含了路径的所有信息，包括起点、终点、曲线等。
+
+    const canvas = document.getElementById('canvas_1');
+    const ctx = canvas.getContext('2d');
+
+// 路径 beginPath 
+// 起点 moveTo
+// 绘制 stroke/fill
+
+
+
+    // 矩形 填充
+    ctx.fillStyle = "rgb(200,0,0)";
+    ctx.fillRect(10, 10, 55, 50); // x,y,width,height
+    // 矩形 边框
+    ctx.strokeStyle = "rgb(0,0,200)";
+    ctx.strokeRect(10, 10, 55, 50);
+    // 清除矩形
+    ctx.fillStyle = "rgb(255,255,255)";
+    ctx.clearRect(15, 15, 40, 30);
+
+
+
+    // 圆
+
+    // 头
+    ctx.beginPath();
+    ctx.strokeStyle = "rgb(200,0,00,0.5)";
+    ctx.arc(100, 100, 50, 0, Math.PI * 2); // x,y,r,startAngle,endAngle,counterClockwise
+    ctx.stroke();
+    // 眼睛
+    ctx.moveTo(75, 100); // 移动到指定位置 x,y起点
+    ctx.strokeStyle = "rgb(0,0,100)";
+    ctx.arc(70, 100, 5, 0, Math.PI * 2); // x,y,r,startAngle,endAngle,counterClockwise
+    ctx.stroke();
+    ctx.moveTo(125, 100); // 从0开始绘制到一圈
+    ctx.strokeStyle = "rgb(0,0,100)";
+    ctx.arc(120, 100, 5, 0, Math.PI * 2); // x,y,r,startAngle,endAngle,counterClockwise
+    ctx.stroke();
+    // 口
+    ctx.moveTo(120, 116); // 从0开始绘制
+    ctx.strokeStyle = "rgb(0,0,100)";
+    ctx.arc(100, 116, 20, 0, Math.PI ,false); // 顺时针旋转半圈，从0开始到-pi
+    ctx.stroke();
+
+
+    // 线
+
+    ctx.beginPath();
+    ctx.moveTo(200, 100); // 移动到指定位置 x,y起点
+    ctx.lineTo(200, 200); // 绘制一条线 x,y终点
+    ctx.stroke();
+    ctx.closePath();
+
+ // 二次贝塞尔曲线
+    ctx.beginPath();
+    ctx.moveTo(75, 25);
+    ctx.quadraticCurveTo(25, 25, 25, 62.5);
+    ctx.quadraticCurveTo(25, 100, 50, 100);
+    ctx.quadraticCurveTo(50, 120, 30, 125);
+    ctx.quadraticCurveTo(60, 120, 65, 100);
+    ctx.quadraticCurveTo(125, 100, 125, 62.5);
+    ctx.quadraticCurveTo(125, 25, 75, 25);
+    ctx.stroke();
+</script>
+
+</html>

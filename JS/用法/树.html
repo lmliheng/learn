@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>树</title>
+</head>
+<style>
+
+</style>
+
+<body>
+
+</body>
+<script>
+    const tree = {
+        val: 'a',
+        children: [
+            {
+                val: 'b',
+                children: [
+                    {
+                        val: 'b1',
+                        children: []
+                    },
+                    {
+                        val: 'b2',
+                        children: []
+                    }
+                ]
+            },
+            {
+                val: 'c',
+                children: [
+                    {
+                        val: 'c1',
+                        children: []
+                    },
+                    {
+                        val: 'c2',
+                        children: []
+                    }
+                ]
+            }
+        ]
+    }
+
+
+    //深度优先遍历
+    const dfs = (tree) => {
+        console.log(tree.val);
+        // if (!tree.children) { return; }
+        tree.children.forEach(item => { dfs(item); })
+
+    }
+
+    // 广度优先遍历  用队列实现
+    const bfs = (tree) => {
+        let queue = [tree]; // 根节点入队
+        while (queue.length) {
+            let node = queue.shift();
+            console.log(node.val);
+            if (node.children) {
+                node.children.forEach(item => { queue.push(item); })
+            }
+        }
+
+    }
+
+    console.log(dfs(tree));
+    console.log(bfs(tree));
+
+
+    const binaryTree = {
+        name: 'a',
+        left: {
+            name: 'b',
+            left: {
+                name: 'b1',
+                left: {
+                    name: 'b11',
+                    left: null,
+                    right: null
+                },
+                right: null
+            },
+            right: {
+                name: 'b3',
+                left: null,
+                right: null
+            }
+
+        },
+        right: {
+            name: 'c',
+            left:
+            {
+                name: 'c1',
+                left: null,
+                right: null
+            },
+
+            right: {
+                name: 'c3',
+                left: null,
+                right: null
+            }
+
+        }
+    }
+
+    // 先序遍历preorder 根左右
+    const preorder = (binaryTree) => {
+
+        if (!binaryTree) { return; }
+        console.log(binaryTree.name);
+        preorder(binaryTree.left);
+        preorder(binaryTree.right);
+    }
+
+    console.log('先序遍历结果preorder', preorder(binaryTree));
+
+    // 中序遍历inorder 左根右
+
+    const inorder = (binaryTree) => {
+        if (!binaryTree) { return; }
+        inorder(binaryTree.left);
+        console.log(binaryTree.name);
+        inorder(binaryTree.right);
+    }
+
+    console.log('中序遍历结果inorder', inorder(binaryTree));
+
+
+    // 后序遍历postorder 左右根
+
+    const postorder = (binaryTree) => {
+        if (!binaryTree) { return; }
+        postorder(binaryTree.left);
+        postorder(binaryTree.right);
+        console.log(binaryTree.name);
+    }
+
+    console.log('后序遍历结果postorder', postorder(binaryTree));
+
+
+</script>
+
+</html>

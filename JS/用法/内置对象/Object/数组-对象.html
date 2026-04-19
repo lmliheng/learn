@@ -15,6 +15,8 @@
 </style>
 
 <body>
+    <input type="file"> 
+    <!-- blob -->
     参考<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>
 
 </body>
@@ -105,6 +107,12 @@
 
 
     };
+
+
+    console.log(user);
+    console.log(JSON.stringify(user),'类型是',typeof JSON.stringify(user));
+        console.log(JSON.stringify(user).toString());
+    console.log('******************************');
     //增
     user.email = 'zhangsan@qq.com';
     console.log(user);

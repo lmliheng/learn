@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>集合</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+</style>
+
+<body>
+
+</body>
+
+<script>
+
+    let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10]
+    // 数组转换为集合
+    let arrSet = new Set(arr)  // 集合 object
+
+    // 集合转换为数组
+    let arr2 = [...arrSet]
+
+    // 集合去重
+    let arrSet3 = new Set([...new Set(arr)])  // 返回
+    console.log('集合去重', arrSet3, '类型', typeof arrSet3)
+
+    // 集合添加元素
+    arrSet3.add(11)
+    console.log('集合添加元素', arrSet3, '类型', typeof arrSet3)
+    // 判断集合是否包含元素has(11)
+    console.log('判断集合是否包含元素', arrSet3.has(11))
+
+    let arrSet2 = new Set([1, 2, 3, 4, 9, 10])  // 集合 object
+
+    // 交集 通过数组加filter方法实现
+    let arrSet4 = [...arrSet3].filter(item => arrSet2.has(item))
+    console.log('交集', arrSet4, '类型', typeof arrSet4)
+
+    // 并集 通过数组加concat方法实现
+    let arrSet5 = new Set([...arrSet3].concat(arr2))
+    console.log('并集', arrSet5, '类型', typeof arrSet5)
+
+    // 或者使用原型方法
+
+    let arrSet6 = arrSet3.union(arrSet2)
+    console.log('并集', arrSet6, '类型', typeof arrSet6)
+    let arrSet7 = arrSet3.intersection(arrSet2)
+    console.log('交集', arrSet7, '类型', typeof arrSet7)
+
+
+</script>
+
+</html>

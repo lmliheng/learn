@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图</title>
+</head>
+<style>
+
+</style>
+
+<body>
+
+</body>
+<script>
+    const graph = {
+        0: [1, 2],
+        1: [2],
+        2: [0, 3],
+        3: [3],
+    }
+
+    let visited = new Set();
+    // dfs 深度优先搜索
+    const dfs = (node) => {
+        console.log(node);
+        visited.add(node);
+        graph[node].forEach(c => {
+            if (!visited.has(c)) {
+                dfs(c);
+            }
+        })
+        return '搜索完成'
+    }
+    console.log('深度优先搜索0开始', dfs(0));
+    visited.clear();
+    console.log('深度优先搜索2开始', dfs(2));
+    visited.clear();
+
+
+    // bfs 广度优先搜索
+    const bfs = (node) => {
+     let quene = [node];
+     let visited = new Set();
+     visited.add(node);
+     while(quene.length){
+        let n=quene.shift();
+        console.log(n);
+        graph[n].forEach(c=>{
+            if(!visited.has(c)){
+                quene.push(c);
+                visited.add(c);
+            }
+        })
+     }
+     return '搜索完成'
+
+    }
+    console.log('广度优先搜索0开始', bfs(0));
+    
+    console.log('广度优先搜索2开始', bfs(2));
+   
+</script>
+
+</html>

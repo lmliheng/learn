@@ -1,6 +1,7 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
 import { ref } from 'vue'
+import SvgIcon from '@/views/SvgIcon.vue'
 
 const styleObj = {
     isActive:  'active',
@@ -14,7 +15,8 @@ const styleObj = {
     <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
 
     <div class="wrapper">
-     
+    <SvgIcon name="仓鼠" />
+      
       <nav>
         <RouterLink to="/home" >Home</RouterLink> |
         <RouterLink to="/about">About</RouterLink> |
