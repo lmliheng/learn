@@ -1,0 +1,16 @@
+{
+  "name": "lmliheng-js",
+  "version": "1.0.4",
+  "description": "工具集",
+  "license": "MIT",
+  "author": "liheng",
+  "type": "module",
+  "module": "src/module/deep_clone.js",
+  "main": "src/common/deep_clone.js",
+  "scripts": {
+    "test": "jest --watch --coverage"
+  },
+  "devDependencies": {
+    "jest": "^30.3.0"
+  }
+}

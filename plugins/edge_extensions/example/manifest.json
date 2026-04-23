@@ -1,0 +1,32 @@
+{
+  "manifest_version": 3,
+  "name": "lihe_tools",
+  "version": "1.01",
+  "version_name": "aString",
+  "description": "浏览器工具",
+  "short_name": "Short Name",
+  "permissions": [
+    "activeTab",
+    "tabs",
+    "cookies",
+    "webRequest"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "action": {
+    "default_icon": {
+      "16": "icon.png",
+      "48": "icon.png",
+      "128": "icon.png"
+    },
+    "default_popup": "index.html"
+  },
+  "icons": {
+    "16": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png"
+  },
+
+  "update_url": "http://path/to/updateInfo.xml"
+}

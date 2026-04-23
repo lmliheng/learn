@@ -41,20 +41,32 @@
 
     container.addEventListener('mousemove', debounce(mouseMove, 3000))
     // 防抖函数
-    function debounce(fn, delay) {
-        console.log(delay);
+    function debounce_1(fn, delay) {  // 简单
         return function () {
             let timer;
             if (timer) {
-                console.log('清除定时器');
                 clearTimeout(timer);
             }
-            setTimeout(function () {
-                console.log('防抖函数执行');
-                fn();
+            setTimeout(() => { fn(); }, delay);
+        }
+    }
+    // 防抖函数
+    function debounce_2(fn, delay) { // 传参
+        return function (...args) {
+            let timer;
+            const context = this;
+            if (timer) {
+                clearTimeout(timer);
+            }
+            setTimeout(() => {
+                // fn.apply(context, ...args);
+                fn.bind(context, ...args)();
+                fn(...args);
             }, delay);
         }
     }
+
+ 
 
 
 </script>

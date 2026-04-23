@@ -1,8 +1,8 @@
-(function flexible(window, document) {
+(function flexible(window, document) { // 立即执行函数，避免全局变量污染
   var docEl = document.documentElement;
-  var dpr = window.devicePixelRatio || 1;
+  var dpr = window.devicePixelRatio || 1; // 设备像素比，默认1
 
-  // adjust body font size
+  // 设置body字体大小，
   function setBodyFontSize() {
     if (document.body) {
       document.body.style.fontSize = 12 * dpr + "px";
@@ -10,6 +10,7 @@
       document.addEventListener("DOMContentLoaded", setBodyFontSize);
     }
   }
+  
   setBodyFontSize();
 
   // set 1rem = viewWidth / 10

@@ -23,7 +23,8 @@ const styleObj = {
         <RouterLink to="/watch-test">WatchTest</RouterLink> |
         <RouterLink to="/tab-test">TabTest</RouterLink> |
         <RouterLink to="/props-view">PropsView</RouterLink> |
-        <RouterLink to="/model-test-view">ModelTestView</RouterLink>
+        <RouterLink to="/model-test-view">ModelTestView</RouterLink> |
+        <RouterLink to="/store-test">StoreTest</RouterLink>
       </nav>
 
     </div>

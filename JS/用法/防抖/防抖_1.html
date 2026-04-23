@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>防抖debounce_1</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    html {
+        font-size: 16px;
+    }
+</style>
+
+<body>
+    <div id="防抖测试"
+        class="border-solid border-gray-500 border-2 rounded-md m-auto w-4/5 h-48 mt-16 grid grid-cols-5 gap-4 items-center justify-center">
+        <button class="w-16 h-7 bg-gray-200 text-base border border-gray-500 rounded-md hover:bg-gray-300"
+            id="loginBtn">登录</button>
+        <input class="px-3 py-2 bg-white text-base" type="text" placeholder="请输入用户名">
+
+    </div>
+
+</body>
+
+
+<script>
+
+    const loginBtn = document.querySelector('#loginBtn');
+
+    loginBtn.addEventListener('click', debounce_1(
+        () => {
+            console.log('登录');
+        }
+        , 1000
+    ));
+    // 防抖函数1
+    // 事件延迟触发 但第一次触发也会延迟，延迟期间触发,不会执行函数
+    function debounce_1(fn, delay) {  // 简单
+        let timer = null;
+        return function () {
+            if (timer) {
+                clearTimeout(timer);
+            }
+            timer = setTimeout(() => { fn(); }, delay);
+        }
+    }
+    // 防抖函数2
+    function debounce_2(fn, delay) { // 传参
+        let timer = null;
+        return function (...args) {
+            const context = this;
+            if (timer) {
+                clearTimeout(timer);
+            }
+            timer = setTimeout(() => {
+                fn.apply(context, ...args);
+                // fn.bind(context, ...args);
+                // fn(...args);
+            }, delay);
+        }
+    }
+
+    // 防抖函数
+    function debounce_3(fn, delay, immediate = false) { // 首次触发立即执行 option
+        let timer = null;
+        let immediateFlag = immediate || false;
+        return function (...args) {
+
+            const context = this;
+
+            if (timer) {
+                clearTimeout(timer);
+            }
+
+            if (immediateFlag) {
+                fn.apply(context, ...args);
+            }
+
+            timer = setTimeout(() => {
+                // fn.apply(context, ...args);
+                fn.bind(context, ...args)();
+                fn(...args);
+            }, delay);
+        }
+    }
+
+
+</script>
+
+</script>
+
+</html>

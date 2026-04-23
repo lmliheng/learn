@@ -39,8 +39,13 @@ const router = createRouter({
       name: 'model-test-view',
       component: () => import('@/views/modelTestView.vue'),
     },
+    {
+      path: '/store-test',
+      name: 'store-test',
+      component: () => import('@/views/storeTest.vue'),
+    },
 
-    
+
   ],
 })
 
