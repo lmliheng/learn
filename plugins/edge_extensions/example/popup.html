@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <title>Edge Extensions </title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            width: 300px;
+            height: 400px;
+            background-color: #f0f0f0;
+            border: 1px solid #c5bfbf;
+        }
+
+        #extension-container {
+            margin: 0 auto;
+            margin-top: 40px;
+            width: 260px;
+            height: 20px;
+            text-align: left;
+        }
+
+
+        #leetcode_btn {
+            width: 260px;
+            height: 30px;
+            border-radius: 5px;
+            cursor: pointer;
+            border: 1px solid #c5bfbf;
+        }
+
+        #github_btn {
+            margin-top: 10px;
+            width: 260px;
+            height: 30px;
+            border-radius: 5px;
+            cursor: pointer;
+            border: 1px solid #c5bfbf;
+        }
+
+        #leetcodeInfo_btn {
+            margin-top: 10px;
+            width: 260px;
+            height: 30px;
+            border-radius: 5px;
+            cursor: pointer;
+            border: 1px solid #c5bfbf;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="extension-container">
+
+        <button id="leetcode_btn">随机挑选leedcode题目</button>
+        <button id="github_btn">跳转GitHub仓库</button>
+        <button id="leetcodeInfo_btn">用户页</button>
+        <script src="popup.js"></script>
+        <script src="background.js"></script>
+
+    </div>
+</body>
+
+
+
+</html>
