@@ -1,6 +1,6 @@
 <script setup></script>
 <template>
     <div>
-        <h1>文章管理</h1>
+        <h1>{{ $t('message.article_manage') }}</h1>
     </div>
 </template>

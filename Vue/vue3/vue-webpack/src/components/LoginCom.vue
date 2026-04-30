@@ -4,7 +4,9 @@ import { login } from '../composables/useRequest'
 import {useRouter} from 'vue-router'
 import {ElMessage} from 'element-plus'
 import { useAuthStore } from '../store/auth'
-
+import { useI18n } from 'vue-i18n'
+import i18nCom from './i18nCom.vue'
+const { t } = useI18n()
 const loading = ref(false)
 const router = useRouter()
 const authStore = useAuthStore()
@@ -26,7 +28,7 @@ const submitForm = async () => {
    const res = await login(ruleForm.account, ruleForm.password)
    if(res.code === 200){
     loading.value = false
-    ElMessage.success('登录成功')
+    ElMessage.success(t('message.login_success'))
     // 登录成功后，将token分别存储到localStorage，pinia store中
     localStorage.setItem('token', res.data.token)
     authStore.setToken(res.data.token)
@@ -42,7 +44,8 @@ onMounted(() => {
 <template>
     
     <div  v-loading="loading">
-        <h1 style="text-align: center;">登录</h1>
+        <i18nCom />
+        <h1 style="text-align: center;">{{ $t('message.login') }}</h1>
         <div id="login-form">
             <el-form ref="ruleFormRef" :model="ruleForm" :rules="rules" label-width="50px">
                 <el-form-item label="账号" prop="account">
@@ -51,7 +54,7 @@ onMounted(() => {
                 <el-form-item label="密码" prop="password">
                     <el-input v-model="ruleForm.password" placeholder="请输入密码" show-password></el-input>
                 </el-form-item>
-                    <el-button type="primary" @click="submitForm" style="width: 300px;">登录</el-button>
+                    <el-button type="primary" @click="submitForm" style="width: 300px;">{{ $t('message.login') }}</el-button>
             </el-form>
 
         </div>

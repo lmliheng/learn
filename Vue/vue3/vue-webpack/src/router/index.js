@@ -55,7 +55,7 @@ const Routes = [
                 },
                 children: [
                     {
-                        path: '/user-manage',
+                        path: '/user/user-manage',
                         name: 'user-manage',
                         component: UserManage,
                         meta: {
@@ -66,7 +66,7 @@ const Routes = [
                     },
 
                     {
-                        path: '/role-manage',
+                        path: '/user/role-manage',
                         name: 'role-manage',
                         component: RoleManage,
                         meta: {
@@ -76,7 +76,7 @@ const Routes = [
                         }
                     },
                     {
-                        path: '/permission-manage',
+                        path: '/user/permission-manage',
                         name: 'permission-manage',
                         component: PermissionManage,
                         meta: {
@@ -99,7 +99,7 @@ const Routes = [
                 },
                 children: [
                     {
-                        path: '/article-manage',
+                        path: '/article/article-manage',
                         name: 'article-manage',
                         component: ArticleManage,
                         meta: {
@@ -109,7 +109,7 @@ const Routes = [
                         }
                     },
                     {
-                        path: '/article-create',
+                        path: '/article/article-create',
                         name: 'article-create',
                         component: ArticleCreate,
                         meta: {
@@ -119,7 +119,7 @@ const Routes = [
                         }
                     },
                     {
-                        path: '/article-rank',
+                        path: '/article/article-rank',
                         name: 'article-rank',
                         component: ArticleRank,
                         meta: {
@@ -129,7 +129,7 @@ const Routes = [
                         }
                     },
                     {
-                        path: '/article-detail',
+                        path: '/article/article-detail',
                         name: 'article-detail',
                         component: ArticleDetail,
                         meta: {

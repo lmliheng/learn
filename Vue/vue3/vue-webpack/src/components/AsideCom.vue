@@ -1,6 +1,7 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 
+
 const props = defineProps({
   UserInfo: {
     type: Object,
@@ -8,9 +9,12 @@ const props = defineProps({
   },
   routePath: {
     type: String,
-    default: () => ''
-  }
-  }
+    default: '/user-profile',
+  },
+  isCollapse: {
+    type: Boolean,
+    default: () => false
+  }}
 )
 
 import {
@@ -22,7 +26,7 @@ import {
 
 
 onMounted(() => {
-  
+
 })
 </script>
 
@@ -30,39 +34,40 @@ onMounted(() => {
  
   <el-menu
     class="el-menu-vertical-demo"
-    router="true"
+    :router=true
     :default-active="props.routePath"  
+    :collapse="props.isCollapse"
   >
   
   <div id="aside-logo">
   <el-avatar id="header-avatar" shape="square" size="default" :src="props.UserInfo?.avatar" />
-  <span id="logo-text">{{ props.UserInfo?.username }}</span>
+  <span id="logo-text" v-if="!props.isCollapse">{{ props.UserInfo?.username }}</span>
   </div>
   
    <el-menu-item index="/user-profile">
      <el-icon><User /></el-icon>
-      <template #title>个人中心</template>
+      <template #title>{{ $t('message.user_profile') }}</template>
     </el-menu-item>
 
     <el-sub-menu index="2">
       <template #title>
         <el-icon><Operation /></el-icon>
-        <span>用户</span>
+        <span>{{ $t('message.user') }}</span>
       </template>
-        <el-menu-item index="/user-manage">员工管理</el-menu-item>
-        <el-menu-item index="/role-manage">角色管理</el-menu-item>
-        <el-menu-item index="/permission-manage">权限管理</el-menu-item>
+        <el-menu-item index="/user/user-manage">{{ $t('message.user_manage') }}</el-menu-item>
+        <el-menu-item index="/user/role-manage">{{ $t('message.role_manage') }}</el-menu-item>
+        <el-menu-item index="/user/permission-manage">{{ $t('message.permission_manage') }}</el-menu-item>
     </el-sub-menu>
 
     <el-sub-menu index="3">
       <template #title>
        <el-icon><Notebook /></el-icon>
-        <span>文章</span>
+        <span>{{ $t('message.article') }}</span>
       </template>
-        <el-menu-item index="/article-rank">文章排名</el-menu-item>
-        <el-menu-item index="/article-detail">文章详情</el-menu-item>
-        <el-menu-item index="/article-create">创建文章</el-menu-item>
-        <el-menu-item index="/article-manage">文章管理</el-menu-item>
+        <el-menu-item index="/article/article-rank">{{ $t('message.article_rank') }}</el-menu-item>
+        <el-menu-item index="/article/article-detail">{{ $t('message.article_detail') }}</el-menu-item>
+        <el-menu-item index="/article/article-create">{{ $t('message.article_create') }}</el-menu-item>
+        <el-menu-item index="/article/article-manage">{{ $t('message.article_manage') }}</el-menu-item>
     </el-sub-menu>
   </el-menu>
 </template>

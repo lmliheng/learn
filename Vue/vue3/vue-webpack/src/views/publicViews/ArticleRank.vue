@@ -2,6 +2,6 @@
 <script setup></script>
 <template>
     <div>
-        <h1>文章排名</h1>
+        <h1>{{ $t('message.article_rank') }}</h1>
     </div>
 </template>

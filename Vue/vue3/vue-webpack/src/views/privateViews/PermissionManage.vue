@@ -1,6 +1,6 @@
 <script setup></script>
 <template>
     <div>
-        <h1>权限管理</h1>
+        <h1>{{ $t('message.permission_manage') }}</h1>
     </div>
 </template>
