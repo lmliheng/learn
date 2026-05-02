@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>顶层对象</title>
+</head>
+<style>
+
+</style>
+
+<body>
+
+</body>
+<script>
+
+    let obj1 = {
+        name: '张三',
+        age: 18,
+    }
+    var obj2 = {
+        name: '李四',
+        age: 20,
+    }
+
+    console.log(obj1)
+    console.log(window.obj1) // 无值
+
+    console.log(obj2)
+    console.log(window.obj2) // 有值
+
+</script>
+
+</html>

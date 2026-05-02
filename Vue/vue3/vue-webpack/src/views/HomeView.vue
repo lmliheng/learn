@@ -12,6 +12,7 @@ import AsideCom from '@/components/AsideCom.vue'
 import i18nCom from '@/components/i18nCom.vue'
 import Breadcrumb from '@/components/Breadcrumb.vue'
 import FullScreen from '@/components/FullScreen.vue'
+import searchCom from '@/components/searchCom.vue'
 
 import { loginOut } from '@/composables/useLoginOut'  
 
@@ -85,6 +86,9 @@ onMounted(() => {
 
               
             <div id="header-right">
+             
+                  <searchCom />
+              
 
               <div id="header-fullscreen">
                <FullScreen />
@@ -110,7 +114,11 @@ onMounted(() => {
         </el-header>
         <!-- 怎么放view到下面来 都写成子路由吗 现在没有子路由-->
         <el-main>
-          <router-view /> 
+         <router-view v-slot="{ Component }">
+        
+            <component :is="Component" />
+          
+        </router-view>
         </el-main>
       </el-container>
     </el-container>
@@ -119,6 +127,8 @@ onMounted(() => {
 
 
 <style scoped>
+
+
 
 #header{
     height: 60px;
