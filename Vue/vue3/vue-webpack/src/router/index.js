@@ -20,7 +20,7 @@ const Routes = [
         redirect: '/user-info',
         component: HomeView,
         meta: {
-            title: 'home',
+            title: '首页',
             icon: 'home',
             private: false,
         },
@@ -30,7 +30,7 @@ const Routes = [
                 name: 'user-info',
                 component: UserInfo,
                 meta: {
-                    title: 'user-info',
+                    title: '用户信息',
                     icon: 'user-info',
                     private: false,
                 }
@@ -40,7 +40,7 @@ const Routes = [
                 name: 'user-profile',
                 component: UserProfile,
                 meta: {
-                    title: 'user-profile',
+                    title: '用户配置',
                     icon: 'user-profile',
                     private: false,
                 }
@@ -49,7 +49,7 @@ const Routes = [
                 path: '/user',
                 name: 'user',
                 meta: {
-                    title: 'user',
+                    title: '用户',
                     icon: 'user',
                     private: true,
                 },
@@ -59,7 +59,7 @@ const Routes = [
                         name: 'user-manage',
                         component: UserManage,
                         meta: {
-                            title: 'user-manage',
+                            title: '用户管理',
                             icon: 'user-manage',
                             private: true,
                         }
@@ -70,7 +70,7 @@ const Routes = [
                         name: 'role-manage',
                         component: RoleManage,
                         meta: {
-                            title: 'role-manage',
+                            title: '角色管理',  
                             icon: 'role-manage',
                             private: true,
                         }
@@ -80,7 +80,7 @@ const Routes = [
                         name: 'permission-manage',
                         component: PermissionManage,
                         meta: {
-                            title: 'permission-manage',
+                            title: '权限管理',  
                             icon: 'permission-manage',
                             private: true,
                         }
@@ -93,7 +93,7 @@ const Routes = [
                 path: '/article',
                 name: 'article',
                 meta: {
-                    title: 'article',
+                    title: '文章',
                     icon: 'article',
                     private: false,
                 },
@@ -103,7 +103,7 @@ const Routes = [
                         name: 'article-manage',
                         component: ArticleManage,
                         meta: {
-                            title: 'article-manage',
+                            title: '文章管理',
                             icon: 'article-manage',
                             private: true,
                         }
@@ -113,7 +113,7 @@ const Routes = [
                         name: 'article-create',
                         component: ArticleCreate,
                         meta: {
-                            title: 'article-create',
+                            title: '文章创建',
                             icon: 'article-create',
                             private: true,
                         }
@@ -123,7 +123,7 @@ const Routes = [
                         name: 'article-rank',
                         component: ArticleRank,
                         meta: {
-                            title: 'article-rank',
+                            title: '文章排名',
                             icon: 'article-rank',
                             private: false,
                         }
@@ -133,7 +133,7 @@ const Routes = [
                         name: 'article-detail',
                         component: ArticleDetail,
                         meta: {
-                            title: 'article-detail',
+                            title: '文章详情',
                             icon: 'article-detail',
                             private: false,
                         }

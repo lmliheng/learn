@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+    <title>用户1</title>
+  </head>
+<body>
+  <input id="msg" placeholder="输入消息" />
+  <button onclick="send()">发送</button>
+
+  <script>
+    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInVzZXJuYW1lIjoi5bCP5p2OIiwiaWF0IjoxNzc3ODg5MDQ2LCJleHAiOjE3Nzc4OTI2NDZ9.2XSSTWnG6npcBwYNNw35N2---I850dozntR0s9SnJtM";
+    const ws = new WebSocket('ws://localhost:7000?token=' + token);
+
+    ws.onopen = () => {
+     
+    };
+
+    ws.onmessage = (event) => {
+      console.log( event.data);
+    };
+
+    function send() {
+      const input = document.getElementById('msg');
+      ws.send(input.value);
+      input.value = '';
+    }
+  </script>
+</body>
+</html>

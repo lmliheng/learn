@@ -1,7 +1,6 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 
-
 const props = defineProps({
   UserInfo: {
     type: Object,
@@ -46,28 +45,28 @@ onMounted(() => {
   
    <el-menu-item index="/user-profile">
      <el-icon><User /></el-icon>
-      <template #title>{{ $t('message.user_profile') }}</template>
+      <template #title>{{ $t('user_profile') }}</template>
     </el-menu-item>
 
     <el-sub-menu index="2">
       <template #title>
         <el-icon><Operation /></el-icon>
-        <span>{{ $t('message.user') }}</span>
+        <span>{{ $t('user') }}</span>
       </template>
-        <el-menu-item index="/user/user-manage">{{ $t('message.user_manage') }}</el-menu-item>
-        <el-menu-item index="/user/role-manage">{{ $t('message.role_manage') }}</el-menu-item>
-        <el-menu-item index="/user/permission-manage">{{ $t('message.permission_manage') }}</el-menu-item>
+        <el-menu-item index="/user/user-manage">{{ $t('user_manage') }}</el-menu-item>  
+        <el-menu-item index="/user/role-manage">{{ $t('role_manage') }}</el-menu-item>
+        <el-menu-item index="/user/permission-manage">{{ $t('permission_manage') }}</el-menu-item>
     </el-sub-menu>
 
     <el-sub-menu index="3">
       <template #title>
        <el-icon><Notebook /></el-icon>
-        <span>{{ $t('message.article') }}</span>
+        <span>{{ $t('article') }}</span>
       </template>
-        <el-menu-item index="/article/article-rank">{{ $t('message.article_rank') }}</el-menu-item>
-        <el-menu-item index="/article/article-detail">{{ $t('message.article_detail') }}</el-menu-item>
-        <el-menu-item index="/article/article-create">{{ $t('message.article_create') }}</el-menu-item>
-        <el-menu-item index="/article/article-manage">{{ $t('message.article_manage') }}</el-menu-item>
+        <el-menu-item index="/article/article-rank">{{ $t('article_rank') }}</el-menu-item>
+        <el-menu-item index="/article/article-detail">{{ $t('article_detail') }}</el-menu-item>
+        <el-menu-item index="/article/article-create">{{ $t('article_create') }}</el-menu-item>
+        <el-menu-item index="/article/article-manage">{{ $t('article_manage') }}</el-menu-item>
     </el-sub-menu>
   </el-menu>
 </template>

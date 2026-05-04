@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <title>用户3</title>
+</head>
+
+<body>
+  <input id="msg" placeholder="输入消息" />
+  <button onclick="send()">发送</button>
+  <!-- <script src="https://unpkg.com/axios/dist/axios.min.js"></script> -->
+  <script>
+
+    // 检查是否存在token 已登录
+    // const token = localStorage.getItem('token');
+    // if (!token) {
+    //   window.location.href = './pages/login.html';
+    // }
+    let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjMsInVzZXJuYW1lIjoi5bCP5bygIiwiaWF0IjoxNzc3ODg5MDQ2LCJleHAiOjE3Nzc4OTI2NDZ9.LyRZH-GYCPU0DxHSUKuRNzcak7TNI7CSXmOycB--J-8"
+    const ws = new WebSocket('ws://localhost:7000?token=' + token);
+
+    ws.onopen = () => {
+
+    };
+
+    ws.onmessage = (event) => {
+      console.log(event.data);
+    };
+
+    function send() {
+      const input = document.getElementById('msg');
+      ws.send(input.value);
+     // console.log('用户3发送消息:', input.value);
+      input.value = '';
+
+    }
+  </script>
+</body>
+
+</html>

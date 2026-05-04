@@ -12,7 +12,12 @@ export const useAuthStore = defineStore('auth', () => {
     userInfo.value = newUserInfo
   }
 
-  return { token, setToken, userInfo, setUserInfo }
+  const tokenTime = ref('')
+  const setTokenTime = (newTokenTime) => {
+    tokenTime.value = newTokenTime
+  }
+
+  return { token, setToken, userInfo, setUserInfo, tokenTime, setTokenTime }
 }, {
   persist: true,
 }

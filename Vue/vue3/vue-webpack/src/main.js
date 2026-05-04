@@ -1,7 +1,7 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import ElementPlus from 'element-plus'
-import zhCn from 'element-plus/es/locale/lang/zh-cn'
+// import zhCn from 'element-plus/es/locale/zh-cn'
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 import 'element-plus/dist/index.css'
 import router from './router'
@@ -17,8 +17,9 @@ const pinia = createPinia()
 pinia.use(piniaPluginPersistedstate)
 app.use(pinia)
 app.use(router)
-app.use(ElementPlus, {
-    locale: zhCn
-})
+app.use(ElementPlus)
+// app.use(ElementPlus, {
+//     locale: zhCn
+// })
 app.use(i18n)
 app.mount('#app')

@@ -32,7 +32,8 @@ const submitForm = async () => {
     // 登录成功后，将token分别存储到localStorage，pinia store中
     localStorage.setItem('token', res.data.token)
     authStore.setToken(res.data.token)
-     router.push('/')
+    authStore.setTokenTime(new Date().toLocaleString())
+    router.push('/')
    }
 }
 onMounted(() => {
@@ -45,7 +46,7 @@ onMounted(() => {
     
     <div  v-loading="loading">
         <i18nCom />
-        <h1 style="text-align: center;">{{ $t('message.login') }}</h1>
+        <h1 style="text-align: center;">{{ $t('login') }}</h1>
         <div id="login-form">
             <el-form ref="ruleFormRef" :model="ruleForm" :rules="rules" label-width="50px">
                 <el-form-item label="账号" prop="account">
