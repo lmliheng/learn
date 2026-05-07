@@ -10,6 +10,7 @@ import ArticleCreate from '../views/privateViews/ArticleCreate.vue'
 import UserManage from '../views/privateViews/UserManage.vue'
 import ArticleRank from '../views/publicViews/ArticleRank.vue'
 import ArticleDetail from '../views/publicViews/ArticleDetail.vue'
+import UserImport from '../views/privateViews/UserImport.vue'
 
 
 
@@ -17,7 +18,7 @@ const Routes = [
     {
         path: '/',
         name: 'home',
-        redirect: '/user-info',
+        redirect: '/user-profile',
         component: HomeView,
         meta: {
             title: '首页',
@@ -25,16 +26,7 @@ const Routes = [
             private: false,
         },
         children: [
-            {
-                path: '/user-info',
-                name: 'user-info',
-                component: UserInfo,
-                meta: {
-                    title: '用户信息',
-                    icon: 'user-info',
-                    private: false,
-                }
-            },
+
             {
                 path: '/user-profile',
                 name: 'user-profile',
@@ -55,12 +47,34 @@ const Routes = [
                 },
                 children: [
                     {
+                        path: '/user/user-info/:id',
+                        props: true,
+                        name: 'user-info',
+                        component: UserInfo,
+                        meta: {
+                            title: '用户信息',
+                            icon: 'user-info',
+                            private: false,
+                        }
+                    },
+                    {
                         path: '/user/user-manage',
                         name: 'user-manage',
                         component: UserManage,
                         meta: {
                             title: '用户管理',
                             icon: 'user-manage',
+                            private: true,
+                        },
+
+                    },
+                    {
+                        path: '/user/user-import',
+                        name: 'user-import',
+                        component: UserImport,
+                        meta: {
+                            title: '导入用户',
+                            icon: 'user-import',
                             private: true,
                         }
                     },
@@ -70,7 +84,7 @@ const Routes = [
                         name: 'role-manage',
                         component: RoleManage,
                         meta: {
-                            title: '角色管理',  
+                            title: '角色管理',
                             icon: 'role-manage',
                             private: true,
                         }
@@ -80,7 +94,7 @@ const Routes = [
                         name: 'permission-manage',
                         component: PermissionManage,
                         meta: {
-                            title: '权限管理',  
+                            title: '权限管理',
                             icon: 'permission-manage',
                             private: true,
                         }

@@ -5,5 +5,5 @@ export const loginOut = () => {
     const authStore = useAuthStore()
     localStorage.removeItem('token')
     authStore.setUserInfo({})
-    router.push('/login')
+    router.push('/auth')
 }

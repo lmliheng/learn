@@ -28,7 +28,7 @@ const submitForm = async () => {
    const res = await login(ruleForm.account, ruleForm.password)
    if(res.code === 200){
     loading.value = false
-    ElMessage.success(t('message.login_success'))
+    ElMessage.success(t('login_success'))
     // 登录成功后，将token分别存储到localStorage，pinia store中
     localStorage.setItem('token', res.data.token)
     authStore.setToken(res.data.token)
@@ -49,13 +49,13 @@ onMounted(() => {
         <h1 style="text-align: center;">{{ $t('login') }}</h1>
         <div id="login-form">
             <el-form ref="ruleFormRef" :model="ruleForm" :rules="rules" label-width="50px">
-                <el-form-item label="账号" prop="account">
-                    <el-input v-model="ruleForm.account" placeholder="请输入账号"></el-input>
+                <el-form-item :label="$t('account')" prop="account">
+                    <el-input v-model="ruleForm.account" :placeholder="$t('placeholder_account')"></el-input>
                 </el-form-item>
-                <el-form-item label="密码" prop="password">
-                    <el-input v-model="ruleForm.password" placeholder="请输入密码" show-password></el-input>
+                <el-form-item :label="$t('password')" prop="password">
+                    <el-input v-model="ruleForm.password" :placeholder="$t('placeholder_password')" show-password></el-input>
                 </el-form-item>
-                    <el-button type="primary" @click="submitForm" style="width: 300px;">{{ $t('message.login') }}</el-button>
+                    <el-button type="primary" @click="submitForm" style="width: 300px;">{{ $t('login') }}</el-button>
             </el-form>
 
         </div>

@@ -1,6 +1,7 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import ElementPlus from 'element-plus'
+import print from 'vue3-print-nb'
 // import zhCn from 'element-plus/es/locale/zh-cn'
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 import 'element-plus/dist/index.css'
@@ -16,6 +17,7 @@ const pinia = createPinia()
 
 pinia.use(piniaPluginPersistedstate)
 app.use(pinia)
+app.use(print)
 app.use(router)
 app.use(ElementPlus)
 // app.use(ElementPlus, {

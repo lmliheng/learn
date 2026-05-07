@@ -1,33 +1,36 @@
 <script setup>
 import { useAuthStore } from '../../store/auth';
+import { useI18n } from 'vue-i18n'
+const { t } = useI18n()
 const authStore = useAuthStore();
 
 const permissionChange= (val) => {
    switch(val){
     case 'distributeRole':
-        return '分配角色';
+        return t('distribute_role');
     case 'importUser':
-        return '导入用户';
+        return t('import_user');
     case 'removeUser':
-        return '删除用户';
+        return t('remove_user');
     case 'distributePermission':
-        return '分配权限';
+        return t('distribute_permission');
     default:
-        return '未知权限';
+        return t('unknown_permission');
    }
     
 }
+
 </script>
 <template>
     <div class="user-profile" >
          <div class="block">
           <el-avatar :size="100" :src="authStore.userInfo.avatar" />
-          <p>用户ID：{{ authStore.userInfo.id }}</p>
-          <p>角色：{{ authStore.userInfo.title }}</p>
-          <p>用户名：{{ authStore.userInfo.username }}</p>
-          <p>权限：</p>
+          <p>{{ $t('user_id') }}：{{ authStore?.userInfo?.id  }}</p>
+          <p>{{ $t('role') }}：{{ authStore?.userInfo?.title  }}</p>
+          <p>{{ $t('username') }}：{{ authStore?.userInfo?.username }}</p>
+          <p>{{ $t('permission') }}：</p>
           <ul>
-            <li v-for="item in authStore.userInfo.permission.points" :key="item"  id="permission">{{ permissionChange(item) }}</li>
+            <li v-for="item in authStore?.userInfo?.permission?.points" :key="item"  id="permission">{{ permissionChange(item) }}</li>
             
           </ul>
         </div>

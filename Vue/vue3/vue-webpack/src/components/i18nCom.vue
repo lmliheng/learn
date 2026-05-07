@@ -20,7 +20,7 @@ onMounted(() => {
      <el-tooltip
         class="box-item"
         effect="dark"
-        content="国际化"
+        :content="$t('language_switch')"
         placement="bottom"
       >
          <el-dropdown placement="top-start" trigger="click" @command="handleChangeLang">
@@ -29,6 +29,8 @@ onMounted(() => {
                  <el-dropdown-menu>
                 <el-dropdown-item  command="cn" :disabled="langStore.lang === 'cn'">{{ $t('language_cn') }}</el-dropdown-item>
                 <el-dropdown-item  command="en" :disabled="langStore.lang === 'en'">{{ $t('language_en') }}</el-dropdown-item>
+                <el-dropdown-item  command="jp" :disabled="langStore.lang === 'jp'">{{ $t('language_jp') }}</el-dropdown-item>
+                <el-dropdown-item  command="ru" :disabled="langStore.lang === 'ru'">{{ $t('language_ru') }}</el-dropdown-item>
                 </el-dropdown-menu>
                   </template>
               </el-dropdown>
